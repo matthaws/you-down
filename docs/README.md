@@ -20,9 +20,10 @@ YouDown? is a web application inspired by Meetup. It will be built using Ruby on
 - [ ] BONUS: Google/Facebook log-in API implementation
 
 ## Design Docs
-
+[API Endpoints][api]
 [DB schema][schema]
 
+[api]: ./api_endpoints.md
 [schema]: ./schema.md
 
 ## Implementation Timeline
