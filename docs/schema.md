@@ -11,7 +11,7 @@ session_token     | string    | not null, indexed, unique
 location_name     | string    |
 location_zip      | integer   | not null, indexed, 5-digits
 bio               | text      |
-profile_pic_url   | integer   | foreign key (references images), indexed
+profile_pic       | integer   | foreign key (references images), indexed
 
 ## groups
 column name       | data type | details
@@ -23,7 +23,7 @@ location_zip      | integer   | not null, indexed, 5-digits
 description       | text      | not null
 organizer_id      | integer   | not null, foreign key (references users), indexed
 member_moniker    | string    | can be null (defaults to "members")
-group_pic_url     | integer   | foreign key (references images)
+group_pic         | integer   | foreign key (references images)
 
 ## memberships     
 column name       | data type | details
@@ -61,8 +61,9 @@ column name       | data type | details
 ------------------|-----------|------------------------
 id                | integer   | not null, primary key
 title             | string    | not null, indexed, unique
+category_pic      | integer   | foreign key (references images), indexed
 
-## category_links
+## category_groups
 column name       | data type | details
 ------------------|-----------|------------------------
 id                | integer   | not null, primary key
