@@ -24,15 +24,37 @@ YouDown? is a web application inspired by Meetup. It will be built using Ruby on
 * [API Endpoints][api]
 * [React Components][components]
 * [DB schema][schema]
+* [Sample State][state]
 
 [wireframes]: ./docs/wireframes
 [api]: ./api-endpoints.md
 [schema]: ./schema.md
 [components]: ./component-hierarchy.md
-
+[state]: ./sample-state.md
 
 ## Implementation Timeline
 
 ### Phase 1: Backend setup and Front End User Authentication and landing page (2 days)
 
 **Objective** Functioning rails project with skeleton of home page and full auth form, ability to create user accounts, log-in, and user's main page and profile page.
+
+### Phase 2: Groups & Events (2 days)
+
+**Objective** Ability to create and join groups, create and rsvp to events, with group and event show pages.
+
+### Phase 3: Categories (1 day)
+
+**Objective** Organizers can label groups as one or more categories, can view all groups in a specific category.
+
+### Phase 4: Search (2 days)
+
+**Objective** Can search groups by category, location, name, and description
+
+### Phase 5: Calendars (2 days)
+
+**Objective** Calendar component added to group page displaying all upcoming events.
+
+### BONUS Features (TBD)
+- [ ] Calendar component in search results populated by upcoming events in groups returned by search
+- [ ] Google Map implemented on event pages showing location of event
+- [ ] Google & Facebook log-in option
