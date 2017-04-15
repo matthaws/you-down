@@ -43,6 +43,8 @@ column name       | data type | details
 ------------------|-----------|------------------------
 id                | integer   | not null, primary key
 date              | datetime  | not null, indexed
+name              | string    | not null
+description       | text      | not null
 location_name     | string    |
 location_address  | string    | not null, indexed
 location_zip      | integer   | integer, indexed, 5-digits
@@ -53,3 +55,16 @@ column name       | data type | details
 id                | integer   | not null, primary key
 attendee_id       | integer   | not null, foreign key (references users), indexed
 event_id          | integer   | not null, foreign key (references events), indexed
+
+## categories
+column name       | data type | details
+------------------|-----------|------------------------
+id                | integer   | not null, primary key
+title             | string    | not null, indexed, unique
+
+## category_links
+column name       | data type | details
+------------------|-----------|------------------------
+id                | integer   | not null, primary key
+category_id       | integer   | not null, foreign key (references categories), indexed
+group_id          | integer   | not null, foreign key (references groups), indexed
