@@ -21,6 +21,10 @@ YouDown? is a web application inspired by Meetup. It will be built using Ruby on
 
 ## Design Docs
 
+[DB schema][schema]
+
+[schema]: docs/schema.md
+
 ## Implementation Timeline
 
 ### Phase 1: Backend setup and Front End User Authentication and landing page (2 days)
