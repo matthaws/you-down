@@ -26,7 +26,7 @@ YouDown? is a web application inspired by Meetup. It will be built using Ruby on
 * [DB schema][schema]
 * [Sample State][state]
 
-[wireframes]: docs/wireframes
+[wireframes]: /wireframes
 [api]: ./api-endpoints.md
 [schema]: ./schema.md
 [components]: ./component-hierarchy.md
