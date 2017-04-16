@@ -26,7 +26,7 @@
 - Group
   + GroupSidebar
   + GroupMain
-  + Members
+  + WhatsNew
 
 **EventContainer**
 - Event
@@ -52,10 +52,9 @@
 |"/welcome"        | "WelcomeContainer"               |
 |"/welcome/signup" | "AuthFormContainer"              |
 |"/welcome/login"  | "AuthFormContainer"              |
-|"/home"           | "HomeContainer"                  |
 |"/member/:id"     | "ProfileContainer"               |
 |"/group/:id"      | "GroupContainer"                 |
 |"/event/:id"      | "EventContainer"                 |
 |"/newevent"       | "NewEventFormContainer"          |
 |"/newgroup"       | "NewGroupFormContainer"          |
-|"/search"         | "SearchContainer"
+|"/search"         | "SearchContainer"                |
