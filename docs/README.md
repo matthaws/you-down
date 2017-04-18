@@ -14,7 +14,7 @@ YouDown? is a web application inspired by Meetup. It will be built using Ruby on
 - [ ] Events and RSVPs
 - [ ] Calendar (on group page)
 - [ ] Search by location and group info (name, description)
-- [ ] Categories
+- [ ] BONUS: Categories
 - [ ] BONUS: Calendar (for all groups in search results)
 - [ ] BONUS: Google Map implementation for Events
 - [ ] BONUS: Google/Facebook log-in API implementation
@@ -36,25 +36,30 @@ YouDown? is a web application inspired by Meetup. It will be built using Ruby on
 
 ### Phase 1: Backend setup and Front End User Authentication and landing page (2 days)
 
-**Objective** Functioning rails project with skeleton of home page and full auth form, ability to create user accounts, log-in, and user's main page and profile page.
+**Objective** Functioning rails project with skeleton of home page and full auth form, ability to create user accounts, log-in and log-out.
 
-### Phase 2: Groups & Events (2 days)
+### Phase 2: User Profiles (1 day)
 
-**Objective** Ability to create and join groups, create and rsvp to events, with group and event show pages.
+**Objective** Profile pages. Can view any user's profile and edit profile if it is current user's profile page.  
 
-### Phase 3: Categories (1 day)
+### Phase 3: Groups (1 day)
 
-**Objective** Organizers can label groups as one or more categories, can view all groups in a specific category.
+**Objective** Ability to create and join groups, group show page.
 
-### Phase 4: Search (2 days)
+### Phase 4: Events (1 day)
+
+**Objective** Ability to create and RSVP to events, event show page.
+
+### Phase 5: Search (2 days)
 
 **Objective** Can search groups by category, location, name, and description
 
-### Phase 5: Calendars (2 days)
+### Phase 6: Calendars (2 days)
 
 **Objective** Calendar component added to group page displaying all upcoming events.
 
 ### BONUS Features (TBD)
-- [ ] Calendar component in search results populated by upcoming events in groups returned by search
+- [ ] Categories
+- [ ] Calendar component in search results
 - [ ] Can leave comments on events.
 - [ ] Google & Facebook log-in option

@@ -18,8 +18,6 @@
 - 'DELETE /api/session'
 
 ### Groups
-- 'GET /api/groups'
-  - Accepts query params to return search results (name, date range, location, category)
 - 'POST /api/groups'
 - 'GET /api/groups/:id'
 - 'PATCH /api/groups/:id'
@@ -27,7 +25,7 @@
 
 ### Events
 - 'GET /api/events'
-  - Accepts query params to return search results (name, date range, location, category)
+  - Accepts query params to return search results (group name, event name, location)
 - 'POST /api/events'
 - 'GET /api/events/:id'
 - 'PATCH /api/events/:id'

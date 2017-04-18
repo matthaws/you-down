@@ -11,7 +11,7 @@ session_token     | string    | not null, indexed, unique
 location_name     | string    |
 location_zip      | integer   | not null, indexed, 5-digits
 bio               | text      |
-profile_pic       | integer   | foreign key (references images), indexed
+profile_lic       | attachment| paperclip gem attachment to image
 
 ## groups
 column name       | data type | details
@@ -22,21 +22,15 @@ location_name     | string    | not null
 location_zip      | integer   | not null, indexed, 5-digits
 description       | text      | not null
 organizer_id      | integer   | not null, foreign key (references users), indexed
+column name       | data type | details
 member_moniker    | string    | can be null (defaults to "members")
 group_pic         | integer   | foreign key (references images)
 
 ## memberships     
-column name       | data type | details
 ------------------|-----------|------------------------
 id                | integer   | not null, primary key
 member_id         | integer   | not null, foreign key (references users), indexed
 group_id          | integer   | not null, foreign key (references groups), indexed
-
-## images
-column name       | data type | details
-------------------|-----------|------------------------
-id                | integer   | not null, primary key
-url               | string    | not null, indexed
 
 ## events
 column name       | data type | details

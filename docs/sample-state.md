@@ -5,8 +5,7 @@
   + on profile page, groups user is member of are passed nested within the user's JSON Object
 
 
-- groups - used for group show pages and search results
-  + on group show page, members and events arrive nested
+- groups - used for group show page, members and events arrive nested
 
 
 - events - used for event show pages and search results
