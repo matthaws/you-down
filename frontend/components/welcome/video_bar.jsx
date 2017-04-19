@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import SignUpForm from './signup_form';
+import AuthForm from './auth_form';
 import { modalStyle } from '../../util/modal_util';
 
 class VideoBar extends React.Component {
@@ -37,7 +37,7 @@ class VideoBar extends React.Component {
           className="auth-form"
           isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal}>
-            <SignUpForm />
+            <AuthForm formType="signup" />
         </Modal>
     </div>
   </div>

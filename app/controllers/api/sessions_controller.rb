@@ -1,4 +1,4 @@
-class Api::SessionController < ApplicationController
+class Api::SessionsController < ApplicationController
 
   def create
     user_params = params[:user]
@@ -8,7 +8,7 @@ class Api::SessionController < ApplicationController
       log_in(@user)
       render :show
     else
-      render json: "Invalid email or password", status: 422
+      render json:"Invalid email or password", status: 422
     end
   end
 

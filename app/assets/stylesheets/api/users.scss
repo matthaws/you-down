@@ -1,3 +1,33 @@
 // Place all the styles related to the api/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.profile_pic_thumb {
+  height: 50px;
+  width: auto;
+  padding-bottom: 10px;
+  padding-top: 0;
+}
+
+.nav-drop-down {
+  background-color: white;
+  position: fixed;
+  right: 0;
+  top: 70px;
+  padding-right: 10px;
+  padding-left: 400px;
+}
+
+.nav-drop-down ul {
+  text-align: right;
+};
+
+.nav-drop-down li {
+  padding: 15px;
+  border-bottom: 1px solid #0F1721;
+}
+
+.nav-drop-down li:hover {
+  cursor: pointer;
+  color: #ED1C40;
+}

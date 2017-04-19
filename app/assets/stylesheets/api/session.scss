@@ -141,6 +141,16 @@
   padding-top: 20px;
 }
 
+.auth-form p {
+  text-align: center;
+  font-size: 14px;
+}
+
+.auth-form p:hover {
+  cursor: pointer;
+  color: #ED1C40;
+}
+
 .auth-form {
   font-size: 20px;
   padding-bottom: 8px;
@@ -149,6 +159,10 @@
   background-color: white;
   margin: 0 auto;
   padding: 20px;
+  box-shadow: 1px 1px 3px black;
+  position: fixed;
+  top: 20%;
+  left: 37%;
 }
 
 .auth-form input {
@@ -162,4 +176,35 @@
   text-align: center;
   width: 100%;
   padding: 20px;
+}
+
+.auth-form button:hover {
+  cursor: pointer;
+  background-color: #a50d27
+}
+
+.guestlogin {
+  padding: 5px;
+  background-color: white;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.guestlogin:hover {
+  color: #ED1C40;
+  cursor: pointer;
+}
+
+.errors {
+  font-size: 18px;
+  padding: 20px;
+  color: #ED1C40;
+}
+
+.errors ul {
+  text-align: left;
+  list-style: disc;
 }

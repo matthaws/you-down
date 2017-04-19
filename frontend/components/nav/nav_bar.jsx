@@ -1,39 +1,60 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import SignUpForm from '../welcome/signup_form';
+import AuthForm from '../welcome/auth_form';
 import { modalStyle } from '../../util/modal_util';
 import Modal from 'react-modal';
+import TopRight from './topright';
+
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       modalOpen: false,
+      formType: "signup",
+      current_user: window.currentUser
     };
 
     this.closeModal = this.closeModal.bind(this);
-    this.openModal = this.openModal.bind(this);
+    this.openSignUp = this.openSignUp.bind(this);
+    this.openLogIn = this.openLogIn.bind(this);
   }
 
   closeModal() {
     this.setState({ modalOpen: false })
   }
 
-  openModal() {
-    this.setState({ modalOpen: true })
+  openLogIn() {
+    this.setState({ modalOpen: true, formType: "login"})
+  }
+
+  openSignUp() {
+    this.setState({ modalOpen: true, formType: "signup" })
+  }
+
+  componentWillReceiveProps(nextProps) {
+
+    if (window.currentUser) {
+      this.setState({current_user: window.currentUser})
+    } else {
+      this.setState({current_user: "none" })
+    }
   }
 
   render() {
+
     let topright = (
       <ul className="topright">
-        <li>Log in</li>
-        <li className="signup-button" onClick={this.openModal}>Sign up</li>
+        <li onClick={this.openLogIn}>Log in</li>
+        <li className="signup-button" onClick={this.openSignUp}>Sign up</li>
       </ul>
     )
 
-    if (this.props.current_user) {
-
+    if (window.currentUser ) {
+      topright = (
+        <TopRight />
+      )
     }
 
     return (
@@ -50,7 +71,7 @@ class NavBar extends React.Component {
             className="auth-form"
             isOpen={this.state.modalOpen}
             onRequestClose={this.closeModal}>
-              <SignUpForm />
+              <AuthForm formType={this.state.formType}/>
           </Modal>
         </ul>
       </nav>
@@ -61,7 +82,7 @@ class NavBar extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    current_user: state.session.current_user
+    current_user: state.session.currentUser
   }
 }
 
