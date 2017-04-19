@@ -50,6 +50,10 @@
   margin-right: 20px;
 }
 
+.signup-button:hover {
+  cursor: pointer;
+}
+
 #footer {
   background-color: #0F1721;
   color: white;
@@ -83,7 +87,7 @@
   text-align: center;
 }
 
-#videoDiv {
+#videoBlock {
   width: 100%;
   position: absolute;
   top: 0; left: 0;
@@ -96,12 +100,10 @@
   margin-top: 150px;
   background: transparent;
   color:black;
-
 }
 
 #videoMessage h1 {
   font-size: 48px;
-
 }
 
 #videoMessage h3 {
@@ -109,7 +111,7 @@
   padding: 10px;
 }
 
-#videoMessage button {
+.main-button {
   background-color: #ED1C40;
   color: white;
   border: 1px solid #ED1C40;
@@ -117,4 +119,47 @@
   font-weight: bold;
   padding: 15px 110px 15px 110px;
   border-radius: 3px;
+  z-index: 99;
+}
+
+.main-button :hover {
+  cursor: pointer;
+}
+
+.auth-form div {
+  text-align: center;
+  padding: 30px;
+}
+
+.auth-form h1:first-child {
+  font-size: 36px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.auth-form h1 {
+  padding-top: 20px;
+}
+
+.auth-form {
+  font-size: 20px;
+  padding-bottom: 8px;
+  width: 440px;
+  border: 1px solid black;
+  background-color: white;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.auth-form input {
+  padding: 5px;
+  border-radius: 3px;
+  width: 90%;
+  margin-bottom: 8px;
+}
+
+.auth-form button {
+  text-align: center;
+  width: 100%;
+  padding: 20px;
 }

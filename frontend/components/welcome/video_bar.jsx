@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import SignUpForm from './auth_form';
+import SignUpForm from './signup_form';
+import { modalStyle } from '../../util/modal_util';
 
 class VideoBar extends React.Component {
   constructor(props) {
@@ -23,43 +24,21 @@ class VideoBar extends React.Component {
   }
 
   render () {
-    const style = {
-      overlay : {
-        position        : 'fixed',
-        top             : 0,
-        left            : 0,
-        right           : 0,
-        bottom          : 0,
-        backgroundColor : 'rgba(255, 255, 255, 0.75)',
-        zIndex          : 10
-      },
-      content : {
-        position        : 'fixed',
-        top             : '25%',
-        right           : '38%',
-        bottom          : '25%',
-        left            : '38%',
-        border          : '1px solid #ccc',
-        padding         : '20px',
-        zIndex          : 11
-      }
-    }
+
     return (
   <div id="video-bar">
-    <div id="videoBlock">
-
     <div id="videoMessage">
       <h1>Fun People, Fun Stuff</h1>
       <h3>Are <i>you</i> down?</h3>
-      <button onClick={this.openModal}>Sign Up</button>
+      <button className="main-button" onClick={this.openModal}>Sign Up</button>
         <Modal
-          style={style}
+          style={ modalStyle}
           contentLabel="auth_form"
+          className="auth-form"
           isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal}>
             <SignUpForm />
         </Modal>
-    </div>
     </div>
   </div>
   );
