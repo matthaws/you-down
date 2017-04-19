@@ -14,6 +14,11 @@ class AuthForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleZipChange = this.handleZipChange.bind(this);
     this.switchForm = this.switchForm.bind(this);
+    this.guestLogIn = this.guestLogIn.bind(this);
+  }
+
+  guestLogIn() {
+    this.props.login({email: "GUEST", password: "GUESTGUEST"})
   }
 
   switchForm() {

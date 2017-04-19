@@ -34,12 +34,7 @@ class NavBar extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
-    if (window.currentUser) {
-      this.setState({current_user: window.currentUser})
-    } else {
-      this.setState({current_user: "none" })
-    }
+    this.setState({user: nextProps.current_user})
   }
 
   render() {
@@ -51,7 +46,7 @@ class NavBar extends React.Component {
       </ul>
     )
 
-    if (window.currentUser ) {
+    if (window.currentUser && window.currentUser.full_name) {
       topright = (
         <TopRight />
       )
