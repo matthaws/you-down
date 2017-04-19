@@ -3,7 +3,7 @@
 [Live version on heroku][heroku]
 [Project page on Trello][trello]
 
-[heroku]: https://you-down.herokuapp.com/
+[heroku]: https://you-down.herokuapp.com/#/welcome
 [trello]: https://trello.com/b/T2wVTqqC
 
 ## Minimum Viable Product
