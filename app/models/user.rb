@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   validates :email, :session_token, uniqueness: true
   validates :email, :full_name, :password_digest, :session_token, :location_zip, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
-  has_attached_file :profile_pic, default_url: "/assets/profile-pic.jpg"
+  has_attached_file :profile_pic, default_url: "DEFAULT"
   validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\z/
 
   after_initialize :ensure_session_token

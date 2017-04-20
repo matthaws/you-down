@@ -51,7 +51,7 @@ class TopRight extends React.Component {
     }
 
     let profile_image = this.props.user.image_url
-    if (profile_image === "/assets/profile-pic.jpg") {
+    if (profile_image === "/DEFAULT") {
       profile_image = window.images.default_profile
     }
 
