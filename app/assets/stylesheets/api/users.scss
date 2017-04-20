@@ -2,13 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.profile_pic_thumb {
+.profile_pic_thumb img:first-child {
   height: 50px;
   width: auto;
-  padding-bottom: 10px;
+  margin-bottom: 10px;
   padding-top: 0;
   cursor: pointer;
   transform: rotateX(1.2);
+  vertical-align: center;
+  padding-right: 25px;
+}
+
+.profile_pic_thumb:hover {
+  cursor: pointer;
+}
+
+.icon {
+  height: 30px;
+  width: auto;
+  position: fixed;
+  top: 15px; right: 5px;
 }
 
 .nav-drop-down {

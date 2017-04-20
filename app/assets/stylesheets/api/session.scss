@@ -24,12 +24,19 @@
   vertical-align: middle;
 }
 
+.top-nav li:hover {
+  cursor: pointer;
+}
+
 #logo {
   font-family: 'Leckerli One', cursive;
   font-weight: normal;
   font-size: 40px;
   color: #ED1C40;
   padding: 0;
+  position: fixed;
+  text-align: center;
+  left: 43%;
 }
 
 .topright {
@@ -111,6 +118,7 @@
   padding: 10px;
 }
 
+
 .main-button {
   background-color: #ED1C40;
   color: white;
@@ -122,7 +130,7 @@
   z-index: 99;
 }
 
-.main-button :hover {
+.main-button:hover {
   cursor: pointer;
 }
 

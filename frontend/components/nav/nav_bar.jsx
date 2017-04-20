@@ -13,7 +13,7 @@ class NavBar extends React.Component {
     this.state = {
       modalOpen: false,
       formType: "signup",
-      current_user: window.currentUser
+      currentUser: window.currentUser || {}
     };
 
     this.closeModal = this.closeModal.bind(this);
@@ -34,7 +34,8 @@ class NavBar extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({user: nextProps.current_user})
+    this.setState({currentUser: nextProps.currentUser})
+    this.closeModal();
   }
 
   render() {
@@ -45,13 +46,11 @@ class NavBar extends React.Component {
         <li className="signup-button" onClick={this.openSignUp}>Sign up</li>
       </ul>
     )
-
-    if (window.currentUser && window.currentUser.full_name) {
+    if (this.state.currentUser.full_name) {
       topright = (
         <TopRight />
       )
     }
-
     return (
       <nav className="top-nav">
         <ul>
@@ -77,7 +76,7 @@ class NavBar extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    current_user: state.session.currentUser
+    currentUser: state.session.currentUser
   }
 }
 
