@@ -2,8 +2,11 @@ export const editUser = (user) => {
   debugger
   return $.ajax({
     method: 'PATCH',
-    url: `/api/users/${user.id}`,
-    data: { user }
+    url: `/api/users/${user.get('user[id]')}`,
+    dataType: "json",
+    contentType: false,
+    processData: false,
+    data: user
   });
 };
 

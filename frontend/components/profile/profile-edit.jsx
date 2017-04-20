@@ -8,11 +8,12 @@ import { merge } from 'lodash';
 class ProfileEdit extends React.Component {
   constructor(props) {
     super(props);
-    let user = merge(this.props.user}
+    this.state = {full_name: "", bio: "", id: "", profile_pic: "", new_pic_file: ""}
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleBioChange = this.handleBioChange.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateFile = this.updateFile.bind(this);
   }
 
   componentDidMount() {
@@ -20,32 +21,40 @@ class ProfileEdit extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({user: nextProps.user})
+    this.setState(nextProps.user)
   }
 
-  handleSubmit(e) {
-    this.props.editUser({
-      id: this.state.user.id,
-      location_name: this.state.user.location_name,
-      bio: this.state.user.bio,
-      full_name: this.state.user.full_name})
-      hashHistory.push(`/users/${this.state.user.id}`})
+  handleSubmit() {
+    let form = new FormData();
+    form.append("user[id]", this.state.id);
+    form.append("user[location_name]", this.state.location_name);
+    form.append("user[bio]", this.state.bio);
+    form.append("user[full_name]", this.state.full_name);
+    if (this.state.new_pic_file != "") {
+      form.append("user[profile_pic]", this.state.new_pic_file);
+    }
+
+    this.props.editUser(form);
   }
 
   handleNameChange(e) {
-    this.setState({user: {full_name: e.target.value}})
+    this.setState({full_name: e.target.value})
   }
 
   handleLocationChange(e) {
-    this.setState({user: {location_name: e.target.value}})
+    this.setState({location_name: e.target.value})
   }
 
   handleBioChange(e) {
-    this.setState({user: {bio: e.target.value}})
+    this.setState({bio: e.target.value})
+  }
+
+  updateFile(e) {
+    this.setState({new_pic_file: e.currentTarget.files[0]});
   }
 
   render () {
-    let profile_pic_url = this.state.user.profile_pic;
+    let profile_pic_url = this.state.profile_pic;
     if (profile_pic_url === "/DEFAULT") {
       profile_pic_url = window.images.default_profile
     }
@@ -54,15 +63,16 @@ class ProfileEdit extends React.Component {
   <div className="profile-background">
     <section className="profile">
       <div className="left-box">
-        <h1><input className="name-input" onChange={this.handleNameChange} value={this.state.user.full_name} /></h1>
+        <h1><input className="name-input" onChange={this.handleNameChange} value={this.state.full_name} /></h1>
         <ul>
-          <li>LOCATION:<br /> <input type="text" onChange={this.handleLocationChange} value={this.state.user.location_name} /></li>
-          <li>BIO:<br /><textarea onChange={this.handleBioChange} value={this.state.user.bio} /></li>
+          <li>LOCATION:<br /> <input type="text" onChange={this.handleLocationChange} value={this.state.location_name} /></li>
+          <li>BIO:<br /><textarea onChange={this.handleBioChange} value={this.state.bio} /></li>
         </ul>
       </div>
       <div className="right-box">
         <ul>
           <li><img className="big-profile-pic" src={profile_pic_url} /></li>
+          <li><input type="file" onChange={this.updateFile} value={this.state.new_pic_file}/> </li>
         </ul>
       </div>
 
@@ -86,7 +96,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchUser: (userId) => dispatch(fetchUser(userId)),
-    editUser: (user) => dispatch(editUser(user))
+    editUser: (user) => dispatch(editUser(user)).then(hashHistory.push(`/users/${user.get('user[id]')}`))
   };
 };
 

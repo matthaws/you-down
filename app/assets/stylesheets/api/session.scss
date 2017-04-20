@@ -192,6 +192,11 @@
   color: black;
 }
 
+.auth-form:focus {
+  border: 1px solid black;
+  outline: none;
+}
+
 .auth-form input {
   padding: 5px;
   border-radius: 3px;
