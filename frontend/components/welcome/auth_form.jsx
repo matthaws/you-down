@@ -18,7 +18,7 @@ class AuthForm extends React.Component {
   }
 
   guestLogIn() {
-    this.props.login({email: "GUEST", password: "GUESTGUEST"})
+    this.props.login({email: "Guest@Guest.com", password: "GUESTGUEST"})
   }
 
   switchForm() {
