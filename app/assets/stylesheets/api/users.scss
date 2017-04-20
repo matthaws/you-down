@@ -40,9 +40,77 @@
 .nav-drop-down li {
   padding: 15px;
   border-bottom: 1px solid #0F1721;
+  padding-left: 100px;
 }
 
 .nav-drop-down li:hover {
   cursor: pointer;
-  color: #ED1C40;
+  background-color: #ED1C40;
+  color: white;
+}
+
+.profile {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #0F1721;
+  margin-top: 20px;
+}
+
+.left-box {
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
+}
+
+.right-box {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+
+}
+
+.right-box img {
+  width: 200px;
+  height: auto;
+  margin: 4px;
+}
+
+.left-box h1 {
+  font-size: 36px;
+  border-bottom: 1px solid #0F1721;
+}
+
+.name-input {
+  font-size: 36px;
+
+}
+
+.left-box ul {
+  padding: 5px;
+}
+
+.left-box li {
+  padding: 40px;
+  border-bottom: 1px solid #0F1721;
+}
+
+.button-box {
+  text-align: center;
+}
+
+.edit-submit-button {
+  background-color: #ED1C40;
+  color: white;
+  border: 1px solid #ED1C40;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.edit-submit-button:hover {
+  cursor: pointer;
+  background-color: #a50d27
 }

@@ -59,9 +59,12 @@
 
 .signup-button:hover {
   cursor: pointer;
+  background-color: #a50d27
 }
 
 #footer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
   background-color: #0F1721;
   color: white;
   font-family: sans-serif;
@@ -92,6 +95,7 @@
   position: relative;
   display: inline-block;
   text-align: center;
+  border-bottom: 1px solid lightgrey;
 }
 
 #videoBlock {
@@ -132,6 +136,7 @@
 
 .main-button:hover {
   cursor: pointer;
+  background-color: #a50d27
 }
 
 .auth-form div {
