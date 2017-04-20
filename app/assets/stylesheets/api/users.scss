@@ -1,6 +1,14 @@
 // Place all the styles related to the api/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+a {
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  padding: inherit;
+  margin: inherit;
+}
 
 .profile_pic_thumb img:first-child {
   height: 50px;
@@ -40,7 +48,10 @@
 .nav-drop-down li {
   padding: 15px;
   border-bottom: 1px solid #0F1721;
-  padding-left: 100px;
+  padding-right: 100px;
+  padding-left: 0px;
+  text-decoration: none;
+  color: black;
 }
 
 .nav-drop-down li:hover {
@@ -50,12 +61,12 @@
 }
 
 .profile {
-  width: 50%;
+  width: 960px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  border: 1px solid #0F1721;
-  margin-top: 20px;
+  border: 1px solid lightgrey;
+  background-color: white;
 }
 
 .left-box {
@@ -113,4 +124,11 @@
 .edit-submit-button:hover {
   cursor: pointer;
   background-color: #a50d27
+}
+
+.profile-background {
+  background-color: #FAFAFA;
+  height: 900px;
+  width: 100%;
+  padding-top: 20px;
 }

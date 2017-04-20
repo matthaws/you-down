@@ -31,6 +31,7 @@ class ProfileMain extends React.Component {
       editlink = (<li><Link to={`/users/${this.state.user.id}/edit`}>Edit Your Profile</Link></li>)
     }
   return (
+    <div className="profile-background">
     <section className="profile">
       <div className="left-box">
         <h1>{this.state.user.full_name}</h1>
@@ -47,6 +48,7 @@ class ProfileMain extends React.Component {
       </div>
 
     </section>
+  </div>
     );
   }
 }

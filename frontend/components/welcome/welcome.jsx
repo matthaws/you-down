@@ -5,8 +5,9 @@ import VideoBar from './video_bar';
 
 
 const Welcome = (props) => (
-  <section>
+  <section className="welcome">
     <VideoBar />
+    <div className="placeholder"></div>
   </section>
 
 )

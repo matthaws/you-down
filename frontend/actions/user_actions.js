@@ -10,9 +10,9 @@ export const receiveUser = (user) =>  ({
   user
 })
 
-export const editUser = (newUser) => {
+export const editUser = (user) => {
   return (dispatch) => {
-    return UserApiUtil.editUser(newUser)
+    return UserApiUtil.editUser(user)
       .then( user => dispatch(receiveUser(user)),
             err => dispatch(receiveErrors(err)))
   };

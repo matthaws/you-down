@@ -12,11 +12,15 @@
   font-size: 16px;
   border-bottom: 2px solid #E1E1E1;
   padding-top: 13px;
+  z-index: 99;
+  background-color: white;
 }
 
 .top-nav ul {
   display: flex;
   justify-content: space-between;
+  margin-top: 0;
+  height: 30px;
 }
 
 .top-nav li {
@@ -34,7 +38,7 @@
   font-size: 40px;
   color: #ED1C40;
   padding: 0;
-  position: fixed;
+  position: absolute;
   text-align: center;
   left: 43%;
 }
@@ -74,7 +78,7 @@
 }
 
 #footer div {
-  width: 50%;
+  width: 960px;
   margin: 0 auto;
 }
 
@@ -96,6 +100,8 @@
   display: inline-block;
   text-align: center;
   border-bottom: 1px solid lightgrey;
+  margin: 0;
+  padding: 0;
 }
 
 #videoBlock {
@@ -104,13 +110,18 @@
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -90;
 }
 
 #videoMessage {
   margin-top: 150px;
   background: transparent;
   color:black;
+  z-index: 90;
+  position: absolute;
+  top: 0;
+  color: white;
+  left: 32%;
 }
 
 #videoMessage h1 {
@@ -120,8 +131,10 @@
 #videoMessage h3 {
   font-size: 28px;
   padding: 10px;
-}
 
+
+
+}
 
 .main-button {
   background-color: #ED1C40;
@@ -221,4 +234,19 @@
 .errors ul {
   text-align: left;
   list-style: disc;
+}
+
+.placeholder {
+  background-color: white;
+  z-index: 100;
+  height: 400px;
+  width: 100%;
+  padding-top: 0;
+  border-top: 1px solid lightgrey;
+}
+
+.welcome {
+  padding: 0;
+  margin: 0;
+
 }

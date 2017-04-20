@@ -5,6 +5,7 @@ import AuthForm from '../welcome/auth_form';
 import { modalStyle } from '../../util/modal_util';
 import Modal from 'react-modal';
 import TopRight from './topright';
+import { hashHistory } from 'react-router';
 
 
 class NavBar extends React.Component {
@@ -19,6 +20,7 @@ class NavBar extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.openSignUp = this.openSignUp.bind(this);
     this.openLogIn = this.openLogIn.bind(this);
+    this.goHome = this.goHome.bind(this);
   }
 
   closeModal() {
@@ -38,6 +40,10 @@ class NavBar extends React.Component {
     this.closeModal();
   }
 
+  goHome() {
+    hashHistory.push('/welcome')
+  }
+
   render() {
 
     let topright = (
@@ -55,7 +61,7 @@ class NavBar extends React.Component {
       <nav className="top-nav">
         <ul>
           <li>Create a Group</li>
-          <li id="logo">YouDown?</li>
+          <li onClick={this.goHome} id="logo">YouDown?</li>
           <li>
             {topright}
           </li>

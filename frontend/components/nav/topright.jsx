@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { modalStyle } from '../../util/modal_util';
 import Modal from 'react-modal';
 import { logout } from '../../actions/session_actions.js';
+import { hashHistory } from 'react-router';
 
 class TopRight extends React.Component {
   constructor (props) {
@@ -16,6 +17,7 @@ class TopRight extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.goToProfile = this.goToProfile.bind(this);
   }
 
   componentDidMount() {
@@ -36,10 +38,15 @@ class TopRight extends React.Component {
     this.props.logout()
   }
 
+  goToProfile() {
+    this.closeModal();
+    hashHistory.push(`users/${this.props.user.id}`);
+  }
+
   render() {
     let dropdown = (
       <ul>
-        <li>Profile</li>
+        <li onClick={this.goToProfile}>Profile</li>
         <li onClick={this.handleLogout}>Log out</li>
       </ul>
     )

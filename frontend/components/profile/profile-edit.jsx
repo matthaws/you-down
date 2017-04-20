@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { editUser, fetchUser } from '../../actions/user_actions';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 import { merge } from 'lodash';
 
 class ProfileEdit extends React.Component {
   constructor(props) {
     super(props);
-    let user = merge(this.props.user, {location_name: "", bio: ""})
-    this.state = { user };
+    let user = merge(this.props.user}
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleBioChange = this.handleBioChange.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -21,6 +21,15 @@ class ProfileEdit extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({user: nextProps.user})
+  }
+
+  handleSubmit(e) {
+    this.props.editUser({
+      id: this.state.user.id,
+      location_name: this.state.user.location_name,
+      bio: this.state.user.bio,
+      full_name: this.state.user.full_name})
+      hashHistory.push(`/users/${this.state.user.id}`})
   }
 
   handleNameChange(e) {
@@ -42,7 +51,7 @@ class ProfileEdit extends React.Component {
     }
 
   return (
-  <div>
+  <div className="profile-background">
     <section className="profile">
       <div className="left-box">
         <h1><input className="name-input" onChange={this.handleNameChange} value={this.state.user.full_name} /></h1>
@@ -59,7 +68,7 @@ class ProfileEdit extends React.Component {
 
     </section>
     <div className="button-box">
-      <button className="edit-submit-button">Submit Changes</button>
+      <button onClick={this.handleSubmit} className="edit-submit-button">Submit Changes</button>
     </div>
 </div>
     );
