@@ -44,16 +44,21 @@ class TopRight extends React.Component {
       </ul>
     )
 
-    let icon = ( <img className="icon" src="/assets/expand.png" />)
+    let icon = ( <img className="icon" src={window.images.expand_arrow} />)
 
     if (this.state.modalOpen) {
-      icon = ( <img className="icon" src="/assets/collapse.png" />)
+      icon = ( <img className="icon" src={window.images.collapse_arrow} />)
+    }
+
+    let profile_image = this.props.user.image_url
+    if (profile_image === "/assets/profile-pic") {
+      profile_image = windows.images.default_profile
     }
 
       return (
         <ul className="topright">
           <li>Hello, {this.props.user.full_name}</li>
-          <li className="profile_pic_thumb" onClick={this.openModal}><img  src={this.props.user.image_url} />{icon}</li>
+          <li className="profile_pic_thumb" onClick={this.openModal}><img  src={profile_image} />{icon}</li>
 
             <Modal
               contentLabel="nav-drop-down"
