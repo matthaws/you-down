@@ -11,19 +11,14 @@ class TopRight extends React.Component {
     super(props);
     this.state = {
       modalOpen: false,
-      user: window.currentUser
+      user: this.props.user
     };
 
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.goToProfile = this.goToProfile.bind(this);
-  }
-
-  componentDidMount() {
-    if (window.currentUser) {
-      this.setState({user: window.currentUser })
-    }
   }
 
   closeModal() {
@@ -38,6 +33,14 @@ class TopRight extends React.Component {
     this.props.logout()
   }
 
+  toggleModal() {
+    if (this.state.modalOpen) {
+      this.closeModal()
+    } else {
+      this.openModal()
+    }
+  }
+
   goToProfile() {
     this.closeModal();
     hashHistory.push(`users/${this.props.user.id}`);
@@ -45,9 +48,9 @@ class TopRight extends React.Component {
 
   render() {
     let dropdown = (
-      <ul>
+      <ul className="nav-drop-down">
         <li onClick={this.goToProfile}>Profile</li>
-        <li onClick={this.handleLogout}>Log out</li>
+        <li onClick={this.handleLogout}>Logout</li>
       </ul>
     )
 
@@ -57,7 +60,7 @@ class TopRight extends React.Component {
       icon = ( <img className="icon" src={window.images.collapse_arrow} />)
     }
 
-    let profile_image = this.props.user.image_url
+    let profile_image = this.props.user.profile_pic
     if (profile_image === "/DEFAULT") {
       profile_image = window.images.default_profile
     }
@@ -65,7 +68,7 @@ class TopRight extends React.Component {
       return (
         <ul className="topright">
           <li>Hello, {this.props.user.full_name}</li>
-          <li className="profile_pic_thumb" onClick={this.openModal}><img  src={profile_image} />{icon}</li>
+          <li className="profile_pic_thumb" onClick={this.toggleModal}><img  src={profile_image} />{icon}</li>
 
             <Modal
               contentLabel="nav-drop-down"
@@ -87,7 +90,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: () => dispatch(logout()).then(window.currentUser = {})
+    logout: () => dispatch(logout()).then(window.currentUser = {}).then(hashHistory.push('/welcome'))
   }
 }
 

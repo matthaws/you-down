@@ -18,3 +18,7 @@
 body {
     font-family: 'Merriweather Sans', Helvetica, sans-serif;
 }
+
+*:focus {
+  outline: none;
+}

@@ -15,6 +15,7 @@ class AuthForm extends React.Component {
     this.handleZipChange = this.handleZipChange.bind(this);
     this.switchForm = this.switchForm.bind(this);
     this.guestLogIn = this.guestLogIn.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   guestLogIn() {
@@ -45,6 +46,12 @@ class AuthForm extends React.Component {
     this.setState( { zip: e.target.value })
   }
 
+  handleKeyPress (e) {
+    if (e.key === 'Enter') {
+      this.handleSubmit();
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       let newErrors = nextProps.errors.responseJSON || [nextProps.errors.responseText];
@@ -59,7 +66,8 @@ class AuthForm extends React.Component {
       location_zip: this.state.zip,
       full_name: this.state.name,
       email: this.state.email,
-      password: this.state.password })
+      password: this.state.password
+    })
     } else {
       this.props.login({
         email: this.state.email,
@@ -87,7 +95,7 @@ class AuthForm extends React.Component {
     }
     if (this.state.formType === "signup") {
     return (
-      <section>
+      <section onKeyPress={this.handleKeyPress}>
         <h1>Sign up</h1>
         {errorsList}
         <h1>Your name:</h1>

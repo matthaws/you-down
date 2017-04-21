@@ -12,8 +12,10 @@
   font-size: 16px;
   border-bottom: 2px solid #E1E1E1;
   padding-top: 13px;
-  z-index: 99;
+  z-index: 10;
   background-color: white;
+  position: relative;
+  top: 0; left: 0;
 }
 
 .top-nav ul {
@@ -21,11 +23,13 @@
   justify-content: space-between;
   margin-top: 0;
   height: 30px;
+  z-index: 99;
 }
 
 .top-nav li {
   display: inline-block;
   vertical-align: middle;
+  z-index: 99;
 }
 
 .top-nav li:hover {
@@ -40,11 +44,14 @@
   padding: 0;
   position: absolute;
   text-align: center;
-  left: 43%;
+  left: 42%;
+  background-color: white;
+  z-index: 100;
 }
 
 .topright {
   padding-right: 30px;
+  z-index: 99;
 }
 
 .topright li:first-child {
@@ -67,8 +74,6 @@
 }
 
 #footer {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
   background-color: #0F1721;
   color: white;
   font-family: sans-serif;
@@ -92,36 +97,42 @@
   padding-top: 0px;
   border-bottom: 1px solid white;
 }
-
+//
 #video-bar {
   height: 470px;
   width: 100%;
   position: relative;
+  top: 30px; left: 0; right: 0;
   display: inline-block;
   text-align: center;
   border-bottom: 1px solid lightgrey;
   margin: 0;
   padding: 0;
+  z-index: -1;
 }
 
 #videoBlock {
   width: 100%;
-  position: absolute;
-  top: 0; left: 0;
+  position: relative;
+  top: -300px;
   width: 100%;
   height: 100%;
   z-index: -90;
 }
 
 #videoMessage {
-  margin-top: 150px;
+  margin-top: 220px;
   background: transparent;
   color:black;
-  z-index: 90;
+  z-index: 50;
   position: absolute;
   top: 0;
   color: white;
-  left: 32%;
+  left: 35%;
+}
+
+#videoMessage:hover {
+  cursor: pointer;
 }
 
 #videoMessage h1 {
@@ -131,9 +142,17 @@
 #videoMessage h3 {
   font-size: 28px;
   padding: 10px;
+}
 
-
-
+.placeholder {
+  background-color: white;
+  position: absolute;
+  left: 0; top: 500px;
+  z-index: 10;
+  height: 500px;
+  width: 100%;
+  padding-top: 0;
+  border-top: 1px solid lightgrey;
 }
 
 .main-button {
@@ -152,6 +171,7 @@
   background-color: #a50d27
 }
 
+
 .auth-form div {
   text-align: center;
   padding: 30px;
@@ -159,7 +179,7 @@
 
 .auth-form h1:first-child {
   font-size: 36px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   text-align: center;
 }
 
@@ -188,8 +208,9 @@
   box-shadow: 1px 1px 3px black;
   position: fixed;
   top: 20%;
-  left: 37%;
+  left: 36%;
   color: black;
+  z-index: 101;
 }
 
 .auth-form:focus {
@@ -234,6 +255,9 @@
   font-size: 18px;
   padding: 20px;
   color: #ED1C40;
+  position: absolute;
+  top: 40px;
+  padding-top: 20px;
 }
 
 .errors ul {
@@ -241,17 +265,11 @@
   list-style: disc;
 }
 
-.placeholder {
-  background-color: white;
-  z-index: 100;
-  height: 400px;
-  width: 100%;
-  padding-top: 0;
-  border-top: 1px solid lightgrey;
-}
+
 
 .welcome {
   padding: 0;
   margin: 0;
+  text-align: center;
 
 }
