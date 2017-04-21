@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { editUser, fetchUser } from '../../actions/user_actions';
 import { Link, hashHistory } from 'react-router';
-import { merge } from 'lodash';
 
 class ProfileEdit extends React.Component {
   constructor(props) {
@@ -66,12 +65,13 @@ class ProfileEdit extends React.Component {
         <h1><input className="name-input" onChange={this.handleNameChange} value={this.state.full_name} /></h1>
         <ul>
           <li>LOCATION:<br /> <input type="text" onChange={this.handleLocationChange} value={this.state.location_name} /></li>
-          <li>BIO:<br /><textarea onChange={this.handleBioChange} value={this.state.bio} /></li>
+          <li>BIO:<br /><textarea placeholder="Tell us about you..." onChange={this.handleBioChange} value={this.state.bio} /></li>
         </ul>
       </div>
       <div className="right-box">
         <ul>
           <li><img className="big-profile-pic" src={profile_pic_url} /></li>
+          <li>Upload a new pic:</li>
           <li><input type="file" onChange={this.updateFile} value={this.state.new_pic_file}/> </li>
         </ul>
       </div>

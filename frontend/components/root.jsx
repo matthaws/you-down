@@ -23,7 +23,7 @@ const Root = ({ store }) => (
         <Route path='users/:userId' component={ ProfileMain } />
         <Route path='users/:userId/edit' component={ ProfileEdit } />
         <Route path='groups/:groupId' component={ GroupShow } />
-        <Route path='groups/new' component={ NewGroupForm } />
+        <Route path='newgroup' component={ NewGroupForm } />
       </Route>
     </Router>
   </Provider>

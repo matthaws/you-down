@@ -15,3 +15,11 @@ export const fetchGroup = (groupId) => {
               err => dispatch(receiveErrors(err)))
   };
 };
+
+export const createGroup = (group) => {
+  return (dispatch) => {
+    return GroupApiUtil.createGroup(group)
+      .then( group => dispatch(receiveGroup(group)),
+              err => dispatch(receiveErrors(err)))
+  };
+};

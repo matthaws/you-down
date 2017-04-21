@@ -81,6 +81,19 @@ a {
   padding-bottom: 200px;
 }
 
+.left-box input {
+  border: 1px solid #ED1C40;
+  border-radius: 3px;
+}
+
+.profile textarea {
+  border: 1px solid #ED1C40;
+  border-radius: 3px;
+  resize: none;
+  width: 600px;
+  height: 75px;
+}
+
 .left-box {
   display: inline-block;
   width: 100%;
@@ -102,7 +115,7 @@ a {
 
 .left-box h1 {
   font-size: 36px;
-  border-bottom: 1px solid #0F1721;
+  border-bottom: 1px solid lightgrey;
 }
 
 .name-input {
@@ -116,7 +129,7 @@ a {
 
 .left-box li {
   padding: 40px;
-  border-bottom: 1px solid #0F1721;
+  border-bottom: 1px solid lightgrey;
 }
 
 .button-box {

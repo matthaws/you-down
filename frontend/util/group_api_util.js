@@ -5,3 +5,11 @@ export const fetchGroup = (groupId) => {
     url: `/api/groups/${groupId}`
   });
 };
+
+export const createGroup = (group) => {
+  return $.ajax({
+    method: 'POST',
+    url: `api/groups`,
+    data: { group }
+  })
+}

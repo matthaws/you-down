@@ -29,7 +29,6 @@ class Welcome extends React.Component {
   render () {
     return (
   <section className="welcome">
-    <VideoBar />
       <div id="videoMessage">
         <h1>Fun People, Fun Stuff</h1>
         <h3>Are <i>you</i> down?</h3>
@@ -43,6 +42,7 @@ class Welcome extends React.Component {
           <AuthForm closeModal={this.closeModal} formType="signup" />
         </Modal>
       </div>
+      <VideoBar />
     <div className="placeholder"></div>
   </section>
 );
