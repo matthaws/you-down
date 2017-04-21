@@ -5,6 +5,7 @@ import App from './app';
 import Welcome from './welcome/welcome';
 import ProfileMain from './profile/profile-main';
 import ProfileEdit from './profile/profile-edit';
+import GroupShow from './groups/group_show';
 
 const _redirectIfLoggedIn = (nextState, replace) => {
   if (store.getState().session.currentUser) {
@@ -20,6 +21,7 @@ const Root = ({ store }) => (
         <Route path='welcome' component={ Welcome } />
         <Route path='users/:userId' component={ ProfileMain } />
         <Route path='users/:userId/edit' component={ ProfileEdit } />
+        <Route path='groups/:groupId' component={ GroupShow } />
       </Route>
     </Router>
   </Provider>

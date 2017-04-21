@@ -1,7 +1,5 @@
 import * as UserApiUtil from '../util/user_api_util';
-import { hashHistory } from 'react-router';
-import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS } from './session_actions';
-import { receiveCurrentUser, receiveErrors } from './session_actions';
+import { receiveErrors } from './session_actions';
 
 export const RECEIVE_USER = "RECEIVE_USER";
 

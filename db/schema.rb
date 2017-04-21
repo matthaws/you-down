@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419123720) do
+ActiveRecord::Schema.define(version: 20170421152852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "group_name",                                 null: false
+    t.string   "location_name",                              null: false
+    t.integer  "location_zip",                               null: false
+    t.text     "description",                                null: false
+    t.integer  "organizer_id",                               null: false
+    t.string   "member_moniker",         default: "members"
+    t.string   "group_pic_file_name"
+    t.string   "group_pic_content_type"
+    t.integer  "group_pic_file_size"
+    t.datetime "group_pic_updated_at"
+    t.index ["group_name"], name: "index_groups_on_group_name", using: :btree
+    t.index ["location_zip"], name: "index_groups_on_location_zip", using: :btree
+    t.index ["organizer_id"], name: "index_groups_on_organizer_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "full_name",                null: false

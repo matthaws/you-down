@@ -7,6 +7,11 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many :groups,
+    class_name: "Group",
+    foreign_key: :organizer_id,
+    primary_key: :id
+
   attr_reader :password
 
   def self.find_by_credentials(email, password)

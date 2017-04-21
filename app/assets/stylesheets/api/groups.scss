@@ -1,0 +1,113 @@
+// Place all the styles related to the api/groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.group-background {
+  background-color: #FAFAFA;
+  height: 900px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.group-show {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.group-title {
+  text-align: center;
+  background-color: #ED1C40;
+  border: 1px solid #ED1C40;
+  height: 100px;
+  border-radius: 3px;
+  width: 960px ;
+  padding-top: 30px;
+  margin-bottom: 20px;
+}
+
+.group-title h1 {
+  font-size: 40px;
+  color: white;
+
+}
+
+.show-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-sidebar {
+  width: 200px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  height: 770px;
+}
+
+.show-main {
+  width: 720px;
+  font-family: Helvetica;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  text-align: left;
+  height: 275px;
+  padding: 10px;
+  padding-top: 20px;
+  padding-right: 5px;
+}
+
+.group-menu-background {
+  width: 960px;
+  padding-bottom: 2px;
+  margin: 0;
+
+  background: white;
+  border-top: none;
+}
+
+.group-menu {
+  padding: 10px;
+  width: 25%;
+  display: flex;
+  justify-content:space-around;
+  color: grey;
+
+}
+
+.group-menu li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+.group-menu-border {
+  width: 960px;
+  padding: 0;
+  padding-right: 1px;
+  margin: 0;
+  height: 10px;
+  background-color: #eb536d;
+}
+
+.group-menu li:hover {
+  background-color: #ED1C40;
+  border: 1px solid #ED1C40;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+}
+
+.group_show_profile_thumb {
+  width: 150px;
+  height: auto;
+}
+
+.left-sidebar ul {
+  padding: 10px;
+}
+
+.left-sidebar li {
+  padding-bottom: 30px;
+}
