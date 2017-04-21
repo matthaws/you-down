@@ -41,7 +41,7 @@
   background-color: white;
   border: 1px solid lightgrey;
   border-radius: 3px;
-  height: 770px;
+
 }
 
 .show-main {
@@ -53,8 +53,13 @@
   text-align: left;
   height: 275px;
   padding: 10px;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-right: 5px;
+}
+
+.show-main h1 {
+  font-size: 32px;
+  padding-bottom: 10px;
 }
 
 .group-menu-background {
@@ -100,7 +105,9 @@
 }
 
 .group_show_profile_thumb {
-  width: 150px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 175px;
   height: auto;
 }
 
@@ -110,4 +117,9 @@
 
 .left-sidebar li {
   padding-bottom: 30px;
+}
+.roll-call {
+  margin-top: 100px;
+  border-top: 1px solid lightgrey;
+  padding: 10px;
 }
