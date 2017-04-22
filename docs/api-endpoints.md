@@ -32,7 +32,6 @@
 - 'DELETE /api/events/:id'
 
 ### Memberships
-- 'GET /api/groups/:id/members'
 - 'POST /api/groups/:id/members'
 - 'DELETE /api/groups/:id/members'
 

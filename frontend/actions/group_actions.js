@@ -40,3 +40,10 @@ export const deleteGroup = (groupId) => {
               err => dispatch(receiveErrors(err)))
   };
 };
+
+export const joinGroup = (groupId, userId) => {
+  return (dispatch) => {
+    return GroupApiUtil.joinGroup(groupId, userId)
+      .then( hashHistory.push(`/groups/${groupId}`))
+  };
+};

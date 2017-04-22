@@ -31,3 +31,11 @@ export const deleteGroup = (groupId) => {
     url: `/api/groups/${groupId}`
   });
 };
+
+export const joinGroup = (groupId, userId) => {
+  return $.ajax({
+    method: 'POST',
+    url: `/api/groups/${groupId}/memberships`,
+    data: { membership: {group_id: groupId, member_id: userId } }
+  });
+};

@@ -7,10 +7,20 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  has_many :groups,
+  has_many :organized_groups,
     class_name: "Group",
     foreign_key: :organizer_id,
     primary_key: :id
+
+  has_many :memberships,
+    class_name: "Membership",
+    foreign_key: :member_id,
+    primary_key: :id
+
+  has_many :joined_groups,
+    through: :memberships,
+    source: :group
+
 
   attr_reader :password
 

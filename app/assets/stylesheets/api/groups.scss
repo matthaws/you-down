@@ -66,23 +66,27 @@
   width: 960px;
   padding-bottom: 2px;
   margin: 0;
-
   background: white;
   border-top: none;
+  position: relative;
+}
+
+.group-menu-background button {
+  position: absolute;
+  bottom: 0; right: 0;
+  margin: 5px;
 }
 
 .group-menu {
   padding: 10px;
-  width: 25%;
+  width: 300px;
   display: flex;
   justify-content:space-around;
   color: grey;
-
 }
 
 .group-menu li {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px;
   border: 1px solid white;
   border-radius: 3px;
 }
@@ -130,6 +134,15 @@
   padding: 10px;
 }
 
+.roll-call ul {
+  display: flex;
+  justify-content: horizontal;
+}
+
+.roll-call li {
+  padding: 5px;
+}
+
 .new-group-form {
   position: relative;
   z-index: 100;
@@ -165,7 +178,7 @@
 }
 
 .form-section {
-  width: 50%;
+  width: 960px;
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
@@ -264,4 +277,33 @@
   border: 1px solid #ED1C40;
   resize: none;
   font-family: 'Merriweather Sans', Helvetica, sans-serif;
+}
+
+.member-pic-thumb {
+  height: 100px;
+  width: auto;
+}
+
+.memberItem {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-left: 30px;
+}
+
+.memberItem ul {
+  width: 180px;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+.small-thumb {
+  height: 50px;
+  max-width: 175px;
+}
+
+.member-main {
+  height: auto;
 }

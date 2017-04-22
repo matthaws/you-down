@@ -5,21 +5,21 @@ class Api::UsersController < ApplicationController
     @user.location_name = ""
     if @user.save
       log_in(@user)
-      render :show
+      redirect_to api_user_url(@user.id)
     else
       render json: @user.errors.full_messages, status: 422
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:joined_groups).find(params[:id])
     render :show
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      render :show
+      redirect_to api_user_url
     else
       render json: @user.errors.full_messages, status: 422
     end

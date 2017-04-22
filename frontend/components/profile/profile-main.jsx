@@ -27,17 +27,42 @@ class ProfileMain extends React.Component {
 
     let editlink = (<li></li>)
 
-    if (this.state.user.id === this.props.currentUser.id ) {
+    if (this.props.currentUser && this.state.user.id === this.props.currentUser.id ) {
       editlink = (<li><Link to={`/users/${this.state.user.id}/edit`}>Edit Your Profile</Link></li>)
     }
+    let groupNum = ""
+    let groupList = []
+    if (this.state.user.groups) {
+      groupNum = this.state.user.groups.length
+      this.state.user.groups.forEach( (group) => {
+        let organizer = (<h2>Member</h2>)
+        if (group.organizer_id === this.state.user.id) {
+          organizer = (<h2>Organizer</h2>)
+        }
+        let group_pic_url = group.group_pic
+        if (group_pic_url === "/DEFAULT") {
+          group_pic_url = window.images.default_group;
+        }
+        groupList.push(
+          <li key={group.id}>
+            <Link to={`/groups/${group.id}`}>
+            <ul className="groupItem">
+              <li><img className="group-pic-thumb" src={group_pic_url} /></li>
+              <li><h1>{group.group_name}</h1><br />{organizer}</li>
+            </ul>
+          </Link>
+        </li>)
+      })
+    }
+
   return (
     <div className="profile-background">
     <section className="profile">
       <div className="left-box">
         <h1>{this.state.user.full_name}</h1>
         <ul>
-          <li>LOCATION: {this.state.user.location_name}</li>
-          <li>BIO: {this.state.user.bio}</li>
+          <li>LOCATION: <br />{this.state.user.location_name}</li>
+          <li>BIO: <br /> {this.state.user.bio}</li>
         </ul>
       </div>
       <div className="right-box">
@@ -46,7 +71,12 @@ class ProfileMain extends React.Component {
           {editlink}
         </ul>
       </div>
-
+    </section>
+    <section className="groupList">
+      <h1>Member of {groupNum} groups:</h1>
+      <ul className="listItems">
+        {groupList}
+      </ul>
     </section>
   </div>
     );

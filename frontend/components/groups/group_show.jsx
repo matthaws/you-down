@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { fetchGroup } from '../../actions/group_actions';
+import { fetchGroup, joinGroup } from '../../actions/group_actions';
 import GroupDetails from "./group_details";
 import GroupMembers from "./group_members";
 import GroupEdit from "./group_edit";
+import { Link } from "react-router";
 
 class GroupShow extends React.Component {
   constructor(props) {
@@ -13,6 +14,15 @@ class GroupShow extends React.Component {
     this.goHome = this.goHome.bind(this);
     this.members = this.members.bind(this);
     this.edit = this.edit.bind(this);
+    this.joinGroup = this.joinGroup.bind(this);
+  }
+
+  joinGroup() {
+    this.props.joinGroup(this.props.group.id, this.props.currentUser.id)
+  }
+
+  componentDidUpdate() {
+    this.props.fetchGroup(this.props.params.groupId)
   }
 
   componentDidMount() {
@@ -44,9 +54,24 @@ class GroupShow extends React.Component {
         group_pic_url = window.images.default_group;
       }
 
-    let body = (<GroupDetails group={this.props.group} />)
+    let members = [];
+    let memberIds = [];
+
+    if (this.props.group.members) {
+      members = this.props.group.members;
+      members.forEach( (member) => {
+        memberIds.push(member.id)
+      })
+    }
+
+    let joinButton = (<button onClick={this.joinGroup} className="form-button">Join Us!</button>)
+    if (this.currentUser && memberIds.include(this.currentUser.id)) {
+      joinButton = (<div />)
+    }
+
+    let body = (<GroupDetails members={members} group={this.props.group} />)
     if (this.state.location === "members") {
-      body = (<GroupMembers />)
+      body = (<GroupMembers members={this.props.group.members} />)
     } else if (this.state.location === "edit") {
       body = (<GroupEdit goHome={this.goHome} group={this.props.group} />)
     }
@@ -54,8 +79,15 @@ class GroupShow extends React.Component {
     let editLink = (<div />)
     if (this.props.group.organizer && this.props.group.organizer.id === this.props.currentUser.id) {
       editLink = <li onClick={this.edit}>Edit</li>
-
     }
+
+    let orgLink = (<div />)
+    if (this.props.group.organizer) {
+      orgLink = (<Link to={`/users/${this.props.group.organizer.id}`}>
+          <img className="group_show_profile_thumb" src={organizer_pic} /> <br />{organizer}
+        </Link>)
+    }
+
 
     return (
         <div className="group-background">
@@ -69,6 +101,7 @@ class GroupShow extends React.Component {
                   <li onClick={this.members}>Members</li>
                   {editLink}
                 </ul>
+                {joinButton}
               </div>
             </nav>
             <ul className="show-body">
@@ -77,8 +110,9 @@ class GroupShow extends React.Component {
                   <li><img className="group_show_profile_thumb" src={group_pic_url} /></li>
 
                   <li>Based in: <br /> {this.props.group.location_name}, <br/> {this.props.group.location_zip}</li>
-
-                  <li >Organizer: <br /><img className="group_show_profile_thumb" src={organizer_pic} /> <br />{organizer}
+                  <li>{members.length} {this.props.group.member_moniker}</li>
+                  <li>Organizer: <br />
+                      {orgLink}
                     </li>
                 </ul>
               </div></li>
@@ -99,7 +133,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchGroup: (groupId) => dispatch(fetchGroup(groupId))
+    fetchGroup: (groupId) => dispatch(fetchGroup(groupId)),
+    joinGroup: (groupId, userId) => dispatch(joinGroup(groupId, userId))
   };
 };
 

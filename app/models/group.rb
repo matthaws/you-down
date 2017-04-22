@@ -9,5 +9,14 @@ class Group < ActiveRecord::Base
     foreign_key: :organizer_id,
     primary_key: :id
 
+  has_many :memberships,
+    class_name: "Membership",
+    foreign_key: :group_id,
+    primary_key: :id
+
+  has_many :members,
+    through: :memberships,
+    source: :member
+
 
 end
