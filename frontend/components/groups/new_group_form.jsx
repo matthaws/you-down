@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { createGroup } from '../../actions/group_actions';
+import { hashHistory } from 'react-router';
 
 
 class NewGroupForm extends React.Component {

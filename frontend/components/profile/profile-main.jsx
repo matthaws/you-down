@@ -18,6 +18,10 @@ class ProfileMain extends React.Component {
     this.setState({user: nextProps.user})
   }
 
+  componentWillUpdate() {
+    this.props.fetchUser(this.props.params.userId)
+  }
+
   render () {
     let profile_pic_url = this.state.user.profile_pic;
 

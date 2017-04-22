@@ -36,9 +36,12 @@ a {
   background-color: white;
   position: absolute;
   right: 0;
-  top: 30px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
   padding-right: 10px;
-  padding-left: 400px;
+
+  width: 500px;
   z-index: 99;
   border: 1px solid lightgrey;
   box-shadow: 1px 1px 3px black;
@@ -51,7 +54,6 @@ a {
 
 .nav-drop-down ul {
   z-index: 100;
-  background-color: white;
   padding-bottom: 20px;
 };
 

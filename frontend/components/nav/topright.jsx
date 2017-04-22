@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { modalStyle } from '../../util/modal_util';
 import Modal from 'react-modal';
 import { logout } from '../../actions/session_actions.js';
-import { hashHistory } from 'react-router';
+import { hashHistory, Link } from 'react-router';
 
 class TopRight extends React.Component {
   constructor (props) {
@@ -47,11 +47,28 @@ class TopRight extends React.Component {
   }
 
   render() {
+    let groupList = [];
+    if (this.state.user.joined_groups) {
+      this.state.user.joined_groups.forEach( (group) => {
+        groupList.push(
+          <li key={group.id}>
+            <Link to={`/groups/${group.id}`} >
+            {group.group_name}
+          </Link>
+          </li>)
+      })
+    }
+
     let dropdown = (
-      <ul className="nav-drop-down">
+    <div className="nav-drop-down">
+      <ul className="nav-group-list">
+        {groupList}
+      </ul>
+      <ul>
         <li onClick={this.goToProfile}>Profile</li>
         <li onClick={this.handleLogout}>Logout</li>
       </ul>
+    </div>
     )
 
     let icon = ( <img className="icon" src={window.images.expand_arrow} />)

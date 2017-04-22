@@ -2,6 +2,10 @@ class Api::GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
+      membership = Membership.new
+      membership.member_id = @group.organizer_id
+      membership.group_id = @group.id
+      membership.save
       redirect_to api_group_url(@group.id)
     else
       render json: @group.errors.full_messages, status: 422
