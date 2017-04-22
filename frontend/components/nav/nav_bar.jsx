@@ -5,7 +5,7 @@ import AuthForm from '../welcome/auth_form';
 import { modalStyle } from '../../util/modal_util';
 import Modal from 'react-modal';
 import TopRight from './topright';
-import { hashHistory } from 'react-router';
+import { hashHistory, Link } from 'react-router';
 
 
 class NavBar extends React.Component {
@@ -60,7 +60,7 @@ class NavBar extends React.Component {
     return (
       <nav className="top-nav">
         <ul>
-          <li>Create a Group</li>
+          <li><Link to='/newgroup'>Create a Group</Link></li>
           <li onClick={this.goHome} id="logo">YouDown?</li>
           <li>
             {topright}

@@ -5,8 +5,6 @@ import Modal from 'react-modal';
 import AuthForm from './auth_form';
 import { modalStyle } from '../../util/modal_util';
 
-
-
 class Welcome extends React.Component {
   constructor(props) {
     super(props)

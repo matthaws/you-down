@@ -1,5 +1,6 @@
 import * as GroupApiUtil from '../util/group_api_util';
 import { receiveErrors } from './session_actions';
+import { hashHistory } from 'react-router';
 
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
 
@@ -19,6 +20,14 @@ export const fetchGroup = (groupId) => {
 export const createGroup = (group) => {
   return (dispatch) => {
     return GroupApiUtil.createGroup(group)
+      .then( group => dispatch(receiveGroup(group)).then(hashHistory.push(`/groups/${group.id}`)),
+              err => dispatch(receiveErrors(err)))
+  };
+};
+
+export const updateGroup = (group) => {
+  return (dispatch) => {
+    return GroupApiUtil.updateGroup(group)
       .then( group => dispatch(receiveGroup(group)),
               err => dispatch(receiveErrors(err)))
   };

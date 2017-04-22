@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchGroup } from '../../actions/group_actions';
 import GroupDetails from "./group_details";
 import GroupMembers from "./group_members";
+import GroupEdit from "./group_edit";
 
 class GroupShow extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class GroupShow extends React.Component {
     this.state = { location: "home" };
     this.goHome = this.goHome.bind(this);
     this.members = this.members.bind(this);
+    this.edit = this.edit.bind(this);
   }
 
   componentDidMount() {
@@ -23,6 +25,10 @@ class GroupShow extends React.Component {
 
   members() {
     this.setState({location: "members"})
+  }
+
+  edit() {
+    this.setState({location: "edit"})
   }
 
   render() {
@@ -40,6 +46,14 @@ class GroupShow extends React.Component {
     let body = (<GroupDetails group={this.props.group} />)
     if (this.state.location === "members") {
       body = (<GroupMembers />)
+    } else if (this.state.location === "edit") {
+      body = (<GroupEdit group={this.props.group} />)
+    }
+
+    let editLink = (<div />)
+    if (this.props.group.organizer && this.props.group.organizer.id === this.props.currentUser.id) {
+      editLink = <li onClick={this.edit}>Edit</li>
+
     }
 
     return (
@@ -52,6 +66,7 @@ class GroupShow extends React.Component {
                 <ul className="group-menu">
                   <li onClick={this.goHome}>Home</li>
                   <li onClick={this.members}>Members</li>
+                  {editLink}
                 </ul>
               </div>
             </nav>
@@ -59,7 +74,9 @@ class GroupShow extends React.Component {
               <li><div className="left-sidebar">
                 <ul>
                   <li><img className="group_show_profile_thumb" src={group_pic_url} /></li>
-                  <li>Based in: <br /> {this.props.group.location_name}</li>
+
+                  <li>Based in: <br /> {this.props.group.location_name}, <br/> {this.props.group.location_zip}</li>
+
                   <li >Organizer: <br /><img className="group_show_profile_thumb" src={organizer_pic} /> <br />{organizer}
                     </li>
                 </ul>
@@ -74,7 +91,8 @@ class GroupShow extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    group: state.groups
+    group: state.groups,
+    currentUser: state.session.currentUser
   };
 };
 

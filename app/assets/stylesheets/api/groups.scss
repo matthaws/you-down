@@ -118,6 +118,12 @@
 .left-sidebar li {
   padding-bottom: 30px;
 }
+
+.left-sidebar a {
+  color: #ED1C40;
+  text-decoration: underline;
+}
+
 .roll-call {
   margin-top: 100px;
   border-top: 1px solid lightgrey;
@@ -128,7 +134,7 @@
   position: relative;
   z-index: 100;
   background-color: white;
-  height: 700px;
+  height: 850px;
 
 }
 
@@ -173,6 +179,24 @@
   border-radius: 3px;
 }
 
+.form-section textarea {
+  resize: none;
+  width: 125%;
+  height: 50px;
+  padding: 5px;
+  margin-bottom: 30px;
+  margin-right: 30px;
+}
+
+.form-section h1 {
+  font-size: 20px;
+}
+
+.form-section h2 {
+  margin-top: 30px;
+  font-size: 16px;
+}
+
 .form-icon {
   height: 50px;
   width: auto;
@@ -191,4 +215,53 @@
 .form-button:hover {
   cursor: pointer;
   background-color: #a50d27;
+}
+
+.submit-button {
+  text-align: center;
+}
+
+.group-edit {
+  width: 720px;
+  font-family: Helvetica;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  text-align: left;
+  padding: 10px;
+  padding-top: 10px;
+
+}
+
+.group-edit li {
+  padding: 10px;
+  padding-left: 50px;
+}
+
+.group-edit h1{
+  text-align: center;
+  padding: 10px;
+  color: white;
+  background-color:  #ED1C40;
+}
+
+.group-edit li:last-child {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 50px;
+}
+
+.group-edit input {
+  width: 600px;
+  padding: 5px;
+
+  border: 1px solid #ED1C40;
+}
+
+.group-edit textarea {
+  width: 606px;
+  height: 100px;
+  border: 1px solid #ED1C40;
+  resize: none;
+  font-family: 'Merriweather Sans', Helvetica, sans-serif;
 }
