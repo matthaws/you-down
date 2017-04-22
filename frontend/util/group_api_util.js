@@ -17,14 +17,17 @@ export const createGroup = (group) => {
 export const updateGroup = (group) => {
   return $.ajax({
     method: 'PATCH',
-    url: `/api/groups/${group.id}`,
-    data: { group }
+    url: `/api/groups/${group.get('group[id]')}`,
+    dataType: "json",
+    contentType: false,
+    processData: false,
+    data: group
   });
 };
 
-export const deleteGroup = (group) => {
+export const deleteGroup = (groupId) => {
   return $.ajax({
     method: 'DELETE',
-    url: `/api/groups/${group.id}`
+    url: `/api/groups/${groupId}`
   });
 };

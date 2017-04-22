@@ -20,7 +20,7 @@ export const fetchGroup = (groupId) => {
 export const createGroup = (group) => {
   return (dispatch) => {
     return GroupApiUtil.createGroup(group)
-      .then( group => dispatch(receiveGroup(group)).then(hashHistory.push(`/groups/${group.id}`)),
+      .then( group => dispatch(receiveGroup(group)),
               err => dispatch(receiveErrors(err)))
   };
 };
@@ -29,6 +29,14 @@ export const updateGroup = (group) => {
   return (dispatch) => {
     return GroupApiUtil.updateGroup(group)
       .then( group => dispatch(receiveGroup(group)),
+              err => dispatch(receiveErrors(err)))
+  };
+};
+
+export const deleteGroup = (groupId) => {
+  return (dispatch) => {
+    return GroupApiUtil.deleteGroup(groupId)
+      .then( group => dispatch(receiveGroup({})),
               err => dispatch(receiveErrors(err)))
   };
 };

@@ -38,6 +38,7 @@ class GroupShow extends React.Component {
         organizer = this.props.group.organizer.full_name
         organizer_pic = this.props.group.organizer.profile_pic
       }
+
     let group_pic_url = this.props.group.group_pic
       if (group_pic_url === "/DEFAULT") {
         group_pic_url = window.images.default_group;
@@ -47,7 +48,7 @@ class GroupShow extends React.Component {
     if (this.state.location === "members") {
       body = (<GroupMembers />)
     } else if (this.state.location === "edit") {
-      body = (<GroupEdit group={this.props.group} />)
+      body = (<GroupEdit goHome={this.goHome} group={this.props.group} />)
     }
 
     let editLink = (<div />)
