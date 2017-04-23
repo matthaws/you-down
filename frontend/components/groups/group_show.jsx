@@ -5,7 +5,9 @@ import { fetchGroup, joinGroup } from '../../actions/group_actions';
 import GroupDetails from "./group_details";
 import GroupMembers from "./group_members";
 import GroupEdit from "./group_edit";
+import GroupEvents from "./group_events";
 import { Link } from "react-router";
+
 
 class GroupShow extends React.Component {
   constructor(props) {
@@ -15,6 +17,7 @@ class GroupShow extends React.Component {
     this.members = this.members.bind(this);
     this.edit = this.edit.bind(this);
     this.joinGroup = this.joinGroup.bind(this);
+    this.events = this.events.bind(this);
   }
 
   joinGroup() {
@@ -37,12 +40,16 @@ class GroupShow extends React.Component {
     this.setState({location: "home" })
   }
 
-  members() {
+  members(e) {
     this.setState({location: "members"})
   }
 
-  edit() {
+  edit(e) {
     this.setState({location: "edit"})
+  }
+
+  events(e) {
+    this.setState({location: "events"})
   }
 
   render() {
@@ -71,21 +78,31 @@ class GroupShow extends React.Component {
     }
 
     let joinButton = (<button onClick={this.joinGroup} className="form-button">Join Us!</button>)
-    debugger
+
     if (currentUser && memberIds.includes(currentUser.id)) {
       joinButton = (<div />)
     }
 
-    let body = (<GroupDetails members={members} group={this.state.group} />)
-    if (this.state.location === "members") {
-      body = (<GroupMembers members={this.state.group.members} />)
-    } else if (this.state.location === "edit") {
-      body = (<GroupEdit goHome={this.goHome} group={this.state.group} />)
+    let body;
+    switch (this.state.location) {
+      case "home":
+        body = (<GroupDetails events={this.state.group.events} members={members} group={this.state.group} />);
+        break;
+      case "members":
+        body = (<GroupMembers members={this.state.group.members} />);
+        break;
+      case "edit":
+        body = (<GroupEdit goHome={this.goHome} group={this.state.group} />);
+        break;
+      case "events":
+        body = (<GroupEvents events={this.state.group.events} />)
     }
+
 
     let editLink = (<div />)
     if (this.state.group.organizer && this.state.group.organizer.id === this.props.currentUser.id) {
-      editLink = <li onClick={this.edit}>Edit</li>
+      let editClass = this.state.location === "edit" ? "active" : ""
+      editLink = <li className={editClass} onClick={this.edit}>Edit</li>
     }
 
     let orgLink = (<div />)
@@ -94,7 +111,9 @@ class GroupShow extends React.Component {
           <img className="group_show_profile_thumb" src={organizer_pic} /> <br />{organizer}
         </Link>)
     }
-
+    let homeClass = this.state.location === "home" ? "active" : ""
+    let memberClass = this.state.location === "members" ? "active" : ""
+    let eventClass = this.state.location === "events" ? "active" : ""
 
     return (
         <div className="group-background">
@@ -104,8 +123,9 @@ class GroupShow extends React.Component {
                 <div className="group-menu-background">
                 <div className="group-menu-border"></div>
                 <ul className="group-menu">
-                  <li onClick={this.goHome}>Home</li>
-                  <li onClick={this.members}>Members</li>
+                  <li className={homeClass} onClick={this.goHome}>Home</li>
+                  <li className={memberClass} onClick={this.members}>Members</li>
+                  <li className={eventClass} onClick={this.events}>Events</li>
                   {editLink}
                 </ul>
                 {joinButton}
@@ -117,10 +137,9 @@ class GroupShow extends React.Component {
                   <li><img className="group_show_profile_thumb" src={group_pic_url} /></li>
 
                   <li>Based in: <br /> {this.state.group.location_name}, <br/> {this.state.group.location_zip}</li>
-                  <li>{members.length} {this.state.group.member_moniker}</li>
-                  <li>Organizer: <br />
-                      {orgLink}
-                    </li>
+                  <li><p>{this.state.group.member_moniker}:</p><p>{members.length}</p></li>
+                  <li className="organizer">Organizer:</li>
+                  <li>{orgLink}</li>
                 </ul>
               </div></li>
             {body}

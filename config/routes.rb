@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :groups, only: [:create, :update, :show, :destroy] do
       resources :memberships, only: [:create, :destroy]
     end
+    resources :event, only: [:create, :update, :show, :destroy]
     resource :session, only: [:create, :destroy]
   end
 end

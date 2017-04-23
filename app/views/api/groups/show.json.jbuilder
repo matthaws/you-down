@@ -8,4 +8,9 @@ json.members do
     json.profile_pic asset_path(member.profile_pic)
   end
 end
+json.events do
+  json.array! @group.group_events do |event|
+    json.extract! event, :event_name, :id, :date, :location_address, :location_name
+  end
+end
 json.group_pic asset_path(@group.group_pic.url)

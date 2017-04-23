@@ -14,7 +14,7 @@ bio               | text      |
 profile_pic       | attachment| paperclip gem attachment to image
 
 ## groups
-column name       | data type | detailss
+column name       | data type | details
 ------------------|-----------|------------------------s
 id                | integer   | not null, primary key
 group_name        | string    | not null, indexed, unique
@@ -37,7 +37,7 @@ column name       | data type | details
 ------------------|-----------|------------------------
 id                | integer   | not null, primary key
 date              | datetime  | not null, indexed
-name              | string    | not null
+event_name        | string    | not null
 description       | text      | not null
 location_name     | string    |
 location_address  | string    | not null, indexed

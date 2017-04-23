@@ -35,9 +35,16 @@ class GroupDetails extends React.Component{
   }
 
   render() {
-    let joinButton = (
-      <button onClick={this.joinGroup}></button>
-    )
+    let eventList = [];
+    if (this.props.events) {
+      this.props.events.forEach( (event) => {
+        eventList.push(<li><ul>
+          <li><h1>{event.full_name}</h1></li>
+          <li><h2>{event.location_name}</h2><h3>{event.location_address}</h3></li>
+          </ul></li>)
+      });
+    };
+
     return (
        <li><div className="show-main">
       <h1>About Us:</h1>
@@ -46,7 +53,14 @@ class GroupDetails extends React.Component{
         <h1>We are a group of {this.props.members.length} {this.props.group.member_moniker}</h1>
         <PicList members={this.props.members} />
       </div>
-    </div></li>
+    </div>
+      <div className="event-list">
+        <h1>Upcoming Events</h1>
+        <ul>
+          {eventList}
+        </ul>
+      </div>
+        </li>
     )}
 };
 

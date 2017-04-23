@@ -18,5 +18,11 @@ class Group < ActiveRecord::Base
     through: :memberships,
     source: :member
 
+  has_many :group_events,
+    class_name: "Event",
+    foreign_key: :group_id,
+    primary_key: :id
+
+
 
 end

@@ -4,7 +4,7 @@
 
 .group-background {
   background-color: #FAFAFA;
-  height: 900px;
+  height: auto;
   padding-top: 20px;
   text-align: center;
 }
@@ -117,10 +117,28 @@
 
 .left-sidebar ul {
   padding: 10px;
+  text-align: left;
 }
 
 .left-sidebar li {
   padding-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.organizer {
+  padding-bottom: 0px;
+  padding-top: 20px;
+  font-size: 18px;
+  border-top: 1px solid lightgrey;
+}
+
+.active {
+  background-color: #ED1C40;
+  border: 1px solid #ED1C40;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
 }
 
 .left-sidebar a {
@@ -306,4 +324,19 @@
 
 .member-main {
   height: auto;
+}
+
+.event-list {
+  margin-top: 20px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  width: 720px;
+  height: 800px;
+  text-align: left;
+  padding: 10px;
+}
+
+.event-list h1 {
+  font-size: 30px;
+  padding-bottom: 10px;
 }

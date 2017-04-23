@@ -21,6 +21,11 @@ class User < ActiveRecord::Base
     through: :memberships,
     source: :group
 
+  has_many :organized_events,
+    class_name: "Events",
+    foreign_key: :organizer_id,
+    primary_key: :id
+
 
   attr_reader :password
 
