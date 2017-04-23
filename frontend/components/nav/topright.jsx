@@ -52,11 +52,11 @@ class TopRight extends React.Component {
     if (this.state.user.joined_groups) {
       this.state.user.joined_groups.forEach( (group) => {
         groupList.push(
-          <li key={group.id} onClick={this.toggleModal}>
-            <Link to={`/groups/${group.id}`} >
+          <Link key={group.id} to={`/groups/${group.id}`} >
+          <li  onClick={this.toggleModal}>
               {group.group_name}
-            </Link>
-          </li>)
+          </li>
+        </Link>)
       })
     }
 

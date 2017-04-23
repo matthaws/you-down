@@ -19,7 +19,7 @@ class Api::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to api_user_url
+      render :update
     else
       render json: @user.errors.full_messages, status: 422
     end

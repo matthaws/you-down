@@ -50,11 +50,13 @@ class GroupShow extends React.Component {
     let organizer_pic = window.images.default_profile;
       if (this.state.group.organizer) {
         organizer = this.state.group.organizer.full_name
+      if (this.state.group.organizer.profile_pic !== "DEFAULT") {
         organizer_pic = this.state.group.organizer.profile_pic
       }
-
+      }
     let group_pic_url = this.state.group.group_pic
-      if (group_pic_url === "/DEFAULT") {
+
+      if (group_pic_url && group_pic_url === "/DEFAULT") {
         group_pic_url = window.images.default_group;
       }
 
@@ -69,7 +71,8 @@ class GroupShow extends React.Component {
     }
 
     let joinButton = (<button onClick={this.joinGroup} className="form-button">Join Us!</button>)
-    if (this.currentUser && memberIds.include(this.currentUser.id)) {
+    debugger
+    if (currentUser && memberIds.includes(currentUser.id)) {
       joinButton = (<div />)
     }
 

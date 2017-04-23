@@ -13,7 +13,11 @@ class PicList extends React.Component {
   render() {
     let memberList = [];
     this.props.members.forEach( (member) => {
-      memberList.push(<li key={member.id}><img src={member.profile_pic} className="small-thumb" /></li>)
+      let profile_pic = member.profile_pic;
+      if (profile_pic === "/DEFAULT") {
+        profile_pic = window.images.default_profile
+      }
+      memberList.push(<li key={member.id}><img src={profile_pic} className="small-thumb" /></li>)
     })
 
     return (

@@ -5,7 +5,7 @@ json.organizer do
 json.members do
   json.array! @group.members do |member|
     json.extract! member, :full_name, :id
-    json.profile_pic asset_path(member.profile_pic.url)
+    json.profile_pic asset_path(member.profile_pic)
   end
 end
 json.group_pic asset_path(@group.group_pic.url)
