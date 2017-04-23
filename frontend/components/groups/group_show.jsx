@@ -10,7 +10,7 @@ import { Link } from "react-router";
 class GroupShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { location: "home" };
+    this.state = { location: "home", group: this.props.group };
     this.goHome = this.goHome.bind(this);
     this.members = this.members.bind(this);
     this.edit = this.edit.bind(this);
@@ -21,12 +21,16 @@ class GroupShow extends React.Component {
     this.props.joinGroup(this.props.group.id, this.props.currentUser.id)
   }
 
-  componentDidUpdate() {
-    this.props.fetchGroup(this.props.params.groupId)
-  }
-
   componentDidMount() {
     this.props.fetchGroup(this.props.params.groupId)
+    this.setState({group: this.props.group})
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.state.group.id && nextProps.params.groupId !== this.state.group.id.toString()) {
+      this.props.fetchGroup(nextProps.params.groupId)
+    }
+    this.setState({group: nextProps.group})
   }
 
   goHome() {
@@ -44,12 +48,12 @@ class GroupShow extends React.Component {
   render() {
     let organizer = ""
     let organizer_pic = window.images.default_profile;
-      if (this.props.group.organizer) {
-        organizer = this.props.group.organizer.full_name
-        organizer_pic = this.props.group.organizer.profile_pic
+      if (this.state.group.organizer) {
+        organizer = this.state.group.organizer.full_name
+        organizer_pic = this.state.group.organizer.profile_pic
       }
 
-    let group_pic_url = this.props.group.group_pic
+    let group_pic_url = this.state.group.group_pic
       if (group_pic_url === "/DEFAULT") {
         group_pic_url = window.images.default_group;
       }
@@ -57,8 +61,8 @@ class GroupShow extends React.Component {
     let members = [];
     let memberIds = [];
 
-    if (this.props.group.members) {
-      members = this.props.group.members;
+    if (this.state.group.members) {
+      members = this.state.group.members;
       members.forEach( (member) => {
         memberIds.push(member.id)
       })
@@ -69,21 +73,21 @@ class GroupShow extends React.Component {
       joinButton = (<div />)
     }
 
-    let body = (<GroupDetails members={members} group={this.props.group} />)
+    let body = (<GroupDetails members={members} group={this.state.group} />)
     if (this.state.location === "members") {
-      body = (<GroupMembers members={this.props.group.members} />)
+      body = (<GroupMembers members={this.state.group.members} />)
     } else if (this.state.location === "edit") {
-      body = (<GroupEdit goHome={this.goHome} group={this.props.group} />)
+      body = (<GroupEdit goHome={this.goHome} group={this.state.group} />)
     }
 
     let editLink = (<div />)
-    if (this.props.group.organizer && this.props.group.organizer.id === this.props.currentUser.id) {
+    if (this.state.group.organizer && this.state.group.organizer.id === this.props.currentUser.id) {
       editLink = <li onClick={this.edit}>Edit</li>
     }
 
     let orgLink = (<div />)
-    if (this.props.group.organizer) {
-      orgLink = (<Link to={`/users/${this.props.group.organizer.id}`}>
+    if (this.state.group.organizer) {
+      orgLink = (<Link to={`/users/${this.state.group.organizer.id}`}>
           <img className="group_show_profile_thumb" src={organizer_pic} /> <br />{organizer}
         </Link>)
     }
@@ -93,7 +97,7 @@ class GroupShow extends React.Component {
         <div className="group-background">
           <div className="group-show">
             <nav className="group-title">
-                <h1>{this.props.group.group_name}</h1>
+                <h1>{this.state.group.group_name}</h1>
                 <div className="group-menu-background">
                 <div className="group-menu-border"></div>
                 <ul className="group-menu">
@@ -109,8 +113,8 @@ class GroupShow extends React.Component {
                 <ul>
                   <li><img className="group_show_profile_thumb" src={group_pic_url} /></li>
 
-                  <li>Based in: <br /> {this.props.group.location_name}, <br/> {this.props.group.location_zip}</li>
-                  <li>{members.length} {this.props.group.member_moniker}</li>
+                  <li>Based in: <br /> {this.state.group.location_name}, <br/> {this.state.group.location_zip}</li>
+                  <li>{members.length} {this.state.group.member_moniker}</li>
                   <li>Organizer: <br />
                       {orgLink}
                     </li>

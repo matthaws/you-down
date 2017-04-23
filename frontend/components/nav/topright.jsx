@@ -21,6 +21,7 @@ class TopRight extends React.Component {
     this.goToProfile = this.goToProfile.bind(this);
   }
 
+
   closeModal() {
     this.setState({ modalOpen: false })
   }
@@ -51,10 +52,10 @@ class TopRight extends React.Component {
     if (this.state.user.joined_groups) {
       this.state.user.joined_groups.forEach( (group) => {
         groupList.push(
-          <li key={group.id}>
+          <li key={group.id} onClick={this.toggleModal}>
             <Link to={`/groups/${group.id}`} >
-            {group.group_name}
-          </Link>
+              {group.group_name}
+            </Link>
           </li>)
       })
     }
