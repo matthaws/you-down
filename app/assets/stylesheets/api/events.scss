@@ -71,8 +71,6 @@
 }
 
 .event-details {
-  display: flex;
-  justify-content: space-between;
   padding: 20px;
   text-align: left;
   padding-right: 80px;
@@ -80,6 +78,7 @@
   align-items:center;
   margin: 0 auto;
   border-bottom: 1px solid lightgrey;
+  line-height: .1;
 }
 
 .event-details a:hover {
@@ -90,6 +89,13 @@
 .event-details img {
   width: 40px;
   height: auto;
+  vertical-align: text-top;
+  padding-right: 20px;
+}
+
+.event-address {
+  padding-left: 60px;
+  padding-bottom: 20px
 }
 
 .event-show-main {

@@ -5,3 +5,8 @@ end
 json.group do
   json.extract! @event.group, :id, :group_name, :group_pic
 end
+json.attendees do
+  json.array! @event.attendees do |attendee|
+    json.extract! attendee, :id, :full_name, :profile_pic
+  end
+end

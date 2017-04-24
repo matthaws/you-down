@@ -1,6 +1,6 @@
 class Rsvp < ActiveRecord::Base
-  validates :attendee_id, uniqueness: {scope: :group_id}
-  validates :attendee_id, :group_id, presence: true
+  validates :attendee_id, uniqueness: {scope: :event_id}
+  validates :attendee_id, :event_id, presence: true
 
   belongs_to :attendee,
     class_name: "User",

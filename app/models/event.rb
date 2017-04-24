@@ -18,6 +18,6 @@ class Event < ActiveRecord::Base
 
   has_many :attendees,
     through: :rsvps,
-    source: :attendees
+    source: :attendee
 
 end
