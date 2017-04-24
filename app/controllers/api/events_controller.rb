@@ -5,6 +5,7 @@ class Api::EventsController < ApplicationController
       redirect_to api_event_url(@event.id)
     else
       render json: @event.errors.full_messages, status: 422
+    end
   end
 
   def update
