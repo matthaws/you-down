@@ -1,5 +1,6 @@
 import { login, logout, signup, receiveCurrentUser, receiveErrors } from '../actions/session_actions';
 import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS } from '../actions/session_actions';
+import { RECEIVE_GROUP } from '../actions/group_actions';
 
 const initialState = {currentUser: null, errors: {} };
 
@@ -10,6 +11,12 @@ const sessionReducer = (state = initialState, action) => {
       return Object.assign({}, state, { currentUser: action.currentUser });
     case RECEIVE_ERRORS:
       return Object.assign({}, state, { errors: action.errors });
+    case RECEIVE_GROUP:
+      if (action.user) {
+        return Object.assign({}, state, { currentUser: action.user });
+      } else {
+        return state;
+      }
     default:
       return state;
   }

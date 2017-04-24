@@ -4,9 +4,10 @@ import { hashHistory } from 'react-router';
 
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
 
-export const receiveGroup = (group) => ({
+export const receiveGroup = (group, user) => ({
   type: RECEIVE_GROUP,
-  group
+  group,
+  user
 });
 
 export const fetchGroup = (groupId) => {
@@ -20,7 +21,7 @@ export const fetchGroup = (groupId) => {
 export const createGroup = (group) => {
   return (dispatch) => {
     return GroupApiUtil.createGroup(group)
-      .then( group => dispatch(receiveGroup(group)).then( hashHistory.push(`/groups/${group.id}`)),
+      .then( group, user => dispatch(receiveGroup(group, user)).then( hashHistory.push(`/#/groups/${group.id}`)),
               err => dispatch(receiveErrors(err)))
   };
 };
@@ -36,7 +37,7 @@ export const updateGroup = (group) => {
 export const deleteGroup = (groupId) => {
   return (dispatch) => {
     return GroupApiUtil.deleteGroup(groupId)
-      .then( group => dispatch(receiveGroup({})),
+      .then( user => dispatch(receiveGroup({}, user)),
               err => dispatch(receiveErrors(err)))
   };
 };

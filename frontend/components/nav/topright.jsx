@@ -47,6 +47,10 @@ class TopRight extends React.Component {
     hashHistory.push(`users/${this.props.user.id}`);
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({user: nextProps.user})
+  }
+
   render() {
     let groupList = [];
     if (this.state.user.joined_groups) {

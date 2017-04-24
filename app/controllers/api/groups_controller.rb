@@ -6,7 +6,8 @@ class Api::GroupsController < ApplicationController
       membership.member_id = @group.organizer_id
       membership.group_id = @group.id
       membership.save
-      redirect_to api_group_url(@group.id)
+      @user = current_user
+      render :create
     else
       render json: @group.errors.full_messages, status: 422
     end
@@ -29,7 +30,8 @@ class Api::GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-    render :show
+    @user = current_user
+    render :destroy
   end
 
   private
