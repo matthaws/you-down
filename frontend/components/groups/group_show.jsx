@@ -34,6 +34,7 @@ class GroupShow extends React.Component {
   joinGroup() {
     this.props.joinGroup(this.props.group.id, this.props.currentUser.id);
     this.setState({location: "welcome"})
+    this.fetchGroup(this.props.group.id)
 
   }
 
