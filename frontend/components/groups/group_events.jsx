@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 class GroupEvents extends React.Component {
   render () {
@@ -10,7 +11,7 @@ class GroupEvents extends React.Component {
           let date = new Date(event.date).toLocaleDateString();
           let time = new Date(event.date).toLocaleTimeString();
               eventList.push(<ul key={event.id} ><li className="event-list-item"><ul>
-          <li><h2>{event.event_name}</h2></li>
+          <Link to={`/events/${event.id}`}><li><h2>{event.event_name}</h2></li></Link>
           <li><img src={window.images.location} /><h3><a href={`http://maps.google.com/?q=${event.location_address}`}>{event.location_name}<br />
             {event.location_address}</a></h3></li>
           </ul>

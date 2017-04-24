@@ -34,14 +34,17 @@ class GroupSidebar extends React.Component {
           <img className="group_show_profile_thumb" src={organizer_pic} /> <br />{organizer}
         </Link>)
     }
-
+    let memberCount = 0
+    if (this.state.members) {
+      memberCount = this.state.members.length
+    }
 
     return   (<li><div className="left-sidebar">
         <ul>
           <li><img className="group_show_profile_thumb" src={group_pic_url} /></li>
           <li><h2>{this.state.group.group_name}</h2></li>
           <li>Based in: <br /> {this.state.group.location_name}, <br/> {this.state.group.location_zip}</li>
-          <li><p>{this.state.group.member_moniker}:</p><p>{this.state.members.length}</p></li>
+          <li><p>{this.state.group.member_moniker}:</p><p>{memberCount}</p></li>
           <li><p>Events:</p><p>{this.props.eventCount}</p></li>
           <li className="organizer">Organizer:</li>
           <li>{orgLink}</li>

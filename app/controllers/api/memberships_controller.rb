@@ -11,9 +11,12 @@ class Api::MembershipsController < ApplicationController
 
 
   def destroy
-    membership = Membership.find(params[:id])
-    membership.destroy
-    render json: membership 
+    membership = Membership.where("group_id = ?", params[:group_id]).find_by(member_id: current_user.id)
+    if membership.destroy
+      render json: membership
+    else
+      render json: "You aren't part of this group!"
+    end
   end
 
   private

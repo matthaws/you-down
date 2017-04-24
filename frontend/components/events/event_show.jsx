@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import GroupSidebar from '../groups/group_sidebar';
 import { connect } from 'react-redux';
 import { fetchEvent } from '../../actions/event_actions';
 import { fetchGroup } from '../../actions/group_actions';
@@ -21,13 +22,15 @@ class EventShow extends React.Component {
       this.props.fetchEvent(nextProps.params.eventId)
     }
     this.setState({event: nextProps.event})
-    if (this.state.group && this.state.event.group.id != nextProps.event.group.id) {
-      this.props.fetchGroup(nextProps.group)
+    if (this.state.group && this.state.group.id != nextProps.event.group.id) {
+      this.props.fetchGroup(nextProps.event.group.id)
     }
     this.setState({group: nextProps.group})
   }
 
   render() {
+    let date = new Date(this.state.event.date).toLocaleDateString();
+    let time = new Date(this.state.event.date).toLocaleTimeString();
 
     return (
       <div className="group-background">
@@ -37,15 +40,34 @@ class EventShow extends React.Component {
             <div className="group-menu-background">
               <div className="group-menu-border"></div>
               <ul className="group-menu">
-                <li><button className="form-button">Back to group</button></li>
+                  <Link to={`/groups/${this.state.group.id}`}><li>Group</li></Link>
+                <li>Create a New Event</li>
               </ul>
-              </div>
             </div>
           </nav>
           <ul className="show-body">
             <GroupSidebar group={this.state.group}
               members={this.state.group.members}
-              eventCount={eventCount}
+             />
+           <li>
+             <div className="event-show-main">
+               <ul className="event-details">
+                 <li><img src={window.images.clock} /></li>
+                 <li>{date}, {time}</li>
+                 </ul>
+                <ul className="event-details">
+                  <li><img src={window.images.location} /></li>
+                  <a href={`http://maps.google.com/?q=${this.state.event.location_name},${this.state.event.location_zip}`}>
+                  <li>{this.state.event.location_name}<br />{this.state.event.location_address}</li></a>
+                </ul>
+                <div className="event-show-description">
+                  {this.state.event.description}
+                </div>
+           </div>
+         </li>
+           <li className="right-sidebar">
+            <h1>Attending:</h1>
+           </li>
           </ul>
         </div>
       </div>
@@ -66,7 +88,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchEvent = (eventId) => dispatch(fetchEvent(eventId))
+    fetchEvent: (eventId) => dispatch(fetchEvent(eventId)),
+    fetchGroup: (groupId) => dispatch(fetchGroup(groupId))
   };
 };
 

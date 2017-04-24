@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'react-router';
+import { Link } from 'react-router';
 
 class PicList extends React.Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class GroupDetails extends React.Component{
           let date = new Date(event.date).toLocaleDateString();
           let time = new Date(event.date).toLocaleTimeString();
               eventList.push(<li key={event.id} className="event-list-item"><ul>
-          <li><h2>{event.event_name}</h2></li>
+          <Link to={`/events/${event.id}`} ><li><h2>{event.event_name}</h2></li></Link>
           <li><img src={window.images.location} /><h3><a href={`http://maps.google.com/?q=${event.location_address}`}>{event.location_name}<br />
             {event.location_address}</a></h3></li>
           </ul>

@@ -47,3 +47,9 @@ export const joinGroup = (groupId, userId) => {
       .then( hashHistory.push(`/groups/${groupId}`))
   };
 };
+
+export const leaveGroup = (groupId) => {
+  return (dispatch) => {
+    return GroupApiUtil.leaveGroup(groupId)
+  };
+};

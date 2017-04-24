@@ -27,3 +27,18 @@ export const deleteEvent = (eventId) => {
     url: `/api/events/${eventId}`
   });
 };
+
+export const joinEvent = (eventId, userId) => {
+  return $.ajax({
+    method: 'POST',
+    url: `/api/events/${eventId}/rsvps`,
+    data: { rsvp: {attendee_id: userId, event_id: eventId}}
+  });
+};
+
+export const leaveEvent = (eventId) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/events/${eventId}/rsvps`
+  });
+};

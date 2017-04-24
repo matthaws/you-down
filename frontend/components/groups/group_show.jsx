@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { fetchGroup, joinGroup } from '../../actions/group_actions';
+import { fetchGroup, joinGroup, leaveGroup } from '../../actions/group_actions';
 import GroupDetails from "./group_details";
 import GroupMembers from "./group_members";
 import GroupEdit from "./group_edit";
 import GroupEvents from "./group_events";
 import GroupWelcome from './group_welcome';
 import GroupSidebar from './group_sidebar';
-import { Link } from "react-router";
+import { Link, hashHistory } from "react-router";
 
 
 class GroupShow extends React.Component {
@@ -20,11 +20,21 @@ class GroupShow extends React.Component {
     this.edit = this.edit.bind(this);
     this.joinGroup = this.joinGroup.bind(this);
     this.events = this.events.bind(this);
+    this.leave = this.leave.bind(this);
+    this.handleLeave = this.handleLeave.bind(this);
+  }
+
+  handleLeave() {
+    this.props.leaveGroup(this.props.group.id);
+    this.props.fetchGroup(this.props.group.id);
+    this.setState({location: "home"})
+    hashHistory.push(`/users/${this.props.currentUser.id}`)
   }
 
   joinGroup() {
-    this.props.joinGroup(this.props.group.id, this.props.currentUser.id)
+    this.props.joinGroup(this.props.group.id, this.props.currentUser.id);
     this.setState({location: "welcome"})
+
   }
 
   componentDidMount() {
@@ -55,6 +65,10 @@ class GroupShow extends React.Component {
     this.setState({location: "events"})
   }
 
+  leave(e) {
+    this.setState({location: "leave"})
+  }
+
   render() {
 
     let members = [];
@@ -69,7 +83,7 @@ class GroupShow extends React.Component {
 
     let joinButton = (<button onClick={this.joinGroup} className="form-button">Join Us!</button>)
     if (currentUser && memberIds.includes(currentUser.id)) {
-      joinButton = (<div />)
+      joinButton = (<button onClick={this.leave} className="form-button">Leave Group</button>)
     }
 
     let body;
@@ -88,6 +102,14 @@ class GroupShow extends React.Component {
         break;
       case "welcome":
         body = (<GroupWelcome group={this.state.group} user={this.props.currentUser} />)
+        break;
+      case "leave":
+      body = (<li>
+        <div className="show-main">
+          <h1>Are you sure you want to leave this group?</h1>
+          <button onClick={this.handleLeave} className="form-button">I'm sure</button>
+        </div>
+      </li>)
     }
 
 
@@ -145,7 +167,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchGroup: (groupId) => dispatch(fetchGroup(groupId)),
-    joinGroup: (groupId, userId) => dispatch(joinGroup(groupId, userId))
+    joinGroup: (groupId, userId) => dispatch(joinGroup(groupId, userId)).then( membership => dispatch(fetchGroup(membership.group_id))),
+    leaveGroup: (groupId) => dispatch(leaveGroup(groupId))
   };
 };
 

@@ -69,3 +69,52 @@
   border: 1px solid lightgrey;
   border-top: none;
 }
+
+.event-details {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  text-align: left;
+  padding-right: 80px;
+  font-size: 18px;
+  align-items:center;
+  margin: 0 auto;
+  border-bottom: 1px solid lightgrey;
+}
+
+.event-details a:hover {
+  cursor: pointer;
+  color: #ED1C40;
+}
+
+.event-details img {
+  width: 40px;
+  height: auto;
+}
+
+.event-show-main {
+  background-color: white;
+  width: 520px;
+  height: auto;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  text-align: left;
+}
+
+.event-show-main h1{
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+.right-sidebar {
+  width: 200px;
+  background-color: white;
+  border: 1px solid lightgrey;
+}
+
+.event-show-description {
+  padding: 20px;
+  padding-top: 30px;
+
+}

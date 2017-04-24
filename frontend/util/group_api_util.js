@@ -39,3 +39,10 @@ export const joinGroup = (groupId, userId) => {
     data: { membership: {group_id: groupId, member_id: userId } }
   });
 };
+
+export const leaveGroup = (groupId) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/groups/${groupId}/memberships`
+  });
+};
