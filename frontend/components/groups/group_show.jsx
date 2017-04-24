@@ -7,6 +7,7 @@ import GroupMembers from "./group_members";
 import GroupEdit from "./group_edit";
 import GroupEvents from "./group_events";
 import GroupWelcome from './group_welcome';
+import GroupSidebar from './group_sidebar';
 import { Link } from "react-router";
 
 
@@ -55,19 +56,6 @@ class GroupShow extends React.Component {
   }
 
   render() {
-    let organizer = ""
-    let organizer_pic = window.images.default_profile;
-      if (this.state.group.organizer) {
-        organizer = this.state.group.organizer.full_name
-      if (this.state.group.organizer.profile_pic !== "DEFAULT") {
-        organizer_pic = this.state.group.organizer.profile_pic
-      }
-      }
-    let group_pic_url = this.state.group.group_pic
-
-      if (group_pic_url && group_pic_url === "/DEFAULT") {
-        group_pic_url = window.images.default_group;
-      }
 
     let members = [];
     let memberIds = [];
@@ -80,7 +68,6 @@ class GroupShow extends React.Component {
     }
 
     let joinButton = (<button onClick={this.joinGroup} className="form-button">Join Us!</button>)
-
     if (currentUser && memberIds.includes(currentUser.id)) {
       joinButton = (<div />)
     }
@@ -110,15 +97,15 @@ class GroupShow extends React.Component {
       editLink = <li className={editClass} onClick={this.edit}>Edit</li>
     }
 
-    let orgLink = (<div />)
-    if (this.state.group.organizer) {
-      orgLink = (<Link to={`/users/${this.state.group.organizer.id}`}>
-          <img className="group_show_profile_thumb" src={organizer_pic} /> <br />{organizer}
-        </Link>)
-    }
+
     let homeClass = this.state.location === "home" ? "active" : ""
     let memberClass = this.state.location === "members" ? "active" : ""
     let eventClass = this.state.location === "events" ? "active" : ""
+
+    let eventCount = 0
+    if (this.state.group.events) {
+      eventCount = this.state.group.events.length;
+    }
 
     return (
         <div className="group-background">
@@ -137,16 +124,9 @@ class GroupShow extends React.Component {
               </div>
             </nav>
             <ul className="show-body">
-              <li><div className="left-sidebar">
-                <ul>
-                  <li><img className="group_show_profile_thumb" src={group_pic_url} /></li>
-
-                  <li>Based in: <br /> {this.state.group.location_name}, <br/> {this.state.group.location_zip}</li>
-                  <li><p>{this.state.group.member_moniker}:</p><p>{members.length}</p></li>
-                  <li className="organizer">Organizer:</li>
-                  <li>{orgLink}</li>
-                </ul>
-              </div></li>
+              <GroupSidebar group={this.state.group}
+                members={members}
+                eventCount={eventCount} />
             {body}
             </ul>
         </div>

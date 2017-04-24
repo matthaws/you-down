@@ -1,3 +1,71 @@
 // Place all the styles related to the api/events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.event-list {
+  margin-top: 20px;
+  background-color: white;
+  width: 720px;
+  height: 800px;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid lightgrey;
+}
+
+.event-list-item {
+  border: 1px solid lightgrey;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.event-list-item h2 {
+  font-size: 20px
+}
+
+.event-list-item li {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.event-list h1 {
+  font-size: 30px;
+  padding-bottom: 10px;
+}
+
+.event-list-item li:hover {
+  color: #ED1C40;
+  cursor: pointer;
+}
+
+.event-list-item img {
+  width: 20px;
+  height: 20px;
+  padding-right: 10px;
+}
+
+.group-event-list {
+  width: 700px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  height: auto;
+  padding: 20px;
+}
+
+.mini-menu {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.event-description {
+  padding: 20px;
+  text-align: left;
+  border: 1px solid lightgrey;
+  border-top: none;
+}

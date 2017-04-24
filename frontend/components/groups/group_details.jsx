@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'react-router';
 
 class PicList extends React.Component {
   constructor(props) {
@@ -17,7 +18,9 @@ class PicList extends React.Component {
       if (profile_pic === "/DEFAULT") {
         profile_pic = window.images.default_profile
       }
+      if( memberList.length < 10) {
       memberList.push(<li key={member.id}><img src={profile_pic} className="small-thumb" /></li>)
+    }
     })
 
     return (
@@ -39,17 +42,21 @@ class GroupDetails extends React.Component{
     let eventList = [];
     if (this.props.events) {
       this.props.events.forEach( (event) => {
-              eventList.push(<li key={event.id} className="event-list-item"><ul >
+          let date = new Date(event.date).toLocaleDateString();
+          let time = new Date(event.date).toLocaleTimeString();
+              eventList.push(<li key={event.id} className="event-list-item"><ul>
           <li><h2>{event.event_name}</h2></li>
-          <li><h3>{event.location_name}<br />{event.location_address}</h3></li>
+          <li><img src={window.images.location} /><h3><a href={`http://maps.google.com/?q=${event.location_address}`}>{event.location_name}<br />
+            {event.location_address}</a></h3></li>
           </ul>
           <ul>
             <li>x attending</li>
-            <li>{event.date}</li>
+            <li>{date}, {time}</li>
           </ul>
           </li>)
       });
     };
+
 
     return (
        <li><div className="show-main">

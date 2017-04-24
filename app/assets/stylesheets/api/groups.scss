@@ -112,6 +112,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   width: 175px;
+  max-height: 225px;
   height: auto;
 }
 
@@ -121,9 +122,15 @@
 }
 
 .left-sidebar li {
-  padding-bottom: 30px;
+  padding-bottom: 15px;
   display: flex;
   justify-content: space-between;
+}
+
+.left-sidebar h2 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .organizer {
@@ -330,35 +337,6 @@
   height: auto;
 }
 
-.event-list {
-  margin-top: 20px;
-  background-color: white;
-  width: 720px;
-  height: 800px;
-  text-align: left;
-  padding: 10px;
-  border: 1px solid lightgrey;
-}
-
-.event-list-item {
-  border: 1px solid lightgrey;
-  display: flex;
-  justify-content: space-between;
-
-}
-
-.event-list-item h2 {
-  font-size: 20px
-}
-
-.event-list li {
-  padding: 10px;
-}
-
-.event-list h1 {
-  font-size: 30px;
-  padding-bottom: 10px;
-}
 
 .group-welcome {
   text-align: center;
