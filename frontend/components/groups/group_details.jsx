@@ -35,13 +35,19 @@ class GroupDetails extends React.Component{
   }
 
   render() {
+
     let eventList = [];
     if (this.props.events) {
       this.props.events.forEach( (event) => {
-        eventList.push(<li><ul>
-          <li><h1>{event.full_name}</h1></li>
-          <li><h2>{event.location_name}</h2><h3>{event.location_address}</h3></li>
-          </ul></li>)
+              eventList.push(<li key={event.id} className="event-list-item"><ul >
+          <li><h2>{event.event_name}</h2></li>
+          <li><h3>{event.location_name}<br />{event.location_address}</h3></li>
+          </ul>
+          <ul>
+            <li>x attending</li>
+            <li>{event.date}</li>
+          </ul>
+          </li>)
       });
     };
 

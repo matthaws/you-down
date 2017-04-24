@@ -6,6 +6,7 @@ import GroupDetails from "./group_details";
 import GroupMembers from "./group_members";
 import GroupEdit from "./group_edit";
 import GroupEvents from "./group_events";
+import GroupWelcome from './group_welcome';
 import { Link } from "react-router";
 
 
@@ -22,6 +23,7 @@ class GroupShow extends React.Component {
 
   joinGroup() {
     this.props.joinGroup(this.props.group.id, this.props.currentUser.id)
+    this.setState({location: "welcome"})
   }
 
   componentDidMount() {
@@ -96,6 +98,9 @@ class GroupShow extends React.Component {
         break;
       case "events":
         body = (<GroupEvents events={this.state.group.events} />)
+        break;
+      case "welcome":
+        body = (<GroupWelcome group={this.state.group} user={this.props.currentUser} />)
     }
 
 

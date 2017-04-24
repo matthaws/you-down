@@ -26,6 +26,17 @@ class User < ActiveRecord::Base
     foreign_key: :organizer_id,
     primary_key: :id
 
+  has_many :rsvps,
+    class_name: "Rsvp",
+    foreign_key: :attendee_id,
+    primary_key: :id
+
+  has_many :attending_events,
+    through: :rsvps,
+    source: :event
+
+  
+
 
   attr_reader :password
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423173248) do
+ActiveRecord::Schema.define(version: 20170423202507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170423173248) do
     t.datetime "date",             null: false
     t.string   "event_name",       null: false
     t.text     "description",      null: false
-    t.string   "string"
+    t.string   "location_name"
     t.string   "location_address", null: false
     t.integer  "location_zip"
     t.integer  "group_id",         null: false
@@ -51,6 +51,12 @@ ActiveRecord::Schema.define(version: 20170423173248) do
     t.integer "member_id", null: false
     t.integer "group_id",  null: false
     t.index ["member_id", "group_id"], name: "index_memberships_on_member_id_and_group_id", unique: true, using: :btree
+  end
+
+  create_table "rsvps", force: :cascade do |t|
+    t.integer "attendee_id", null: false
+    t.integer "event_id",    null: false
+    t.index ["attendee_id", "event_id"], name: "index_rsvps_on_attendee_id_and_event_id", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|

@@ -15,7 +15,6 @@ class ProfileMain extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-      debugger
     this.setState({user: nextProps.user})
   }
 

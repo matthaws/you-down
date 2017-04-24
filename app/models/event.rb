@@ -11,4 +11,13 @@ class Event < ActiveRecord::Base
     foreign_key: :group_id,
     primary_key: :id
 
+  has_many :rsvps,
+    class_name: "Rsvp",
+    foreign_key: :event_id,
+    primary_key: :id
+
+  has_many :attendees,
+    through: :rsvps,
+    source: :attendees
+
 end

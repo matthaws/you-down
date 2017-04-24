@@ -10,7 +10,7 @@ json.members do
 end
 json.events do
   json.array! @group.group_events do |event|
-    json.extract! event, :event_name, :id, :date, :location_address, :location_name
+    json.extract! event, :event_name, :id, :location_address, :location_name, :date
   end
 end
 json.group_pic asset_path(@group.group_pic.url)

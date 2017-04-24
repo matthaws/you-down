@@ -317,6 +317,10 @@
   border-radius: 3px;
 }
 
+.memberItem ul:hover {
+  color: #ED1C40;
+}
+
 .small-thumb {
   height: 50px;
   max-width: 175px;
@@ -329,14 +333,34 @@
 .event-list {
   margin-top: 20px;
   background-color: white;
-  border: 1px solid lightgrey;
   width: 720px;
   height: 800px;
   text-align: left;
+  padding: 10px;
+  border: 1px solid lightgrey;
+}
+
+.event-list-item {
+  border: 1px solid lightgrey;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.event-list-item h2 {
+  font-size: 20px
+}
+
+.event-list li {
   padding: 10px;
 }
 
 .event-list h1 {
   font-size: 30px;
   padding-bottom: 10px;
+}
+
+.group-welcome {
+  text-align: center;
+  padding-top: 50px;
 }
