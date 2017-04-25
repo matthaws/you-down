@@ -20,7 +20,6 @@ class NewEventForm extends React.Component {
 
   handleDelete() {
     this.props.deleteEvent(this.props.eventId)
-    debugger
     hashHistory.push(`/groups/${this.props.event.group.id}`);
   }
 

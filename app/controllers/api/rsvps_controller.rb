@@ -1,4 +1,3 @@
-require 'byebug'
 
 class Api::RsvpsController < ApplicationController
   def create
