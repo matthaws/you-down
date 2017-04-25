@@ -3,18 +3,19 @@ require 'byebug'
 class Api::RsvpsController < ApplicationController
   def create
     @rsvp = Rsvp.new(rsvp_params)
+    @event = Event.find_by(id: @rsvp.event_id)
     if @rsvp.save
-      render json: @rsvp, status: 200
+      render :create
     else
-      render json: @rsvp.errors.full_messages, status: 422
+      render json: "error"
     end
   end
 
   def destroy
-
-    rsvp = Rsvp.find_by(event_id: param[:event_id]).where(attendee_id: current_user.id)
+    rsvp = Rsvp.where(attendee_id: current_user.id).find_by(event_id: params[:event_id])
+    @event = Event.find_by(id: rsvp.event_id)
     if rsvp.destroy
-      render json: rsvp
+      render :create
     else
       render json: "You aren't going to this event!"
     end

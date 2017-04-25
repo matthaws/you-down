@@ -63,6 +63,11 @@
   border-bottom: 1px solid lightgrey;
 }
 
+.mini-menu li:hover {
+  color: #ED1C40;
+  cursor: pointer;
+}
+
 .event-description {
   padding: 20px;
   text-align: left;
@@ -114,13 +119,49 @@
 }
 
 .right-sidebar {
-  width: 200px;
+  width: 160px;
   background-color: white;
   border: 1px solid lightgrey;
+  padding: 20px;
 }
 
 .event-show-description {
   padding: 20px;
   padding-top: 30px;
+}
 
+.attendee-list-entry {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+  border: 1px solid lightgrey;
+  margin-top: 5px;
+  height: 80px;
+}
+
+.attendee-list-entry:hover {
+  color: #ED1C40;
+}
+
+.attendee-list-entry img {
+  width: 50px;
+  max-height: 80px;
+  vertical-align: middle;
+}
+
+.join-event-button {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.join-event-button ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.join-event-button h1 {
+  font-size: 20px;
+  font-weight: bold;
 }

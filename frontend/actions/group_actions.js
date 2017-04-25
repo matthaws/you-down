@@ -21,7 +21,7 @@ export const fetchGroup = (groupId) => {
 export const createGroup = (group) => {
   return (dispatch) => {
     return GroupApiUtil.createGroup(group)
-      .then( group, user => dispatch(receiveGroup(group, user)).then( hashHistory.push(`/#/groups/${group.id}`)),
+      .then( group, user => dispatch(receiveGroup(group, user)),
               err => dispatch(receiveErrors(err)))
   };
 };

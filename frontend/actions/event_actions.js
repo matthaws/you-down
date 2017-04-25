@@ -40,3 +40,18 @@ export const deleteEvent = (eventId) => {
               err => dispatch(receiveErrors(err)))
   };
 };
+
+export const joinEvent = (eventId, userId) => {
+  return (dispatch) => {
+    return EventApiUtil.joinEvent(eventId, userId)
+      .then( event => dispatch(receiveEvent(event)),
+              err => dispatch(receiveErrors(err)))
+  };
+};
+
+export const leaveEvent = (eventId) => {
+  return (dispatch) => {
+    return EventApiUtil.leaveEvent(eventId)
+      .then( event => dispatch(receiveEvent(event)))
+  };
+};

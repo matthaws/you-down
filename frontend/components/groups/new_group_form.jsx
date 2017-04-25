@@ -137,7 +137,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createGroup: (group) => dispatch(createGroup(group))
+    createGroup: (group) => dispatch(createGroup(group)).then( hashHistory.push(`/#/groups/${group.id}`))
   }
 }
 

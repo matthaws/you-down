@@ -52,7 +52,6 @@
   border: 1px solid lightgrey;
   border-radius: 3px;
   text-align: left;
-  height: 275px;
   padding: 10px;
   padding-top: 10px;
   padding-right: 5px;
@@ -60,7 +59,8 @@
 
 .show-main h1 {
   font-size: 32px;
-  padding-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid lightgrey;
 }
 
 .group-menu-background {
@@ -342,4 +342,8 @@
 .group-welcome {
   text-align: center;
   padding-top: 50px;
+}
+
+.group-detail-description {
+  padding: 20px;
 }

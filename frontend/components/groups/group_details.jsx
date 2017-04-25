@@ -61,7 +61,7 @@ class GroupDetails extends React.Component{
     return (
        <li><div className="show-main">
       <h1>About Us:</h1>
-      {this.props.group.description}
+      <p className="group-detail-description">{this.props.group.description}</p>
       <div className="roll-call">
         <h1>We are a group of {this.props.members.length} {this.props.group.member_moniker}</h1>
         <PicList members={this.props.members} />

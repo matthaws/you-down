@@ -19,7 +19,6 @@ const sessionReducer = (state = initialState, action) => {
         return state;
       }
     case RECEIVE_USER:
-      debugger
       if (action.user.id === state.currentUser.id) {
         return Object.assign({}, state, { currentUser: action.user });
       } else ;

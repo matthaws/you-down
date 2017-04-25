@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import GroupSidebar from '../groups/group_sidebar';
+import EventRsvpButton from './event_rsvp_button';
 import { connect } from 'react-redux';
 import { fetchEvent } from '../../actions/event_actions';
 import { fetchGroup } from '../../actions/group_actions';
@@ -33,23 +34,34 @@ class EventShow extends React.Component {
     let time = new Date(this.state.event.date).toLocaleTimeString();
 
     let attendeeList=[];
+    let attendeeIds=[];
     if (this.state.event.attendees) {
       this.state.event.attendees.forEach( attendee => {
-        user_pic = attendee.profile_pic
-        if (user_pic === '/DEFAULT') {
+        let user_pic = attendee.profile_pic
+        if (user_pic === 'DEFAULT') {
           user_pic = window.images.default_profile
         }
+        attendeeIds.push(attendee.id)
 
         attendeeList.push(
           <li key={attendee.id}>
+          <Link to={`/users/${attendee.id}`}>
           <ul className="attendee-list-entry">
             <li>{attendee.full_name}</li>
             <li><img src={user_pic} /></li>
           </ul>
+          </Link>
           </li>)
       })
     }
-    debugger
+
+    let memberIds = [];
+    if (this.state.group.members) {
+      this.state.group.members.forEach( member => {
+        memberIds.push(member.id)
+      })
+    }
+
 
     return (
       <div className="group-background">
@@ -85,7 +97,8 @@ class EventShow extends React.Component {
            </div>
          </li>
            <li className="right-sidebar">
-            <h1>Attending:</h1>
+             <EventRsvpButton eventId={this.props.params.eventId} groupId={this.state.group.id} attendeeIds={attendeeIds} memberIds={memberIds} />
+            <h1>{attendeeIds.length} attending:</h1>
             <ul>
               {attendeeList}
             </ul>
