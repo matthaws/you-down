@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import GroupSidebar from '../groups/group_sidebar';
 import EventRsvpButton from './event_rsvp_button';
+import NewEventForm from './new_event_form';
 import { connect } from 'react-redux';
 import { fetchEvent } from '../../actions/event_actions';
 import { fetchGroup } from '../../actions/group_actions';
@@ -10,7 +11,8 @@ import { Link } from 'react-router';
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {event: this.props.event, user: this.props.currentUser, group: this.props.group}
+    this.state = {location: "home", event: this.props.event, user: this.props.currentUser, group: this.props.group}
+    this.changeLocation = this.changeLocation.bind(this);
   }
 
   componentDidMount() {
@@ -26,7 +28,11 @@ class EventShow extends React.Component {
     if (this.state.group && nextProps.event.group && this.state.group.id != nextProps.event.group.id) {
       this.props.fetchGroup(nextProps.event.group.id)
     }
-    this.setState({group: nextProps.group})
+    this.setState({group: nextProps.group, location: "home"})
+  }
+
+  changeLocation(newLocation) {
+    return () => this.setState({location: newLocation})
   }
 
   render() {
@@ -62,6 +68,57 @@ class EventShow extends React.Component {
       })
     }
 
+    let body;
+    switch (this.state.location) {
+      case "edit":
+        body = (<ul className="show-body">
+          <GroupSidebar group={this.state.group}
+            members={this.state.group.members} />
+          <NewEventForm formType="edit" event={this.state.event} eventId={this.props.params.eventId} changeLocation={this.changeLocation}/>
+        </ul>);
+      break;
+      case "createEvent":
+        body = (<ul className="show-body">
+          <GroupSidebar group={this.state.group}
+            members={this.state.group.members} />
+          <NewEventForm formType="new" eventId={this.props.params.eventId} groupId={this.state.group.id} />
+        </ul>);
+        break;
+      case "home":
+      body = (<ul className="show-body">
+        <GroupSidebar group={this.state.group}
+          members={this.state.group.members}
+         />
+       <li>
+         <div className="event-show-main">
+           <ul className="event-details">
+             <li><img src={window.images.clock} />{date}, {time}</li>
+             </ul>
+            <ul className="event-details">
+              <li><img src={window.images.location} />
+
+            {this.state.event.location_name}</li>
+          <li className="event-address"><a href={`http://maps.google.com/?q=${this.state.event.location_name},${this.state.event.location_zip}`}>{this.state.event.location_address}</a></li>
+            </ul>
+            <div className="event-show-description">
+              {this.state.event.description}
+            </div>
+       </div>
+     </li>
+       <li className="right-sidebar">
+         <EventRsvpButton eventId={this.props.params.eventId} groupId={this.state.group.id} attendeeIds={attendeeIds} memberIds={memberIds} />
+        <h1>{attendeeIds.length} attending:</h1>
+        <ul>
+          {attendeeList}
+        </ul>
+       </li>
+      </ul>)
+      break;
+    }
+    let editEventLink = (<div />)
+    if (this.state.event.organizer && this.props.currentUser.id === this.state.event.organizer.id) {
+      editEventLink = (<li onClick={this.changeLocation("edit")}>Edit This Event</li>)
+    }
 
     return (
       <div className="group-background">
@@ -72,38 +129,12 @@ class EventShow extends React.Component {
               <div className="group-menu-border"></div>
               <ul className="group-menu">
                   <Link to={`/groups/${this.state.group.id}`}><li>Group</li></Link>
-                <li>Create a New Event</li>
-              </ul>
+                <li onClick={this.changeLocation("createEvent")}>Create a New Event</li>
+                {editEventLink}
+            </ul>
             </div>
           </nav>
-          <ul className="show-body">
-            <GroupSidebar group={this.state.group}
-              members={this.state.group.members}
-             />
-           <li>
-             <div className="event-show-main">
-               <ul className="event-details">
-                 <li><img src={window.images.clock} />{date}, {time}</li>
-                 </ul>
-                <ul className="event-details">
-                  <li><img src={window.images.location} />
-
-                {this.state.event.location_name}</li>
-              <li className="event-address"><a href={`http://maps.google.com/?q=${this.state.event.location_name},${this.state.event.location_zip}`}>{this.state.event.location_address}</a></li>
-                </ul>
-                <div className="event-show-description">
-                  {this.state.event.description}
-                </div>
-           </div>
-         </li>
-           <li className="right-sidebar">
-             <EventRsvpButton eventId={this.props.params.eventId} groupId={this.state.group.id} attendeeIds={attendeeIds} memberIds={memberIds} />
-            <h1>{attendeeIds.length} attending:</h1>
-            <ul>
-              {attendeeList}
-            </ul>
-           </li>
-          </ul>
+          {body}
         </div>
       </div>
     )

@@ -42,9 +42,11 @@ class GroupDetails extends React.Component{
     let eventList = [];
     if (this.props.events) {
       this.props.events.forEach( (event) => {
-          let date = new Date(event.date).toLocaleDateString();
-          let time = new Date(event.date).toLocaleTimeString();
-              eventList.push(<li key={event.id} className="event-list-item"><ul>
+        let eventDate = new Date(event.date);
+        let date = eventDate.toLocaleDateString();
+        let time = eventDate.toLocaleTimeString();
+          if (eventDate.valueOf() > Date.now()) {
+            eventList.push(<li key={event.id} className="event-list-item"><ul>
           <Link to={`/events/${event.id}`} ><li><h2>{event.event_name}</h2></li></Link>
           <li><img src={window.images.location} /><h3><a href={`http://maps.google.com/?q=${event.location_address}`}>{event.location_name}<br />
             {event.location_address}</a></h3></li>
@@ -53,7 +55,7 @@ class GroupDetails extends React.Component{
             <li>x attending</li>
             <li>{date}, {time}</li>
           </ul>
-          </li>)
+        </li>)}
       });
     };
 

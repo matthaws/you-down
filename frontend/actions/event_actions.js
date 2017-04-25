@@ -25,9 +25,9 @@ export const createEvent = (event) => {
   };
 };
 
-export const updateEvent = (event) => {
+export const updateEvent = (event, eventId) => {
   return (dispatch) => {
-    return EventApiUtil.updateEvent(event)
+    return EventApiUtil.updateEvent(event, eventId)
       .then( event => dispatch(receiveEvent(event)),
               err => dispatch(receiveErrors(err)))
   };

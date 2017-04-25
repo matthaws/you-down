@@ -8,7 +8,8 @@ class GroupEvents extends React.Component {
     super(props);
     this.state = {location: "upcoming"}
     this.upcoming = this.upcoming.bind(this)
-    this.past = this.past.bind(this)
+    this.past = this.past.bind(this);
+
   }
 
   upcoming() {
@@ -65,7 +66,7 @@ class GroupEvents extends React.Component {
         <ul>
           {eventList}
         </ul>
-        <button className="form-button">Create a New Event</button>
+        <button onClick={this.props.changeLocation("createEvent")} className="form-button">Create a New Event</button>
 
       </div>
     )

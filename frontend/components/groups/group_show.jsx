@@ -8,6 +8,7 @@ import GroupEdit from "./group_edit";
 import GroupEvents from "./group_events";
 import GroupWelcome from './group_welcome';
 import GroupSidebar from './group_sidebar';
+import NewEventForm from '../events/new_event_form';
 import { Link, hashHistory } from "react-router";
 
 
@@ -15,13 +16,9 @@ class GroupShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = { location: "home", group: this.props.group };
-    this.goHome = this.goHome.bind(this);
-    this.members = this.members.bind(this);
-    this.edit = this.edit.bind(this);
     this.joinGroup = this.joinGroup.bind(this);
-    this.events = this.events.bind(this);
-    this.leave = this.leave.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
+    this.changeLocation = this.changeLocation.bind(this);
   }
 
   handleLeave() {
@@ -50,28 +47,12 @@ class GroupShow extends React.Component {
     this.setState({group: nextProps.group})
   }
 
-  goHome() {
-    this.setState({location: "home" })
+  changeLocation(newLocation) {
+    return () => this.setState({location: newLocation})
   }
 
-  members(e) {
-    this.setState({location: "members"})
-  }
-
-  edit(e) {
-    this.setState({location: "edit"})
-  }
-
-  events(e) {
-    this.setState({location: "events"})
-  }
-
-  leave(e) {
-    this.setState({location: "leave"})
-  }
 
   render() {
-
     let members = [];
     let memberIds = [];
 
@@ -84,7 +65,7 @@ class GroupShow extends React.Component {
 
     let joinButton = (<button onClick={this.joinGroup} className="form-button">Join Us!</button>)
     if (currentUser && memberIds.includes(currentUser.id)) {
-      joinButton = (<button onClick={this.leave} className="form-button">Leave Group</button>)
+      joinButton = (<button onClick={this.changeLocation("leave")} className="form-button">Leave Group</button>)
     }
 
     let body;
@@ -99,10 +80,13 @@ class GroupShow extends React.Component {
         body = (<GroupEdit goHome={this.goHome} group={this.state.group} />);
         break;
       case "events":
-        body = (<GroupEvents events={this.state.group.events} />)
+        body = (<GroupEvents changeLocation={this.changeLocation} events={this.state.group.events} />)
         break;
       case "welcome":
         body = (<GroupWelcome group={this.state.group} user={this.props.currentUser} />)
+        break;
+      case "createEvent":
+        body = (<NewEventForm  formType="new" groupId={this.state.group.id} />)
         break;
       case "leave":
       body = (<li>
@@ -117,7 +101,7 @@ class GroupShow extends React.Component {
     let editLink = (<div />)
     if (this.state.group.organizer && this.state.group.organizer.id === this.props.currentUser.id) {
       let editClass = this.state.location === "edit" ? "active" : ""
-      editLink = <li className={editClass} onClick={this.edit}>Edit</li>
+      editLink = <li className={editClass} onClick={this.changeLocation("edit")}>Edit</li>
     }
 
 
@@ -138,9 +122,9 @@ class GroupShow extends React.Component {
                 <div className="group-menu-background">
                 <div className="group-menu-border"></div>
                 <ul className="group-menu">
-                  <li className={homeClass} onClick={this.goHome}>Home</li>
-                  <li className={memberClass} onClick={this.members}>Members</li>
-                  <li className={eventClass} onClick={this.events}>Events</li>
+                  <li className={homeClass} onClick={this.changeLocation("home")}>Home</li>
+                  <li className={memberClass} onClick={this.changeLocation("members")}>Members</li>
+                  <li className={eventClass} onClick={this.changeLocation("events")}>Events</li>
                   {editLink}
                 </ul>
                 {joinButton}

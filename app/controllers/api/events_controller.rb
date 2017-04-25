@@ -2,16 +2,21 @@ class Api::EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      redirect_to api_event_url(@event.id)
+      rsvp = Rsvp.new
+      rsvp.event_id = @event.id
+      rsvp.attendee_id = current_user.id
+      rsvp.save
+      @event = Event.includes(:group, :organizer, :attendees).find(rsvp.event_id)
+      render :show
     else
       render json: @event.errors.full_messages, status: 422
     end
   end
 
   def update
-    @event = Event.find(params[:id])
-    if @event.update
-      redirect_to api_event_url(@event.id)
+    @event = Event.includes(:group, :organizer, :attendees).find(params[:id])
+    if @event.update(event_params)
+      render :show
     else
       render json: @event.errors.full_messages, status: 422
     end
