@@ -12,7 +12,8 @@ class Group < ActiveRecord::Base
   has_many :memberships,
     class_name: "Membership",
     foreign_key: :group_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
 
   has_many :members,
     through: :memberships,
@@ -21,12 +22,14 @@ class Group < ActiveRecord::Base
   has_many :group_events,
     class_name: "Event",
     foreign_key: :group_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
 
   has_many :category_groupings,
     class_name: "CategoryGrouping",
     foreign_key: :group_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
 
   has_many :categories,
     through: :category_groupings,

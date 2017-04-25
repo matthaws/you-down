@@ -1,11 +1,18 @@
 class Api::GroupsController < ApplicationController
   def create
+    debugger
     @group = Group.new(group_params)
     if @group.save
       membership = Membership.new
       membership.member_id = @group.organizer_id
       membership.group_id = @group.id
       membership.save
+      if params['group']['selectedCategories']
+        params['group']['selectedCategories'].each do |category|
+          category = Category.find_by(title: category)
+          CategoryGrouping.create("group_id": @group.id, category_id: category.id)
+        end
+      end
       @user = current_user
       render :create
     else
@@ -41,6 +48,6 @@ class Api::GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:group_name, :id, :location_name, :location_zip, :description, :organizer_id, :member_moniker, :group_pic)
+    params.require(:group).permit(:group_name, :selectedCategories, :id, :location_name, :location_zip, :description, :organizer_id, :member_moniker, :group_pic)
   end
 end

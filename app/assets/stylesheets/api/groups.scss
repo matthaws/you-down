@@ -170,11 +170,9 @@
 }
 
 .new-group-form {
-  position: relative;
   z-index: 100;
   background-color: white;
-  height: 850px;
-
+  min-height: 850px;
 }
 
 .form-banner {
@@ -185,7 +183,7 @@
 }
 
 .form-banner h1 {
-  padding-top: 70px;
+  padding-top: 40px;
   font-size: 48px;
 }
 
@@ -195,12 +193,54 @@
 }
 
 .form-banner img {
-  width: 1800px;
-  height: auto;
   position: absolute;
   left: 0;
   top: -250px;
   z-index: -50;
+}
+
+.checkboxes {
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+input[type=checkbox] {
+  visibility: hidden;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  background: #ddd;
+  margin: 20px 90px;
+  border-radius: 100%;
+  position: relative;
+  box-shadow: 0px 1px 2px rbga(0,0,0,0.5);
+}
+
+.checkbox label {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 100px;
+  transition: .5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 5;
+  background: #333;
+  box-shadow: inset 0px 1px 3px rgba(0,0,0,0.5);
+}
+.checkbox p {
+  width: 280px;
+  padding-left: 30px;
+}
+
+.checkbox input[type=checkbox]:checked + label {
+  background: #ED1C40;
 }
 
 .form-section {
@@ -214,13 +254,14 @@
 
 .form-section input{
   padding: 8px;
-  width: 100%;
+  width: 500px;
   border-radius: 3px;
 }
 
 .form-section textarea {
   resize: none;
-  width: 125%;
+  margin-left: 20px;
+  width: 500px;
   height: 50px;
   padding: 5px;
   margin-bottom: 30px;
