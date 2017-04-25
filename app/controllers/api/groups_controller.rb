@@ -1,6 +1,5 @@
 class Api::GroupsController < ApplicationController
   def create
-    debugger
     @group = Group.new(group_params)
     if @group.save
       membership = Membership.new
