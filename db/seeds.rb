@@ -8,6 +8,7 @@
 require 'faker'
 
 User.destroy_all
+Membership.delete_all
 
 guest = User.new("full_name": "Russell T.", "location_zip": 11206, "email": "Guest@Guest.com", "password": "GUESTGUEST")
 user1 = User.new("full_name": "Cheryl", "location_zip": 10027, "email": "puppies@puppies.com", "password": "ILOVEDOGS")
@@ -50,3 +51,24 @@ b = Membership.new
 b.member_id = user1.id
 b.group_id = corgis.id
 b.save
+
+Category.destroy_all
+CategoryGrouping.destroy_all
+outdoors = Category.create("title": "Outdoors & Adventure")
+tech = Category.create("title": "Technology")
+learning = Category.create("title": "Learning")
+food = Category.create("title": "Food & Drink")
+writing = Category.create("title": "Writing")
+lgbt = Category.create("title": "LGBTQ")
+book = Category.create("title": "Book Clubs")
+pets = Category.create("title": "Pets")
+hobbies = Category.create("title": "Hobbies & Crafts")
+social = Category.create("title": "Social")
+career = Category.create("title": "Career & Business")
+games = Category.create("title": "Games")
+
+cata = CategoryGrouping.new("category_id": pets.id, "group_id": corgis.id)
+catb = CategoryGrouping.new("category_id": food.id, "group_id": test_group.id)
+
+cata.save
+catb.save

@@ -68,6 +68,7 @@ class TopRight extends React.Component {
     <div className="nav-drop-down">
       <ul className="nav-group-list">
         {groupList}
+        <Link to="/search"><li>*All Groups*</li></Link>
       </ul>
       <ul>
         <li onClick={this.goToProfile}>Profile</li>

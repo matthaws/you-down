@@ -13,6 +13,11 @@ class Api::GroupsController < ApplicationController
     end
   end
 
+  def index
+    @groups = Group.includes(:members, :group_events).all
+    render :index
+  end
+
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)

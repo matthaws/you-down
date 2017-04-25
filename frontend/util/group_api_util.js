@@ -6,6 +6,13 @@ export const fetchGroup = (groupId) => {
   });
 };
 
+export const fetchAllGroups = () => {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/groups'
+  });
+};
+
 export const createGroup = (group) => {
   return $.ajax({
     method: 'POST',

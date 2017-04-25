@@ -41,7 +41,85 @@ class Welcome extends React.Component {
         </Modal>
       </div>
       <VideoBar />
-    <div className="placeholder"></div>
+    <div className="placeholder">
+      <h1>Explore</h1>
+      <div >
+      <ul className="category-list">
+        <li>
+          <ul>
+            <li><img src={window.images.outdoors} /></li>
+            <li>Outdoors & Adventure</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><img src={window.images.tech} /></li>
+            <li>Technology</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><img src={window.images.learning} /></li>
+            <li>Learning</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><img src={window.images.food} /></li>
+            <li>Food & Drink</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><img src={window.images.writing} /></li>
+            <li>Writing</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><img src={window.images.lgbt} /></li>
+            <li>LGBTQ</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><img src={window.images.games} /></li>
+            <li>Games</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><img src={window.images.bookclub} /></li>
+            <li>Book Clubs</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><img src={window.images.pets} /></li>
+            <li>Pets</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><img src={window.images.crafts} /></li>
+            <li>Hobbies & Crafts</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><img src={window.images.social} /></li>
+            <li>Social</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><img src={window.images.business} /></li>
+            <li>Career & Networking</li>
+          </ul>
+        </li>
+      </ul>
+      </div>
+    </div>
   </section>
 );
  }

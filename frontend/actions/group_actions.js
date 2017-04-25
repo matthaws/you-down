@@ -3,6 +3,7 @@ import { receiveErrors } from './session_actions';
 import { hashHistory } from 'react-router';
 
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
+export const RECEIVE_ALL_GROUPS = "RECEIVE_ALL_GROUPS";
 
 export const receiveGroup = (group, user) => ({
   type: RECEIVE_GROUP,
@@ -10,11 +11,23 @@ export const receiveGroup = (group, user) => ({
   user
 });
 
+export const receiveAllGroups = (groups) => ({
+  type: RECEIVE_ALL_GROUPS,
+  groups
+})
+
 export const fetchGroup = (groupId) => {
   return (dispatch) => {
     return GroupApiUtil.fetchGroup(groupId)
       .then( group => dispatch(receiveGroup(group)),
               err => dispatch(receiveErrors(err)))
+  };
+};
+
+export const fetchAllGroups = () => {
+  return (dispatch) => {
+    return GroupApiUtil.fetchAllGroups()
+      .then( groups => dispatch(receiveAllGroups(groups)))
   };
 };
 

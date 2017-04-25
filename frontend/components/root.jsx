@@ -8,24 +8,39 @@ import ProfileEdit from './profile/profile-edit';
 import GroupShow from './groups/group_show';
 import NewGroupForm from './groups/new_group_form';
 import EventShow from './events/event_show';
+import SearchContainer from './search/search_container';
 
 const _redirectIfLoggedIn = (nextState, replace) => {
   if (store.getState().session.currentUser) {
-    replace('/');
+    replace('/search');
   }
 }
+
+const _redirectIfNotLoggedIn = (nextState, replace) => {
+  if (store.getState().session.currentUser === {}) {
+    replace('/welcome')
+  }
+}
+
+const _redirectEntry = (nextState, replace) => {
+  if (store.getState().session.currentUser) {
+    replace('/search')
+  } else {
+    replace('/welcome')
+  };
+};
 
 const Root = ({ store }) => (
   <Provider store={ store } >
     <Router history={ hashHistory }>
       <Route path='/' component={ App }>
-        <IndexRoute component = { Welcome } />
-        <Route path='welcome' component={ Welcome } />
+        <Route path='welcome' component={ Welcome } onEnter={_redirectIfLoggedIn} />
         <Route path='users/:userId' component={ ProfileMain } />
         <Route path='users/:userId/edit' component={ ProfileEdit } />
         <Route path='groups/:groupId' component={ GroupShow } />
         <Route path='events/:eventId' component={ EventShow } />
         <Route path='newgroup' component={ NewGroupForm } />
+        <Route path='search' component={ SearchContainer } />
       </Route>
     </Router>
   </Provider>

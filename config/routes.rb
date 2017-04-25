@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :update, :show]
-    resources :groups, only: [:create, :update, :show, :destroy] do
+    resources :groups, only: [:index, :create, :update, :show, :destroy] do
       resources :memberships, only: [:create]
       delete '/memberships', to: 'memberships#destroy'
     end

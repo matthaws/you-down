@@ -23,6 +23,14 @@ class Group < ActiveRecord::Base
     foreign_key: :group_id,
     primary_key: :id
 
+  has_many :category_groupings,
+    class_name: "CategoryGrouping",
+    foreign_key: :group_id,
+    primary_key: :id
+
+  has_many :categories,
+    through: :category_groupings,
+    source: :category
 
 
 end
