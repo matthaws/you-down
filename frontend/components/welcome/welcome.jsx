@@ -86,7 +86,7 @@ class Welcome extends React.Component {
           </ul>
         </li>
       </Link>
-      <Link to="/search/lgbt">
+      <Link to="/search/lgbtq">
         <li>
           <ul>
             <li><img src={window.images.lgbt} /></li>

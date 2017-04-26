@@ -33,9 +33,9 @@ class ProfileMain extends React.Component {
     }
     let groupNum = ""
     let groupList = []
-    if (this.state.user.groups) {
-      groupNum = this.state.user.groups.length
-      this.state.user.groups.forEach( (group) => {
+    if (this.state.user.joined_groups) {
+      groupNum = this.state.user.joined_groups.length
+      this.state.user.joined_groups.forEach( (group) => {
         let organizer = (<h2>Member</h2>)
         if (group.organizer_id === this.state.user.id) {
           organizer = (<h2>Organizer</h2>)

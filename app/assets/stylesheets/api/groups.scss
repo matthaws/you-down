@@ -349,7 +349,8 @@ input[type=checkbox] {
 
 .member-pic-thumb {
   height: 100px;
-  width: auto;
+  width: 100px;
+  object-fit: cover;
 }
 
 .memberItem {
@@ -373,7 +374,8 @@ input[type=checkbox] {
 
 .small-thumb {
   height: 50px;
-  max-width: 175px;
+  width: 75px;
+  object-fit: cover;
 }
 
 .member-main {
