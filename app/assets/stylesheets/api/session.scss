@@ -80,6 +80,7 @@
   font-weight: bold;
   padding: 30px;
   padding-top: 15px;
+
 }
 
 #footer div {
@@ -146,8 +147,10 @@
 
 .placeholder {
   background-color: white;
+  height: 815px;
   position: absolute;
   left: 0; top: 500px;
+  bottom: 300px;
   z-index: 10;
   width: 100%;
   padding-top: 0;
@@ -290,13 +293,18 @@
   padding-bottom: 20px;
 }
 
+.category-list li {
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
 .category-list img {
   width: 300px;
   height: 200px;
-  border: 1px solid black;
   object-fit: cover;
 }
 
 .category-list img:hover {
   cursor: pointer;
+  transform: scale(1.1);
 }
