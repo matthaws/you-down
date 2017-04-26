@@ -130,9 +130,7 @@ class GroupShow extends React.Component {
               </div>
             </nav>
             <ul className="show-body">
-              <GroupSidebar group={this.state.group}
-                members={members}
-                eventCount={eventCount} />
+            <GroupSidebar groupId={this.state.group.id}  />
             {body}
             </ul>
         </div>

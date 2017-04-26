@@ -24,10 +24,8 @@ class EventShow extends React.Component {
     if (this.state.event.id && nextProps.params.eventId != this.state.group.id.toString()){
       this.props.fetchEvent(nextProps.params.eventId)
     }
+
     this.setState({event: nextProps.event})
-    if (this.state.group && nextProps.event.group && this.state.group.id != nextProps.event.group.id) {
-      this.props.fetchGroup(nextProps.event.group.id)
-    }
     this.setState({group: nextProps.group, location: "home"})
   }
 
@@ -68,27 +66,28 @@ class EventShow extends React.Component {
       })
     }
 
+    let groupId = "";
+    if (this.state.event.group) {
+      groupId = this.state.event.group.id;
+    }
+
     let body;
     switch (this.state.location) {
       case "edit":
         body = (<ul className="show-body">
-          <GroupSidebar group={this.state.group}
-            members={this.state.group.members} />
+          <GroupSidebar groupId={groupId}/>
           <NewEventForm formType="edit" event={this.state.event} eventId={this.props.params.eventId} changeLocation={this.changeLocation}/>
         </ul>);
       break;
       case "createEvent":
         body = (<ul className="show-body">
-          <GroupSidebar group={this.state.group}
-            members={this.state.group.members} />
+            <GroupSidebar groupId={groupId}/>
           <NewEventForm formType="new" eventId={this.props.params.eventId} groupId={this.state.group.id} />
         </ul>);
         break;
       case "home":
       body = (<ul className="show-body">
-        <GroupSidebar group={this.state.group}
-          members={this.state.group.members}
-         />
+        <GroupSidebar groupId={groupId}/>
        <li>
          <div className="event-show-main">
            <ul className="event-details">

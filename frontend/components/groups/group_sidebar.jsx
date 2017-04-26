@@ -2,15 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { fetchGroup } from '../../actions/group_actions';
 
 class GroupSidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {group: this.props.group, members: this.props.members}
+    this.state = {group: this.props.group}
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({group: nextProps.group, members: nextProps.members});
+    if (nextProps.groupId !== this.props.groupId && nextProps.groupId !== "") {
+      this.props.fetchGroup(nextProps.groupId)
+    }
+    this.setState({group: nextProps.group})
   }
 
   render() {
@@ -35,8 +39,8 @@ class GroupSidebar extends React.Component {
         </Link>)
     }
     let memberCount = 0
-    if (this.state.members) {
-      memberCount = this.state.members.length
+    if (this.state.group.members) {
+      memberCount = this.state.group.members.length
     }
 
     return   (<li><div className="left-sidebar">
@@ -53,4 +57,16 @@ class GroupSidebar extends React.Component {
   }
 }
 
-export default GroupSidebar;
+const mapStateToProps = (state) => {
+  return {
+    group: state.groups
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchGroup: (groupId) => dispatch(fetchGroup(groupId))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GroupSidebar);
