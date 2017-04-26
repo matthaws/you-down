@@ -47,10 +47,18 @@ render() {
       </li>
     )
   })
-}
-  return (<ul className="result-list">
-    {groupList}
-  </ul>);
+};
+  let classname = "";
+  if (this.props.hidden === "true") {
+    classname = "hidden-list"
+  };
+
+  return (
+    <div className={classname}>
+      <ul className="result-list">
+        {groupList}
+      </ul>
+    </div>);
   }
 }
 

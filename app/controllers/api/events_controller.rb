@@ -22,6 +22,16 @@ class Api::EventsController < ApplicationController
     end
   end
 
+  def search
+    @events = Event.search_by_content(params[:search])
+    render :index
+  end
+
+  def index
+    @events = Event.all
+    render :index
+  end
+
   def show
     @event = Event.includes(:group, :organizer, :attendees).find(params[:id])
     render :show

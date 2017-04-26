@@ -3,17 +3,30 @@ import { receiveErrors } from './session_actions';
 import { hashHistory } from 'react-router';
 
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
+export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS";
 
 export const receiveEvent = (event) => ({
   type: RECEIVE_EVENT,
   event
 });
 
+export const receiveAllEvents = (events) => ({
+  type: RECEIVE_ALL_EVENTS,
+  events
+  });
+
 export const fetchEvent = (eventId) => {
   return (dispatch) => {
     return EventApiUtil.fetchEvent(eventId)
       .then( event => dispatch(receiveEvent(event)),
               err => dispatch(receiveErrors(err)))
+  };
+};
+
+export const fetchAllEvents = () => {
+  return (dispatch) => {
+    return EventApiUtil.fetchAllEvents()
+      .then( events => dispatch(receiveAllEvents))
   };
 };
 

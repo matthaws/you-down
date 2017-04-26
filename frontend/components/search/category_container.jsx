@@ -39,7 +39,7 @@ class CategoryContainer extends React.Component {
         <div className="category-header">
           <h1>{this.state.title} groups</h1>
         </div>
-        <GroupSearch category={this.state.title} />
+        <GroupSearch hidden="false" category={this.state.title} />
       </div>
 
     )

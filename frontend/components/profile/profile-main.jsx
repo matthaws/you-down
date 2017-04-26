@@ -15,7 +15,9 @@ class ProfileMain extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
+    if (nextProps.params.userId !== this.state.user.id) {
+      this.props.fetchUser(nextProps.params.userId);
+    }
     this.setState({user: nextProps.user})
   }
 

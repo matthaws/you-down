@@ -1,4 +1,7 @@
 class Group < ActiveRecord::Base
+  include PgSearch
+
+  pg_search_scope :search_by_content, :against => [:group_name, :description]
   validates :group_name, uniqueness: true, presence: true
   validates :location_name, :location_zip, :description, :organizer_id, presence: true
   has_attached_file :group_pic, default_url: "DEFAULT"

@@ -1,4 +1,8 @@
 class Event < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_content, :against => [:event_name, :description]
+
+  
   validates :date, :event_name, :description, :location_address, presence: true
 
   belongs_to :organizer,

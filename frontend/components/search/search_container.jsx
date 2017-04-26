@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { fetchAllGroups } from '../../actions/group_actions';
+import { fetchAllGroups, searchGroups } from '../../actions/group_actions';
 import { Link } from 'react-router';
 import GroupSearch from './group_search';
 
 class SearchContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {location: "groups"}
+    this.state = {location: "groups", search: ""}
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   changeLocation(location) {
@@ -17,15 +20,40 @@ class SearchContainer extends React.Component {
     }
   }
 
+  handleSubmit() {
+    if (this.state.search === "") {
+      this.props.fetchAllGroups();
+    } else {
+    this.props.searchGroups(this.state.search)
+      }
+  }
+
+  handleSearchChange(e) {
+    this.setState({search: e.target.value})
+  }
+
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.handleSubmit()
+    }
+  }
+
   render() {
-    let body;
+    let grouphidden;
+    let eventhidden;
     switch (this.state.location) {
       case "groups":
-        body = <GroupSearch />
+        grouphidden = "false";
+        eventhidden = "true";
         break;
       case "events":
-        body = <div />
+        grouphidden = "true";
+        eventhidden = "false";
     }
+
+    let group = <GroupSearch hidden={grouphidden} />
+
+
     let groupClass = this.state.location === "groups" ? "selected-button" : "search-button";
     let eventClass = this.state.location === "events" ? "selected-button" : "search-button";
 
@@ -34,19 +62,33 @@ class SearchContainer extends React.Component {
         <div className="search-header">
           <h1>Find the perfect group</h1>
           <div className="search-bar">
-            <input type="text" onChange={this.handleSearchChange} onKeyPress={this.handleKeyPress} />
+            <input type="text" onChange={this.handleSearchChange} onKeyPress={this.handleKeyPress} /> <p>Search</p>
             <ul>
               <li><button onClick={this.changeLocation("groups")} className={groupClass}>Groups</button></li>
               <li><button onClick={this.changeLocation("events")} className={eventClass}>Events</button></li>
             </ul>
+            <ul></ul>
           </div>
         </div>
-        {body}
+        {group}
       </div>
 
     )
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    groups: state.groups,
+    events: state.events
+  };
+};
 
-export default SearchContainer;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchAllGroups: () => dispatch(fetchAllGroups()),
+    searchGroups: (search) => dispatch(searchGroups(search))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);

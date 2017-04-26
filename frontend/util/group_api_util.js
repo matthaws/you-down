@@ -62,3 +62,10 @@ export const leaveGroup = (groupId) => {
     url: `/api/groups/${groupId}/memberships`
   });
 };
+
+export const searchGroups = (search) => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/groups/search?search=${search}`
+  });
+};

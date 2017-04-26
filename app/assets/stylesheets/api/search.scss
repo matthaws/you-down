@@ -3,7 +3,7 @@
   height: 50px;
   padding: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #0F1721;
   border-radius: 3px;
   position: absolute;
@@ -16,6 +16,11 @@
   display: flex;
   justify-content: space-between;
   margin-right: 20px;
+}
+
+.search-bar p {
+  margin-top: 10px;
+  width: 200px;
 }
 
 .search-button {
@@ -47,9 +52,11 @@
 }
 
 .search-bar input {
-  height: 45px;
-  width: 375px;
+  height: 35px;
+  width: 325px;
   border-radius: 3px;
+  font-size: 24px;
+  padding: 5px;
 }
 
 .search-main {
@@ -79,6 +86,10 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+
+.hidden-list {
+  visibility: hidden;
 }
 
 .result-entry {

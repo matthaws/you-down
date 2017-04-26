@@ -21,6 +21,13 @@ export const fetchEvent = (eventId) => {
   });
 };
 
+export const fetchAllEvents = () => {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/events'
+  });
+};
+
 export const deleteEvent = (eventId) => {
   return $.ajax({
     method: 'DELETE',

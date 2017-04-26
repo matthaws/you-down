@@ -45,6 +45,11 @@ class Api::GroupsController < ApplicationController
     render :destroy
   end
 
+  def search
+    @groups = Group.search_by_content(params[:search])
+    render :search
+  end
+
   def category
     all_groups = Group.includes(:categories, :members, :group_events).all
     category_id = Category.find_by(title: params[:category]).id

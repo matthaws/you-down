@@ -74,3 +74,10 @@ export const leaveGroup = (groupId) => {
     return GroupApiUtil.leaveGroup(groupId)
   };
 };
+
+export const searchGroups = (search) => {
+  return (dispatch) => {
+    return GroupApiUtil.searchGroups(search)
+      .then( groups => dispatch(receiveAllGroups(groups)))
+  };
+};
