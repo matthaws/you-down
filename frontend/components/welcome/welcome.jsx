@@ -5,12 +5,14 @@ import Modal from 'react-modal';
 import AuthForm from './auth_form';
 import { modalStyle } from '../../util/modal_util';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 class Welcome extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       modalOpen: false,
+      currentUser: this.props.currentUser
     };
 
     this.closeModal = this.closeModal.bind(this);
@@ -25,13 +27,13 @@ class Welcome extends React.Component {
     this.setState({ modalOpen: true })
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({currentUser: nextProps.currentUser})
+  }
+
   render () {
-    return (
-  <section className="welcome">
-      <div id="videoMessage">
-        <h1>Fun People, Fun Stuff</h1>
-        <h3>Are <i>you</i> down?</h3>
-        <button className="main-button" onClick={this.openModal}>Sign Up</button>
+    debugger
+    let button = ( <div><button className="main-button" onClick={this.openModal}>Sign Up</button>
         <Modal
           style={ modalStyle }
           contentLabel="auth_form"
@@ -39,7 +41,18 @@ class Welcome extends React.Component {
           isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal}>
           <AuthForm closeModal={this.closeModal} formType="signup" />
-        </Modal>
+        </Modal></div>);
+
+    if (this.state.currentUser && this.state.currentUser.full_name) {
+      button = <div />
+    }
+
+    return (
+  <section className="welcome">
+      <div id="videoMessage">
+        <h1>Fun People, Fun Stuff</h1>
+        <h3>Are <i>you</i> down?</h3>
+          {button}
       </div>
       <VideoBar />
     <div className="placeholder">
@@ -149,4 +162,11 @@ class Welcome extends React.Component {
 );
  }
 }
-export default Welcome;
+
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.session.currentUser
+  };
+};
+
+export default connect(mapStateToProps, null)(Welcome);
