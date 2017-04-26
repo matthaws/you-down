@@ -73,7 +73,7 @@ class GroupEdit extends React.Component {
             <textarea value={this.state.description} onChange={this.update("description")} />
           </li>
           <li>Members known as:<br />
-            <input type="text" value={this.state.member_moniker} onChange={this.update("member_monkier")} />
+            <input type="text" value={this.state.member_moniker} onChange={this.update("member_moniker")} />
           </li>
           <li>Upload a new picture to represent your group: <br />
             <input type="file" onChange={this.updatePicFile} /></li>
