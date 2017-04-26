@@ -14,8 +14,8 @@ class Footer extends React.Component {
         </ul>
         <ul>
           <li>Matthew Haws</li>
-          <li>Github</li>
-          <li>LinkedIn</li>
+          <a href="https://github.com/matthaws"><li>Github</li></a>
+          <a href="https://www.linkedin.com/in/matt-haws/"><li>LinkedIn</li></a>
           <li>   </li>
         </ul>
       </div>

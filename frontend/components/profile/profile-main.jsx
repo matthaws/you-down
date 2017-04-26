@@ -50,7 +50,7 @@ class ProfileMain extends React.Component {
           <li key={group.id}>
             <Link to={`/groups/${group.id}`}>
             <ul className="groupItem">
-              <li><img className="group-pic-thumb" src={group_pic_url} /></li>
+              <img className="group-pic-thumb" src={group_pic_url} />
               <li><h1>{group.group_name}</h1><br />{organizer}</li>
             </ul>
           </Link>

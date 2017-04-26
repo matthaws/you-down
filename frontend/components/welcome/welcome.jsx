@@ -32,7 +32,7 @@ class Welcome extends React.Component {
   }
 
   render () {
-    debugger
+
     let button = ( <div><button className="main-button" onClick={this.openModal}>Sign Up</button>
         <Modal
           style={ modalStyle }
