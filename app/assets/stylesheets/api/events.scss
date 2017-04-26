@@ -45,6 +45,8 @@
   width: 20px;
   height: 20px;
   padding-right: 10px;
+  object-fit: cover;
+
 }
 
 .group-event-list {
@@ -96,6 +98,7 @@
   height: auto;
   vertical-align: text-top;
   padding-right: 20px;
+  object-fit: cover;
 }
 
 .event-address {

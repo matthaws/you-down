@@ -101,8 +101,10 @@
   text-align: left;
   position: absolute;
   bottom: 0px;
+  color: white;
   padding: 10px;
   font-size: 12px;
+  text-shadow: -1px 0 #0F1721, 0 1px #0f1721, 1px 0 #0f1721, 0 -1px #0f1721;
 }
 
 .result-entry li:first-child {
@@ -120,6 +122,7 @@
 .result-entry img {
   width: 310px;
   height: 180px;
+  object-fit: cover;
 }
 
 .category-header {

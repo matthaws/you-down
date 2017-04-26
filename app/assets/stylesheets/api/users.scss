@@ -19,6 +19,7 @@ a {
   cursor: pointer;
   vertical-align: center;
   padding-right: 25px;
+  object-fit: cover;
 }
 
 .profile_pic_thumb:hover {
@@ -130,6 +131,7 @@ a {
   width: 200px;
   height: auto;
   margin: 4px;
+  object-fit: cover;
 }
 
 .left-box h1 {
@@ -179,6 +181,7 @@ a {
 .group-pic-thumb {
   width: 200px;
   max-height: 200px;
+  object-fit: cover;
 }
 
 .groupItem {
