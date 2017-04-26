@@ -24,6 +24,13 @@ export const fetchGroup = (groupId) => {
   };
 };
 
+export const fetchGroupsByCategory = (category) => {
+  return (dispatch) => {
+    return GroupApiUtil.fetchGroupsByCategory(category)
+      .then( groups => dispatch(receiveAllGroups(groups)))
+  };
+};
+
 export const fetchAllGroups = () => {
   return (dispatch) => {
     return GroupApiUtil.fetchAllGroups()

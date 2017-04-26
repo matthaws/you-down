@@ -6,6 +6,14 @@ export const fetchGroup = (groupId) => {
   });
 };
 
+export const fetchGroupsByCategory = (category) => {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/category',
+    data: { category }
+  });
+};
+
 export const fetchAllGroups = () => {
   return $.ajax({
     method: 'GET',

@@ -35,7 +35,7 @@ class GroupEvents extends React.Component {
             {event.location_address}</a></h3></li>
           </ul>
           <ul>
-            <li>x attending</li>
+            <li>{this.props.memberNum} attending</li>
             <li>{date}, {time}</li>
           </ul>
           </li>

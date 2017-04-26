@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router';
 
 class Footer extends React.Component {
 
@@ -8,8 +9,8 @@ class Footer extends React.Component {
       <nav id="footer">
         <div>
         <ul>
-          <li>Start a Group</li>
-          <li>Home</li>
+          <Link to="/newgroup"><li>Start a Group</li></Link>
+          <Link to="/welcome"><li>Home</li></Link>
         </ul>
         <ul>
           <li>Matthew Haws</li>

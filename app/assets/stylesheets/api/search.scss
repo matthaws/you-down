@@ -1,0 +1,135 @@
+.search-bar {
+  width: 940px;
+  height: 50px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #0F1721;
+  border-radius: 3px;
+  position: absolute;
+  bottom: -35px;
+  left: 0; right: 0;
+  margin: 0 auto;
+}
+
+.search-bar ul {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+
+.search-button {
+  width: 125px;
+  height: 45px;
+  background-color: #0F1721;
+  border: 1px solid grey;
+  border-radius: 3px;
+  color: grey;
+  font-size: 19px;
+}
+
+.selected-button {
+  width: 125px;
+  height: 45px;
+  background-color: grey;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  color: white;
+  font-size: 19px;
+}
+
+.search-button:hover {
+  cursor: pointer;
+}
+
+.selected-button:hover {
+  cursor: pointer;
+}
+
+.search-bar input {
+  height: 45px;
+  width: 375px;
+  border-radius: 3px;
+}
+
+.search-main {
+  background-color: #FAFAFA;
+  min-height: 900px;
+}
+
+.search-header {
+  height: 170px;
+  background-color: #ED1C40;
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  position: relative;
+}
+
+.search-header h1 {
+  line-height: 170px;
+  margin-bottom: 10px;
+}
+
+.result-list {
+  width: 950px;
+  margin: 0 auto;
+  padding-top: 60px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.result-entry {
+  width: 300px;
+  height: 180px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-self: left;
+  border: 1px solid lightgrey;
+  position: relative;
+  margin: 5px;
+}
+
+.result-entry:hover {
+
+}
+
+.result-entry li {
+  text-align: left;
+  position: absolute;
+  bottom: 0px;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.result-entry li:first-child {
+
+}
+
+.result-entry h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding-bottom: 20px;
+  text-shadow: -1px 0 #0F1721, 0 1px #0f1721, 1px 0 #0f1721, 0 -1px #0f1721;
+}
+
+.result-entry img {
+  width: 310px;
+  height: 180px;
+}
+
+.category-header {
+  height: 170px;
+  text-align: center;
+  background-color: #0F1721;
+}
+
+.category-header h1 {
+  line-height: 170px;
+  font-size: 32px;
+  color: white;
+}

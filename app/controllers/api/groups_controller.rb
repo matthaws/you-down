@@ -45,6 +45,19 @@ class Api::GroupsController < ApplicationController
     render :destroy
   end
 
+  def category
+    all_groups = Group.includes(:categories, :members, :group_events).all
+    category_id = Category.find_by(title: params[:category]).id
+    @groups = [];
+    all_groups.each do |one_group|
+      if one_group.categories.ids.include?(category_id)
+        @groups << one_group
+      end
+    end
+
+    render :index
+  end
+
   private
   def group_params
     params.require(:group).permit(:group_name, :selectedCategories, :id, :location_name, :location_zip, :description, :organizer_id, :member_moniker, :group_pic)

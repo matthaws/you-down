@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
 
   namespace :api, defaults: { format: :json } do
+    get "/category", to: 'groups#category'
     resources :users, only: [:create, :update, :show]
     resources :groups, only: [:index, :create, :update, :show, :destroy] do
       resources :memberships, only: [:create]

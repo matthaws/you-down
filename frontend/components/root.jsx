@@ -9,6 +9,7 @@ import GroupShow from './groups/group_show';
 import NewGroupForm from './groups/new_group_form';
 import EventShow from './events/event_show';
 import SearchContainer from './search/search_container';
+import CategoryContainer from './search/category_container';
 
 const _redirectIfLoggedIn = (nextState, replace) => {
   if (store.getState().session.currentUser) {
@@ -34,13 +35,15 @@ const Root = ({ store }) => (
   <Provider store={ store } >
     <Router history={ hashHistory }>
       <Route path='/' component={ App }>
-        <Route path='welcome' component={ Welcome } onEnter={_redirectIfLoggedIn} />
+        <IndexRoute component={ Welcome } />
+        <Route path='welcome' component={ Welcome }  />
         <Route path='users/:userId' component={ ProfileMain } />
         <Route path='users/:userId/edit' component={ ProfileEdit } />
         <Route path='groups/:groupId' component={ GroupShow } />
         <Route path='events/:eventId' component={ EventShow } />
         <Route path='newgroup' component={ NewGroupForm } />
         <Route path='search' component={ SearchContainer } />
+        <Route path='search/:category' component={ CategoryContainer} />
       </Route>
     </Router>
   </Provider>

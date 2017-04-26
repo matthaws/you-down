@@ -67,7 +67,6 @@ class GroupShow extends React.Component {
     if (currentUser && memberIds.includes(currentUser.id)) {
       joinButton = (<button onClick={this.changeLocation("leave")} className="form-button">Leave Group</button>)
     }
-
     let body;
     switch (this.state.location) {
       case "home":
@@ -80,7 +79,7 @@ class GroupShow extends React.Component {
         body = (<GroupEdit goHome={this.goHome} group={this.state.group} />);
         break;
       case "events":
-        body = (<GroupEvents changeLocation={this.changeLocation} events={this.state.group.events} />)
+        body = (<GroupEvents memberNum={this.state.group.members.length} changeLocation={this.changeLocation} events={this.state.group.events} />)
         break;
       case "welcome":
         body = (<GroupWelcome group={this.state.group} user={this.props.currentUser} />)

@@ -35,5 +35,4 @@ class Group < ActiveRecord::Base
     through: :category_groupings,
     source: :category
 
-
 end

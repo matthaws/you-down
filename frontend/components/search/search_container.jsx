@@ -3,69 +3,50 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { fetchAllGroups } from '../../actions/group_actions';
 import { Link } from 'react-router';
+import GroupSearch from './group_search';
 
 class SearchContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {groups: [], events: []}
+    this.state = {location: "groups"}
   }
 
-
-  componentDidMount() {
-    this.props.fetchAllGroups();
+  changeLocation(location) {
+    return () => {
+      this.setState({ location })
+    }
   }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({groups: nextProps.groups, events: nextProps.events})
-  }
-
 
   render() {
-    let groupList = [];
-    if (this.props.groups[0]) {
-    this.state.groups.forEach( group => {
-      let group_pic = window.images.default_group
-      if (group.group_pic !== "/DEFAULT") {
-        group_pic = group.group_pic
-      }
-      groupList.push(
-        <li key={group.id}>
-          <Link to={`/groups/${group.id}`} >
-          <ul className="result-entry">
-            <li><img src={group_pic} /></li>
-            <li><h1>{group.group_name}</h1><br />{group.location_name}</li>
-            <li>{group.members.length} {group.member_moniker}</li>
-          </ul>
-        </Link>
-        </li>
-      )
-    })
-  }
+    let body;
+    switch (this.state.location) {
+      case "groups":
+        body = <GroupSearch />
+        break;
+      case "events":
+        body = <div />
+    }
+    let groupClass = this.state.location === "groups" ? "selected-button" : "search-button";
+    let eventClass = this.state.location === "events" ? "selected-button" : "search-button";
+
     return (
       <div className="search-main">
         <div className="search-header">
           <h1>Find the perfect group</h1>
+          <div className="search-bar">
+            <input type="text" onChange={this.handleSearchChange} onKeyPress={this.handleKeyPress} />
+            <ul>
+              <li><button onClick={this.changeLocation("groups")} className={groupClass}>Groups</button></li>
+              <li><button onClick={this.changeLocation("events")} className={eventClass}>Events</button></li>
+            </ul>
+          </div>
         </div>
-          <ul className="result-list">
-            {groupList}
-          </ul>
+        {body}
       </div>
 
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    groups: state.groups,
-    events: state.events
-  };
-};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchAllGroups: () => dispatch(fetchAllGroups())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);
+export default SearchContainer;

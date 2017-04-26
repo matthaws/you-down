@@ -52,7 +52,7 @@ class GroupDetails extends React.Component{
             {event.location_address}</a></h3></li>
           </ul>
           <ul>
-            <li>x attending</li>
+            <li>{this.props.members.length} attending</li>
             <li>{date}, {time}</li>
           </ul>
         </li>)}
