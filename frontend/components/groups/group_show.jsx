@@ -44,7 +44,7 @@ class GroupShow extends React.Component {
     if (this.state.group.id && nextProps.params.groupId !== this.state.group.id.toString()) {
       this.props.fetchGroup(nextProps.params.groupId)
     }
-    if (this.state.group !== nextProps.group) {
+    if (this.state.group !== nextProps.group && this.state.location !== "welcome") {
       this.changeLocation("home")();
     }
 
@@ -154,7 +154,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchGroup: (groupId) => dispatch(fetchGroup(groupId)),
-    joinGroup: (groupId, userId) => dispatch(joinGroup(groupId, userId)).then( membership => dispatch(fetchGroup(membership.group_id))),
+    joinGroup: (groupId, userId) => dispatch(joinGroup(groupId, userId)),
     leaveGroup: (groupId) => dispatch(leaveGroup(groupId))
   };
 };

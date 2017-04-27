@@ -18,7 +18,7 @@ class PicList extends React.Component {
       if (profile_pic === "/DEFAULT") {
         profile_pic = window.images.default_profile
       }
-      if( memberList.length < 10) {
+      if( memberList.length < 8) {
       memberList.push(<li key={member.id}><img src={profile_pic} className="small-thumb" /></li>)
     }
     })

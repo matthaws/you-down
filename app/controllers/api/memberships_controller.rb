@@ -3,7 +3,9 @@ class Api::MembershipsController < ApplicationController
   def create
     @membership = Membership.new(membership_params)
     if @membership.save
-      render json: @membership, status: 200
+      @user = User.find(@membership.member_id)
+      @group = Group.find(@membership.group_id)
+      render :create
     else
       render json: @membership.errors.full_messages, status: 422
     end

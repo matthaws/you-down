@@ -1,9 +1,10 @@
 import * as GroupApiUtil from '../util/group_api_util';
-import { receiveErrors } from './session_actions';
+import { receiveErrors, receiveCurrentUser } from './session_actions';
 import { hashHistory } from 'react-router';
 
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
 export const RECEIVE_ALL_GROUPS = "RECEIVE_ALL_GROUPS";
+export const RECEIVE_JOINED_GROUP = "RECEIVE_JOINED_GROUP";
 
 export const receiveGroup = (group, user) => ({
   type: RECEIVE_GROUP,
@@ -15,6 +16,12 @@ export const receiveAllGroups = (groups) => ({
   type: RECEIVE_ALL_GROUPS,
   groups
 })
+
+export const receiveJoinedGroup = (group, user) => ({
+  type: RECEIVE_JOINED_GROUP,
+  group,
+  user
+});
 
 export const fetchGroup = (groupId) => {
   return (dispatch) => {
@@ -65,7 +72,7 @@ export const deleteGroup = (groupId) => {
 export const joinGroup = (groupId, userId) => {
   return (dispatch) => {
     return GroupApiUtil.joinGroup(groupId, userId)
-      .then( hashHistory.push(`/groups/${groupId}`))
+      .then( response => dispatch(receiveJoinedGroup(response.group, response.user)))
   };
 };
 
