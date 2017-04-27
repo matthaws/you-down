@@ -44,9 +44,9 @@
   padding: 0;
   position: absolute;
   text-align: center;
-  left: 44%;
-  background-color: white;
-  z-index: 100;
+  left: 0; right: 0;
+  margin: 0 auto;
+  background-color: transparent;
 }
 
 .topright {
@@ -213,9 +213,10 @@
   margin: 0 auto;
   padding: 20px;
   box-shadow: 1px 1px 3px black;
-  position: fixed;
-  top: 20%;
-  left: 37%;
+  position: absolute;
+  top: 100px;
+  left: 0; right: 0;
+  margin: 0 auto;
   color: black;
   z-index: 101;
 }
