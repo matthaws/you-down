@@ -20,7 +20,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.includes(:members, :group_events).all
+    @groups = Group.includes(:members, :group_events).order('random()').all
     render :index
   end
 
