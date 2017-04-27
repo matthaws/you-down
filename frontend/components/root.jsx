@@ -18,7 +18,9 @@ const _redirectIfLoggedIn = (nextState, replace) => {
 }
 
 const _redirectIfNotLoggedIn = (nextState, replace) => {
-  if (store.getState().session.currentUser === {}) {
+  if (store.getState().session.currentUser && store.getState().session.currentUser.id) {
+
+  } else {
     replace('/welcome')
   }
 }
@@ -37,11 +39,11 @@ const Root = ({ store }) => (
       <Route path='/' component={ App }>
         <IndexRoute component={ Welcome } />
         <Route path='welcome' component={ Welcome }  />
-        <Route path='users/:userId' component={ ProfileMain } />
-        <Route path='users/:userId/edit' component={ ProfileEdit } />
-        <Route path='groups/:groupId' component={ GroupShow } />
-        <Route path='events/:eventId' component={ EventShow } />
-        <Route path='newgroup' component={ NewGroupForm } />
+        <Route path='users/:userId'  onEnter={ _redirectIfNotLoggedIn} component={ ProfileMain } />
+        <Route path='users/:userId/edit'  onEnter={ _redirectIfNotLoggedIn} component={ ProfileEdit } />
+        <Route path='groups/:groupId'  onEnter={ _redirectIfNotLoggedIn} component={ GroupShow } />
+        <Route path='events/:eventId'  onEnter={ _redirectIfNotLoggedIn} component={ EventShow } />
+        <Route path='newgroup' onEnter={ _redirectIfNotLoggedIn} component={ NewGroupForm } />
         <Route path='search' component={ SearchContainer } />
         <Route path='search/:category' component={ CategoryContainer} />
       </Route>

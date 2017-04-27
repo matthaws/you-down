@@ -21,6 +21,7 @@ class NavBar extends React.Component {
     this.openSignUp = this.openSignUp.bind(this);
     this.openLogIn = this.openLogIn.bind(this);
     this.goHome = this.goHome.bind(this);
+    this.goToCreate = this.goToCreate.bind(this);
   }
 
   closeModal() {
@@ -44,6 +45,14 @@ class NavBar extends React.Component {
     hashHistory.push('/welcome')
   }
 
+  goToCreate() {
+    if (this.props.currentUser && this.props.currentUser.id) {
+      hashHistory.push('/newgroup')
+    } else {
+      this.openLogIn()
+    }
+  }
+
   render() {
 
     let topright = (
@@ -60,7 +69,7 @@ class NavBar extends React.Component {
     return (
       <nav className="top-nav">
         <ul>
-          <li><Link to='/newgroup'>Create a Group</Link></li>
+          <li onClick={this.goToCreate}>Create a Group</li>
           <li onClick={this.goHome} id="logo">YouDown?</li>
           <li>
             {topright}
