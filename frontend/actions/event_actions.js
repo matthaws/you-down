@@ -33,8 +33,10 @@ export const fetchAllEvents = () => {
 export const createEvent = (event) => {
   return (dispatch) => {
     return EventApiUtil.createEvent(event)
-      .then( event => dispatch(receiveEvent(event)),
-              err => dispatch(receiveErrors(err)))
+      .then( (event) => {
+        hashHistory.push(`/events/${event.id}`);
+        return dispatch(receiveEvent(event));
+      })
   };
 };
 

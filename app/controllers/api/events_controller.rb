@@ -23,12 +23,12 @@ class Api::EventsController < ApplicationController
   end
 
   def search
-    @events = Event.order(:date).search_by_content(params[:search])
+    @events = Event.all_upcoming(Event.includes(:organizer, :group, :attendees).order(:date).search_by_content(params[:search]))
     render :search
   end
 
   def index
-    @events = Event.order(:date).all
+    @events = Event.all_upcoming(Event.includes(:organizer, :group, :attendees).order(:date).all)
     render :index
   end
 

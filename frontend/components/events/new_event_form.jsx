@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { createEvent, updateEvent, deleteEvent } from '../../actions/event_actions';
-import { hashHistory } from 'react-router';
+import { hashHistory, Link } from 'react-router';
 
 class NewEventForm extends React.Component {
   constructor(props) {
@@ -37,10 +37,8 @@ class NewEventForm extends React.Component {
       newEvent.group_id = this.props.groupId
 
       this.props.createEvent(newEvent)
-      hashHistory.push(`/groups/${this.props.eventId}`)
     } else {
       this.props.updateEvent(newEvent, this.props.eventId)
-      this.props.changeLocation("home");
     }
   }
 
@@ -81,7 +79,7 @@ class NewEventForm extends React.Component {
             <textarea value={this.state.description} onChange={this.update("description")} />
           </li>
             <button className="form-button" onClick={this.handleSubmit} >{buttonText}</button>
-            {deleteButton}
+          {deleteButton}
       </ul>
       </div>
     </li>
@@ -96,8 +94,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createEvent: (event) => dispatch(createEvent(event)).then( (event) => hashHistory.push(`/events/${event.id}`)),
-    updateEvent: (event, eventId) => dispatch(updateEvent(event, eventId)),
+    createEvent: (event) => dispatch(createEvent(event)),
+    updateEvent: (event, eventId) => dispatch(updateEvent(event, eventId)).then( (eventId) => hashHistory.push(`/events/${eventId}`)),
     deleteEvent: (eventId) => dispatch(deleteEvent(eventId))
   };
 }

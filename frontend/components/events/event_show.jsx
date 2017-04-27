@@ -21,7 +21,7 @@ class EventShow extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.state.event.id && nextProps.params.eventId != this.state.group.id.toString()){
+    if (this.state.event.id && this.state.event.id.toString() !== nextProps.params.eventId) {
       this.props.fetchEvent(nextProps.params.eventId)
     }
 

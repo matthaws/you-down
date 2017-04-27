@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search_by_content, :against => [:event_name, :description]
 
-  
+
   validates :date, :event_name, :description, :location_address, presence: true
 
   belongs_to :organizer,
@@ -23,5 +23,9 @@ class Event < ActiveRecord::Base
   has_many :attendees,
     through: :rsvps,
     source: :attendee
+
+  def self.all_upcoming(events)
+    events.select{ |event| event.date > DateTime.now }
+  end
 
 end
