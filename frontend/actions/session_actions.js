@@ -23,7 +23,7 @@ export const login = (user) => {
   return (dispatch) => {
     return SessionApiUtil.login(user)
       .then( user => dispatch(receiveCurrentUser(user)),
-        err => dispatch(receiveErrors(err)))
+        err => dispatch(receiveErrors(err))).then( () => hashHistory.push('/search'))
   };
 };
 
