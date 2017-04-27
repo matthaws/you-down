@@ -23,12 +23,12 @@ class Api::EventsController < ApplicationController
   end
 
   def search
-    @events = Event.search_by_content(params[:search])
-    render :index
+    @events = Event.order(:date).search_by_content(params[:search])
+    render :search
   end
 
   def index
-    @events = Event.all
+    @events = Event.order(:date).all
     render :index
   end
 

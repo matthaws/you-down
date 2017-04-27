@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { fetchAllGroups, searchGroups } from '../../actions/group_actions';
+import { searchEvents, fetchAllEvents } from '../../actions/event_actions';
 import { Link } from 'react-router';
 import GroupSearch from './group_search';
+import EventSearch from './event_search';
 
 class SearchContainer extends React.Component {
   constructor(props) {
@@ -23,8 +25,10 @@ class SearchContainer extends React.Component {
   handleSubmit() {
     if (this.state.search === "") {
       this.props.fetchAllGroups();
+      this.props.fetchAllEvents();
     } else {
-    this.props.searchGroups(this.state.search)
+    this.props.searchGroups(this.state.search);
+    this.props.searchEvents(this.state.search);
       }
   }
 
@@ -52,7 +56,7 @@ class SearchContainer extends React.Component {
     }
 
     let group = <GroupSearch hidden={grouphidden} />
-
+    let event = <EventSearch hidden={eventhidden} />
 
     let groupClass = this.state.location === "groups" ? "selected-button" : "search-button";
     let eventClass = this.state.location === "events" ? "selected-button" : "search-button";
@@ -60,7 +64,7 @@ class SearchContainer extends React.Component {
     return (
       <div className="search-main">
         <div className="search-header">
-          <h1>Find the perfect group</h1>
+          <h1>Find your next adventure</h1>
           <div className="search-bar">
             <input type="text" onChange={this.handleSearchChange} onKeyPress={this.handleKeyPress} /> <p>Search</p>
             <ul>
@@ -71,6 +75,7 @@ class SearchContainer extends React.Component {
           </div>
         </div>
         {group}
+        {event}
       </div>
 
     )
@@ -87,7 +92,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAllGroups: () => dispatch(fetchAllGroups()),
-    searchGroups: (search) => dispatch(searchGroups(search))
+    searchGroups: (search) => dispatch(searchGroups(search)),
+    fetchAllEvents: () => dispatch(fetchAllEvents()),
+    searchEvents: (search) => dispatch(searchEvents(search))
   };
 };
 

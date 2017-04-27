@@ -26,7 +26,7 @@ export const fetchEvent = (eventId) => {
 export const fetchAllEvents = () => {
   return (dispatch) => {
     return EventApiUtil.fetchAllEvents()
-      .then( events => dispatch(receiveAllEvents))
+      .then( events => dispatch(receiveAllEvents(events)))
   };
 };
 
@@ -66,5 +66,12 @@ export const leaveEvent = (eventId) => {
   return (dispatch) => {
     return EventApiUtil.leaveEvent(eventId)
       .then( event => dispatch(receiveEvent(event)))
+  };
+};
+
+export const searchEvents = (search) => {
+  return (dispatch) => {
+    return EventApiUtil.searchEvents(search)
+      .then( events => dispatch(receiveAllEvents(events)))
   };
 };

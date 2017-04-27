@@ -34,8 +34,15 @@ class EventShow extends React.Component {
   }
 
   render() {
-    let date = new Date(this.state.event.date).toLocaleDateString();
-    let time = new Date(this.state.event.date).toLocaleTimeString();
+    let eventDate = new Date(this.state.event.date);
+    let time = eventDate.getHours() > 12 ? "PM" : "AM";
+    let minutes = eventDate.getMinutes();
+    if (minutes === 0) {
+      minutes = "00";
+    }
+    let hours = eventDate.getHours() % 12 ;
+
+    let date = new Date(this.state.event.date).toDateString();
 
     let attendeeList=[];
     let attendeeIds=[];
@@ -91,7 +98,7 @@ class EventShow extends React.Component {
        <li>
          <div className="event-show-main">
            <ul className="event-details">
-             <li><img src={window.images.clock} />{date}, {time}</li>
+             <li><img src={window.images.clock} />{date}, {hours}:{minutes} {time}</li>
              </ul>
             <ul className="event-details">
               <li><img src={window.images.location} />

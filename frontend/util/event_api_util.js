@@ -49,3 +49,10 @@ export const leaveEvent = (eventId) => {
     url: `/api/events/${eventId}/rsvps`
   });
 };
+
+export const searchEvents = (search) => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/events/search?search=${search}`
+  });
+};
