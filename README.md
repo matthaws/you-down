@@ -1,6 +1,6 @@
 # YouDown?
 
-[live site][heroku]
+[live site]([heroku]
 [heroku]: http://you-down.herokuapp.com/#/welcome
 
 Inspired by Meetup, YouDown? is a full-stack web application for forming groups with shared interests and planning events and activities. It uses Ruby on Rails with a PostgreSQL database on the backend, with React.js in a Redux framework on the frontend. Integration with AWS via the handy Paperclip gem allows for user upload of images for both their personal profile and their groups.
