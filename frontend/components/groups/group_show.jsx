@@ -31,7 +31,7 @@ class GroupShow extends React.Component {
   joinGroup() {
     this.props.joinGroup(this.props.group.id, this.props.currentUser.id);
     this.setState({location: "welcome"})
-    this.fetchGroup(this.props.group.id)
+    this.props.fetchGroup(this.props.group.id)
 
   }
 
@@ -44,7 +44,12 @@ class GroupShow extends React.Component {
     if (this.state.group.id && nextProps.params.groupId !== this.state.group.id.toString()) {
       this.props.fetchGroup(nextProps.params.groupId)
     }
+    if (this.state.group !== nextProps.group) {
+      this.changeLocation("home")();
+    }
+
     this.setState({group: nextProps.group})
+
   }
 
   changeLocation(newLocation) {
@@ -76,7 +81,7 @@ class GroupShow extends React.Component {
         body = (<GroupMembers members={this.state.group.members} />);
         break;
       case "edit":
-        body = (<GroupEdit goHome={this.goHome} group={this.state.group} />);
+        body = (<GroupEdit changeLocation={this.changeLocation} group={this.state.group} />);
         break;
       case "events":
         body = (<GroupEvents memberNum={this.state.group.members.length} changeLocation={this.changeLocation} events={this.state.group.events} />)

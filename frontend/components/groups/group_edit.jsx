@@ -51,7 +51,7 @@ class GroupEdit extends React.Component {
         form.append("group[group_pic]", this.state.group_pic);
       }
     this.props.updateGroup(form);
-    this.props.goHome();
+    this.props.changeLocation("home");
   }
 
   render () {
