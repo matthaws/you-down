@@ -15,7 +15,7 @@ import { Link, hashHistory } from "react-router";
 class GroupShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { location: "home", group: this.props.group };
+    this.state = { location: "home", group: this.props.group, currentUser: this.props.currentUser };
     this.joinGroup = this.joinGroup.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
     this.changeLocation = this.changeLocation.bind(this);
@@ -37,7 +37,6 @@ class GroupShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchGroup(this.props.params.groupId)
-    this.setState({group: this.props.group})
   }
 
   componentWillReceiveProps(nextProps) {
@@ -48,7 +47,7 @@ class GroupShow extends React.Component {
       this.changeLocation("home")();
     }
 
-    this.setState({group: nextProps.group})
+    this.setState({group: nextProps.group, currentUser: nextProps.currentUser})
 
   }
 
@@ -67,7 +66,7 @@ class GroupShow extends React.Component {
         memberIds.push(member.id)
       })
     }
-
+    let currentUser = this.state.currentUser;
     let joinButton = (<button onClick={this.joinGroup} className="form-button">Join Us!</button>)
     if (currentUser && memberIds.includes(currentUser.id)) {
       joinButton = (<button onClick={this.changeLocation("leave")} className="form-button">Leave Group</button>)
