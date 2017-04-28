@@ -1,1 +1,1 @@
-json.partial! '/api/shared/group', group: @group, events: @events
+json.partial! '/api/shared/group', group: @group, group_events: @events

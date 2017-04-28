@@ -27,7 +27,7 @@ class Api::GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      @events = Event.includes(:attendees).find_by(group_id: @group.id)
+      @events = Event.includes(:attendees).where("group_id = ?", @group.id)
       render :update
     else
       render json: @user.errors.full_messages, status: 422
