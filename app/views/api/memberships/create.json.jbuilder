@@ -9,5 +9,5 @@ json.user do
 end
 
 json.group do
-  json.partial! '/api/shared/group', group: @group
+  json.partial! '/api/shared/group', group: @group, group_events: []
 end

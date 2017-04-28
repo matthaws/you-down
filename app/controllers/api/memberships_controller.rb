@@ -4,7 +4,8 @@ class Api::MembershipsController < ApplicationController
     @membership = Membership.new(membership_params)
     if @membership.save
       @user = User.find(@membership.member_id)
-      @group = Group.find(@membership.group_id)
+      @group = Group.includes(:members, :group_events, :organizer).find(@membership.group_id)
+
       render :create
     else
       render json: @membership.errors.full_messages, status: 422

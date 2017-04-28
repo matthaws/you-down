@@ -15,7 +15,7 @@ import { Link, hashHistory } from "react-router";
 class GroupShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { location: "home", group: this.props.group, currentUser: this.props.currentUser };
+    this.state = { location: "home", group: this.props.group, currentUser: this.props.currentUser, memberIds: [] };
     this.joinGroup = this.joinGroup.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
     this.changeLocation = this.changeLocation.bind(this);
@@ -30,8 +30,9 @@ class GroupShow extends React.Component {
 
   joinGroup() {
     this.props.joinGroup(this.props.group.id, this.props.currentUser.id);
-    this.setState({location: "welcome"})
-    this.props.fetchGroup(this.props.group.id)
+    let newMemberIds = this.state.memberIds;
+    newMemberIds.push(this.state.currentUser.id)
+    this.setState({location: "welcome", memberIds: newMemberIds})
 
   }
 
@@ -46,6 +47,15 @@ class GroupShow extends React.Component {
     if (this.state.group !== nextProps.group && this.state.location !== "welcome") {
       this.changeLocation("home")();
     }
+    let newMemberIds = [];
+    if (this.state.group.members) {
+        let members = nextProps.group.members;
+        members.forEach( (member) => {
+          newMemberIds.push(member.id)
+        })
+
+        this.setState({memberIds: newMemberIds});
+    }
 
     this.setState({group: nextProps.group, currentUser: nextProps.currentUser})
 
@@ -57,18 +67,11 @@ class GroupShow extends React.Component {
 
 
   render() {
-    let members = [];
-    let memberIds = [];
+    let members = this.state.group.members || [];
 
-    if (this.state.group.members) {
-      members = this.state.group.members;
-      members.forEach( (member) => {
-        memberIds.push(member.id)
-      })
-    }
     let currentUser = this.state.currentUser;
     let joinButton = (<button onClick={this.joinGroup} className="form-button">Join Us!</button>)
-    if (currentUser && memberIds.includes(currentUser.id)) {
+    if (currentUser && this.state.memberIds.includes(currentUser.id)) {
       joinButton = (<button onClick={this.changeLocation("leave")} className="form-button">Leave Group</button>)
     }
     let body;
