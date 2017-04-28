@@ -29,13 +29,14 @@ class GroupEvents extends React.Component {
           let eventDate = new Date(event.date);
           let date = eventDate.toLocaleDateString();
           let time = eventDate.toLocaleTimeString();
+    
           let eventEntry = (<ul key={event.id} ><li className="event-list-item"><ul>
           <Link to={`/events/${event.id}`}><li><h2>{event.event_name}</h2></li></Link>
           <li><img src={window.images.location} /><h3><a href={`http://maps.google.com/?q=${event.location_address}`}>{event.location_name}<br />
             {event.location_address}</a></h3></li>
           </ul>
           <ul>
-            <li>{this.props.memberNum} attending</li>
+            <li>{event.attendeeNum} attending</li>
             <li>{date}, {time}</li>
           </ul>
           </li>
