@@ -78,23 +78,28 @@ class EventShow extends React.Component {
       groupId = this.state.event.group.id;
     }
 
+    let eventCount = 0;
+    if (this.state.group.events) {
+      eventCount = this.state.group.events.length;
+    }
+
     let body;
     switch (this.state.location) {
       case "edit":
         body = (<ul className="show-body">
-          <GroupSidebar groupId={groupId}/>
+          <GroupSidebar groupId={groupId} eventCount={eventCount} />
           <NewEventForm formType="edit" event={this.state.event} eventId={this.props.params.eventId} changeLocation={this.changeLocation}/>
         </ul>);
       break;
       case "createEvent":
         body = (<ul className="show-body">
-            <GroupSidebar groupId={groupId}/>
+            <GroupSidebar groupId={groupId} eventCount={eventCount} />
           <NewEventForm formType="new" eventId={this.props.params.eventId} groupId={this.state.group.id} />
         </ul>);
         break;
       case "home":
       body = (<ul className="show-body">
-        <GroupSidebar groupId={groupId}/>
+        <GroupSidebar groupId={groupId} eventCount={eventCount} />
        <li>
          <div className="event-show-main">
            <ul className="event-details">
