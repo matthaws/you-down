@@ -9,7 +9,7 @@ json.members do
   end
 end
 json.events do
-  json.array! group.group_events do |event|
+  json.array! group_events do |event|
     json.extract! event, :event_name, :id, :location_address, :location_name, :date, :description
     json.attendeeNum event.attendees.length
   end

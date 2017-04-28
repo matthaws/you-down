@@ -19,6 +19,8 @@ body {
     font-family: 'Merriweather Sans', Helvetica, sans-serif;
     overflow-x: hidden;
     overflow-y: scroll;
+    padding-top: 50px;
+    padding-bottom: 75px;
 
 }
 

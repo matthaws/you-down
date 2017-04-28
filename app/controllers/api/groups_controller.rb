@@ -20,13 +20,14 @@ class Api::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.includes(:members, :group_events).order('random()').all
+    @groups = Group.includes(:members, :organizer, :group_events).order('random()').all
     render :index
   end
 
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
+      @events = Event.includes(:attendees).find_by(group_id: @group.id)
       render :update
     else
       render json: @user.errors.full_messages, status: 422
@@ -34,7 +35,8 @@ class Api::GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.includes(:members, :group_events).find(params[:id])
+    @group = Group.includes(:members, :organizer).find(params[:id])
+    @events = Event.includes(:attendees).where("group_id = ?", @group.id)
     render :show
   end
 
@@ -46,7 +48,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def search
-    @groups = Group.search_by_content(params[:search])
+    @groups = Group.includes(:members, :organizer, :group_events).search_by_content(params[:search])
     render :search
   end
 
