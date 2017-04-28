@@ -38,6 +38,7 @@ class NewEventForm extends React.Component {
 
       this.props.createEvent(newEvent)
     } else {
+  
       this.props.updateEvent(newEvent, this.props.eventId)
     }
   }
@@ -95,7 +96,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     createEvent: (event) => dispatch(createEvent(event)),
-    updateEvent: (event, eventId) => dispatch(updateEvent(event, eventId)).then( (eventId) => hashHistory.push(`/events/${eventId}`)),
+    updateEvent: (event, eventId) => dispatch(updateEvent(event, eventId)),
     deleteEvent: (eventId) => dispatch(deleteEvent(eventId))
   };
 }
