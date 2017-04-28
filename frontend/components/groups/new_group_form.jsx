@@ -83,7 +83,7 @@ class NewGroupForm extends React.Component {
 }
 
   createCheckboxes() {
-    const categories = ["Outdoors & Adventure", "Tech", "Learning", "Food & Drink", "Writing", "LGBTQ", "Book Clubs", "Pets", "Hobbies & Crafts", "Social", "Career & Business", "Games"]
+    const categories = ["Outdoors & Adventure", "Technology", "Learning", "Food & Drink", "Writing", "LGBTQ", "Book Clubs", "Pets", "Hobbies & Crafts", "Social", "Career & Business", "Games"]
     return categories.map(this.createCheckbox);
   }
 

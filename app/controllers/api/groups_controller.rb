@@ -53,16 +53,9 @@ class Api::GroupsController < ApplicationController
   end
 
   def category
-    all_groups = Group.includes(:categories, :members, :group_events).all
-    category_id = Category.find_by(title: params[:category]).id
-    @groups = [];
-    all_groups.each do |one_group|
-      if one_group.categories.ids.include?(category_id)
-        @groups << one_group
-      end
-    end
-
-    render :index
+      category_id = Category.find_by(title: params[:category]).id
+      @groups  = Group.includes(:members, :group_events).joins(:categories).where("categories.id = ?", category_id)
+      render :index
   end
 
   private
