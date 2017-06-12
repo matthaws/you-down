@@ -11,26 +11,31 @@ import { Link } from 'react-router';
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {location: "home", event: this.props.event, user: this.props.currentUser, group: this.props.group}
+    this.state = {
+      location: "home",
+      event: this.props.event,
+      user: this.props.currentUser,
+      group: this.props.group};
+
     this.changeLocation = this.changeLocation.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchEvent(this.props.params.eventId);
-    this.setState({event: this.props.event})
+    this.setState({event: this.props.event});
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.state.event.id && this.state.event.id.toString() !== nextProps.params.eventId) {
-      this.props.fetchEvent(nextProps.params.eventId)
+      this.props.fetchEvent(nextProps.params.eventId);
     }
 
-    this.setState({event: nextProps.event})
-    this.setState({group: nextProps.group, location: "home"})
+    this.setState({event: nextProps.event});
+    this.setState({group: nextProps.group, location: "home"});
   }
 
   changeLocation(newLocation) {
-    return () => this.setState({location: newLocation})
+    return () => this.setState({location: newLocation});
   }
 
   render() {
@@ -48,11 +53,11 @@ class EventShow extends React.Component {
     let attendeeIds=[];
     if (this.state.event.attendees) {
       this.state.event.attendees.forEach( attendee => {
-        let user_pic = attendee.profile_pic
+        let user_pic = attendee.profile_pic;
         if (user_pic === 'DEFAULT') {
-          user_pic = window.images.default_profile
+          user_pic = window.images.default_profile;
         }
-        attendeeIds.push(attendee.id)
+        attendeeIds.push(attendee.id);
 
         attendeeList.push(
           <li key={attendee.id}>
@@ -62,15 +67,15 @@ class EventShow extends React.Component {
             <li><img src={user_pic} /></li>
           </ul>
           </Link>
-          </li>)
-      })
+        </li>);
+      });
     }
 
     let memberIds = [];
     if (this.state.group.members) {
       this.state.group.members.forEach( member => {
-        memberIds.push(member.id)
-      })
+        memberIds.push(member.id);
+      });
     }
 
     let groupId = "";
@@ -93,7 +98,7 @@ class EventShow extends React.Component {
       break;
       case "createEvent":
         body = (<ul className="show-body">
-            <GroupSidebar groupId={groupId} eventCount={eventCount} />
+          <GroupSidebar groupId={groupId} eventCount={eventCount} />
           <NewEventForm formType="new" eventId={this.props.params.eventId} groupId={this.state.group.id} />
         </ul>);
         break;
@@ -123,12 +128,12 @@ class EventShow extends React.Component {
           {attendeeList}
         </ul>
        </li>
-      </ul>)
+     </ul>);
       break;
     }
-    let editEventLink = (<div />)
+    let editEventLink = (<div />);
     if (this.state.event.organizer && this.props.currentUser.id === this.state.event.organizer.id) {
-      editEventLink = (<li onClick={this.changeLocation("edit")}>Edit This Event</li>)
+      editEventLink = (<li onClick={this.changeLocation("edit")}>Edit This Event</li>);
     }
 
     return (
@@ -148,7 +153,7 @@ class EventShow extends React.Component {
           {body}
         </div>
       </div>
-    )
+    );
 
   }
 }

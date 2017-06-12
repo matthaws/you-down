@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 class Welcome extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       modalOpen: false,
       currentUser: this.props.currentUser
@@ -20,15 +20,15 @@ class Welcome extends React.Component {
   }
 
   closeModal() {
-    this.setState({ modalOpen: false })
+    this.setState({ modalOpen: false });
   }
 
   openModal() {
-    this.setState({ modalOpen: true })
+    this.setState({ modalOpen: true });
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({currentUser: nextProps.currentUser})
+    this.setState({currentUser: nextProps.currentUser});
   }
 
   render () {
