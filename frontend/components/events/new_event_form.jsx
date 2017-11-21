@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { createEvent, updateEvent, deleteEvent } from '../../actions/event_actions';
-import { hashHistory, Link } from 'react-router';
+import { hashHistory, Link } from 'react-router-dom';
 
 class NewEventForm extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class NewEventForm extends React.Component {
 
       this.props.createEvent(newEvent)
     } else {
-  
+
       this.props.updateEvent(newEvent, this.props.eventId)
     }
   }

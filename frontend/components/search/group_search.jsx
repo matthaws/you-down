@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { fetchAllGroups, fetchGroupsByCategory } from '../../actions/group_actions';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class GroupSearch extends React.Component {
   constructor(props) {

@@ -5,7 +5,7 @@ import AuthForm from '../welcome/auth_form';
 import { modalStyle } from '../../util/modal_util';
 import Modal from 'react-modal';
 import TopRight from './topright';
-import { hashHistory, Link } from 'react-router';
+import { hashHistory, Link } from 'react-router-dom';
 
 
 class NavBar extends React.Component {

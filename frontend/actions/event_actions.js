@@ -1,6 +1,6 @@
 import * as EventApiUtil from '../util/event_api_util';
 import { receiveErrors } from './session_actions';
-import { hashHistory } from 'react-router';
+import { hashHistory } from 'react-router-dom';
 
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS";

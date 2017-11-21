@@ -4,7 +4,7 @@ import VideoBar from './video_bar';
 import Modal from 'react-modal';
 import AuthForm from './auth_form';
 import { modalStyle } from '../../util/modal_util';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Welcome extends React.Component {

@@ -79,14 +79,24 @@
   background-color: #a50d27
 }
 
+.master {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 #footer {
+  position: absolute;
   background-color: #0F1721;
   color: white;
   font-family: sans-serif;
   font-weight: bold;
   padding: 15px;
   padding-bottom: 5px;
-  position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: 50;
 }

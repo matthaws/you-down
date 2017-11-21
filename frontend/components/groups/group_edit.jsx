@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { updateGroup, deleteGroup } from '../../actions/group_actions';
-import { hashHistory } from 'react-router';
+import { hashHistory } from 'react-router-dom';
 
 class GroupEdit extends React.Component {
   constructor(props) {

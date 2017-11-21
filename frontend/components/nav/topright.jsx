@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { modalStyle } from '../../util/modal_util';
 import Modal from 'react-modal';
 import { logout } from '../../actions/session_actions.js';
-import { hashHistory, Link } from 'react-router';
+import { hashHistory, Link } from 'react-router-dom';
 
 class TopRight extends React.Component {
   constructor (props) {

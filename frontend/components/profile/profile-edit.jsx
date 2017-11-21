@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { editUser, fetchUser } from '../../actions/user_actions';
-import { Link, hashHistory } from 'react-router';
+import { Link, hashHistory } from 'react-router-dom';
 
 class ProfileEdit extends React.Component {
   constructor(props) {

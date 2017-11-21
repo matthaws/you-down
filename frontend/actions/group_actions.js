@@ -1,6 +1,6 @@
 import * as GroupApiUtil from '../util/group_api_util';
 import { receiveErrors, receiveCurrentUser } from './session_actions';
-import { hashHistory } from 'react-router';
+import { hashHistory } from 'react-router-dom';
 
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
 export const RECEIVE_ALL_GROUPS = "RECEIVE_ALL_GROUPS";

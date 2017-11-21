@@ -6,7 +6,7 @@ import NewEventForm from './new_event_form';
 import { connect } from 'react-redux';
 import { fetchEvent } from '../../actions/event_actions';
 import { fetchGroup } from '../../actions/group_actions';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class EventShow extends React.Component {
   constructor(props) {

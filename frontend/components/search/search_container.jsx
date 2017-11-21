@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { fetchAllGroups, searchGroups } from '../../actions/group_actions';
 import { searchEvents, fetchAllEvents } from '../../actions/event_actions';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import GroupSearch from './group_search';
 import EventSearch from './event_search';
 

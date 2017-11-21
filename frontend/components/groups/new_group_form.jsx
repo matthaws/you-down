@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Checkbox from './checkbox';
 import { connect } from 'react-redux';
 import { createGroup } from '../../actions/group_actions';
-import { hashHistory } from 'react-router';
+import { hashHistory } from 'react-router-dom';
 
 
 class NewGroupForm extends React.Component {

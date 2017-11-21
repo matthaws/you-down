@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { fetchAllGroups } from '../../actions/group_actions';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import GroupSearch from './group_search';
 import categoryTitles from '../../util/category_util';
 
