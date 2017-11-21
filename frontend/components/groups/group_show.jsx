@@ -9,7 +9,8 @@ import GroupEvents from "./group_events";
 import GroupWelcome from './group_welcome';
 import GroupSidebar from './group_sidebar';
 import NewEventForm from '../events/new_event_form';
-import { Link, hashHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import hashHistory from '../../util/history.js';
 
 
 class GroupShow extends React.Component {

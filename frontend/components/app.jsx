@@ -10,6 +10,7 @@ import NewGroupForm from './groups/new_group_form';
 import EventShow from './events/event_show';
 import SearchContainer from './search/search_container';
 import CategoryContainer from './search/category_container';
+import Footer from './nav/footer';
 
 const App = () => (
   <div className="master">
@@ -38,15 +39,3 @@ const App = () => (
 );
 
 export default App;
-
-// const Root = ({ store }) => (
-//   <Provider store={ store } >
-//     <Router history={ hashHistory }>
-//       <Route path='/' component={ App }>
-//         <IndexRoute component={ Welcome } />
-//         <Route path='welcome' component={ Welcome }  />
-//
-//       </Route>
-//     </Router>
-//   </Provider>
-// )
