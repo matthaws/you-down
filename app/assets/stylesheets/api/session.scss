@@ -80,25 +80,28 @@
 }
 
 .master {
+  position: relative;
+  min-height: 92vh;
+  padding-bottom: 75px;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 main {
-  flex: 1 0 auto;
+  height: 100%;
 }
 
 #footer {
-  position: absolute;
+  // position: absolute;
   background-color: #0F1721;
+  height: 75px;
   color: white;
   font-family: sans-serif;
   font-weight: bold;
   padding: 15px;
-  padding-bottom: 5px;
-  bottom: 0; left: 0; right: 0;
-  z-index: 50;
+  bottom: 0;
+  width: 100%;
+  z-index: 20;
 }
 
 #footer div {
@@ -298,6 +301,7 @@ main {
   padding: 0;
   margin: 0;
   text-align: center;
+  height: 100%;
 
 }
 

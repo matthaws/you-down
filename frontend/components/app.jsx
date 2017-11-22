@@ -20,15 +20,15 @@ const App = () => (
 
     <main>
       <Switch>
-        <Route path="/welcome" component={ Welcome } />
-        <ProtectedRoute path="/" component={ Welcome } />
-        <ProtectedRoute path='users/:userId' component={ ProfileMain } />
-        <ProtectedRoute path='users/:userId/edit' component={ ProfileEdit } />
-        <ProtectedRoute path='groups/:groupId' component={ GroupShow } />
-        <ProtectedRoute path='events/:eventId' component={ EventShow } />
-        <ProtectedRoute path='newgroup' component={ NewGroupForm } />
-        <Route path='search' component={ SearchContainer } />
-        <Route path='search/:category' component={ CategoryContainer} />
+        <Route exact path="/welcome" component={ Welcome } />
+        <Route exact path='search' component={ SearchContainer } />
+        <Route exact path='search/:category' component={ CategoryContainer} />
+        <ProtectedRoute exact path="/" component={ Welcome } />
+        <ProtectedRoute exact path='users/:userId' component={ ProfileMain } />
+        <ProtectedRoute exact path='users/:userId/edit' component={ ProfileEdit } />
+        <ProtectedRoute exact path='groups/:groupId' component={ GroupShow } />
+        <ProtectedRoute exact path='events/:eventId' component={ EventShow } />
+        <ProtectedRoute exact path='newgroup' component={ NewGroupForm } />
       </Switch>
     </main>
 
