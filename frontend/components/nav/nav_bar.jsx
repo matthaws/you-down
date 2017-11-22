@@ -60,7 +60,7 @@ class NavBar extends React.Component {
         <li className="signup-button" onClick={this.openSignUp}>Sign up</li>
       </ul>
     )
-    if (this.props.currentUser.full_name) {
+    if (this.props.currentUser) {
       topright = (
         <TopRight />
       )

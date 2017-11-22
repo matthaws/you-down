@@ -1,6 +1,9 @@
 // Place all the styles related to the api/session controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#root {
+  min-height: 100%;
+}
 
 .top-nav {
   width: 100%;
@@ -81,27 +84,28 @@
 
 .master {
   position: relative;
-  min-height: 92vh;
-  padding-bottom: 75px;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 main {
-  height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 #footer {
-  // position: absolute;
+  position: absolute;
   background-color: #0F1721;
   height: 75px;
   color: white;
   font-family: sans-serif;
   font-weight: bold;
   padding: 15px;
+  padding-bottom: 5px;
   bottom: 0;
   width: 100%;
-  z-index: 20;
+  z-index: 40;
 }
 
 #footer div {
@@ -119,89 +123,6 @@ main {
   padding-top: 0px;
   border-bottom: 1px solid white;
 }
-//
-#video-bar {
-  height: 470px;
-  width: 100%;
-  position: relative;
-  top: 30px; left: 0; right: 0;
-  display: inline-block;
-  text-align: center;
-  border-bottom: 1px solid lightgrey;
-  margin: 0;
-  padding: 0;
-  z-index: -1;
-}
-
-#videoBlock {
-  width: 100%;
-  position: relative;
-  top: -300px;
-  width: 100%;
-  height: 100%;
-  z-index: -90;
-}
-
-#videoMessage {
-  background: transparent;
-  color:black;
-  position: absolute;
-  top: 200px;
-  left: 0; right: 0;
-  margin: 0 auto;
-  z-index: 0;
-  color: white;
-}
-
-#videoMessage:hover {
-  cursor: pointer;
-}
-
-#videoMessage h1 {
-  font-size: 48px;
-}
-
-#videoMessage h3 {
-  font-size: 28px;
-  padding: 10px;
-}
-
-.placeholder {
-  background-color: white;
-  height: 815px;
-  position: absolute;
-  left: 0; top: 500px;
-  bottom: 300px;
-  padding-bottom: 100px;
-  z-index: 10;
-  width: 100%;
-  padding-top: 0;
-  border-top: 1px solid lightgrey;
-
-}
-
-.placeholder h1 {
-  font-size: 32px;
-  font-weight: bold;
-  padding: 20px;
-}
-
-.main-button {
-  background-color: #ED1C40;
-  color: white;
-  border: 1px solid #ED1C40;
-  font-weight: bold;
-  padding: 12px 108px 12px 108px;
-  border-radius: 3px;
-  z-index: 99;
-  font-size: 18px;
-}
-
-.main-button:hover {
-  cursor: pointer;
-  background-color: #a50d27
-}
-
 
 .auth-form div {
   text-align: center;
@@ -295,41 +216,4 @@ main {
 .errors ul {
   text-align: left;
   list-style: disc;
-}
-
-.welcome {
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  height: 100%;
-
-}
-
-.category-list {
-  width: 1250px;
-  display: flex;
-  justify-content: space-around;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
-
-.category-list ul {
-  padding: 5px;
-  padding-bottom: 20px;
-}
-
-.category-list li {
-  overflow: hidden;
-  transition: all 0.3s;
-}
-
-.category-list img {
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-}
-
-.category-list img:hover {
-  cursor: pointer;
-  transform: scale(1.1);
 }

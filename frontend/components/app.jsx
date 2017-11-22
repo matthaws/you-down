@@ -21,7 +21,7 @@ const App = () => (
     <main>
       <Switch>
         <Route exact path="/welcome" component={ Welcome } />
-        <Route exact path='search' component={ SearchContainer } />
+        <Route exact path='/search' component={ SearchContainer } />
         <Route exact path='search/:category' component={ CategoryContainer} />
         <ProtectedRoute exact path="/" component={ Welcome } />
         <ProtectedRoute exact path='users/:userId' component={ ProfileMain } />
@@ -30,11 +30,8 @@ const App = () => (
         <ProtectedRoute exact path='events/:eventId' component={ EventShow } />
         <ProtectedRoute exact path='newgroup' component={ NewGroupForm } />
       </Switch>
+    <Footer />
     </main>
-
-    <footer>
-      <Footer />
-    </footer>
   </div>
 );
 

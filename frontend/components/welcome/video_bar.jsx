@@ -8,11 +8,9 @@ class VideoBar extends React.Component {
 
     return (
   <div id="video-bar">
-    <div id="videoBlock">
-      <video preload="preload" width="1920" autoPlay="autoplay" loop="loop">
+      <video id="videoBlock" preload="preload" autoPlay="autoplay" loop="loop">
         <source src={window.images.intro_video} type="video/mp4" />
       </video>
-    </div>
   </div>
   );
  }
