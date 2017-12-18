@@ -1,0 +1,224 @@
+// Place all the styles related to the api/users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+a {
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  padding: inherit;
+  margin: inherit;
+}
+
+
+.profile_pic_thumb img:first-child {
+  height: 50px;
+  width: auto;
+  margin-bottom: 10px;
+  padding-top: 0;
+  cursor: pointer;
+  vertical-align: center;
+  padding-right: 25px;
+  object-fit: cover;
+}
+
+.profile_pic_thumb:hover {
+  cursor: pointer;
+}
+
+.icon {
+  height: 30px;
+  width: auto;
+  position: absolute;
+  top: 15px; right: 40px;
+}
+
+.nav-drop-down {
+  background-color: white;
+  position: absolute;
+  right: 0;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+
+  width: 500px;
+  z-index: 99;
+  border: 1px solid lightgrey;
+  box-shadow: 1px 1px 3px black;
+}
+
+.nav-drop-down:focus {
+  border: 1px solid black;
+  outline: none;
+}
+
+.nav-drop-down ul {
+  z-index: 100;
+  padding-bottom: 20px;
+};
+
+.nav-drop-down li {
+  direction: ltr;
+  padding: 20px 100px 20px 10px;
+  border-bottom: 1px solid #0F1721;
+  text-decoration: none;
+  color: black;
+  z-index: 101;
+  background-color: white;
+}
+
+.nav-drop-down li:hover {
+  cursor: pointer;
+  background-color: #ED1C40;
+  color: white;
+}
+
+.profile {
+  width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid lightgrey;
+  background-color: white;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.groupList {
+  margin-top: 20px;
+  width: 950px;
+  padding: 3px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  border: 1px solid lightgrey;
+  background-color: white;
+}
+
+.groupList h1 {
+  justify-content: center;
+  font-size: 36px;
+  padding: 10px;
+}
+
+.left-box input {
+  border: 1px solid #ED1C40;
+  border-radius: 3px;
+}
+
+.profile textarea {
+  border: 1px solid #ED1C40;
+  border-radius: 3px;
+  resize: none;
+  width: 600px;
+  height: 75px;
+}
+
+.left-box {
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
+}
+
+.right-box {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+
+}
+
+.right-box img {
+  width: 200px;
+  height: auto;
+  margin: 4px;
+  object-fit: cover;
+}
+
+.left-box h1 {
+  font-size: 36px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.name-input {
+  font-size: 36px;
+
+}
+
+.left-box ul {
+  padding: 5px;
+}
+
+.left-box li {
+  padding: 40px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.button-box {
+  text-align: center;
+}
+
+.edit-submit-button {
+  background-color: #ED1C40;
+  color: white;
+  border: 1px solid #ED1C40;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.edit-submit-button:hover {
+  cursor: pointer;
+  background-color: #a50d27
+}
+
+.profile-background {
+  background-color: #FAFAFA;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.group-pic-thumb {
+  width: 310px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.groupItem {
+  width: 300px;
+  height: 180px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-self: left;
+  position: relative;
+  margin: 5px;
+}
+
+.groupItem li {
+  text-align: left;
+  position: absolute;
+  bottom: 0px;
+  color: white;
+  padding: 10px;
+  font-size: 12px;
+  text-shadow: -1px 0 #0F1721, 0 1px #0f1721, 1px 0 #0f1721, 0 -1px #0f1721;
+}
+
+.groupItem h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding-bottom: 20px;
+  text-shadow: -1px 0 #0F1721, 0 1px #0f1721, 1px 0 #0f1721, 0 -1px #0f1721;
+}
+
+.listItems {
+  width: 960px;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,393 @@
+// Place all the styles related to the api/groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.group-background {
+  background-color: #FAFAFA;
+  height: auto;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.group-show {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.group-title {
+  text-align: center;
+  background-color: #ED1C40;
+  border: 1px solid #ED1C40;
+  height: 100px;
+  border-radius: 3px;
+  width: 960px ;
+  padding-top: 30px;
+  margin-bottom: 20px;
+}
+
+.group-title h1 {
+  font-size: 40px;
+  color: white;
+  z-index: 1000;
+
+}
+
+.show-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-sidebar {
+  width: 200px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+
+}
+
+.show-main {
+  width: 720px;
+  font-family: Helvetica;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  text-align: left;
+  padding: 10px;
+  padding-top: 10px;
+  padding-right: 5px;
+}
+
+.show-main h1 {
+  font-size: 32px;
+  padding: 10px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.group-menu-background {
+  width: 960px;
+  padding-bottom: 2px;
+  margin: 0;
+  background: white;
+  border-top: none;
+  position: relative;
+}
+
+.group-menu-background button {
+  position: absolute;
+  bottom: 0; right: 0;
+  margin: 5px;
+}
+
+.group-menu {
+  padding: 10px;
+  width: 400px;
+  display: flex;
+  justify-content:space-around;
+  color: grey;
+}
+
+.group-menu li {
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+.group-menu-border {
+  width: 960px;
+  padding: 0;
+  padding-right: 1px;
+  margin: 0;
+  height: 10px;
+  background-color: #eb536d;
+}
+
+.group-menu li:hover {
+  background-color: #ED1C40;
+  border: 1px solid #ED1C40;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+}
+
+.group_show_profile_thumb {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 175px;
+  max-height: 225px;
+  height: auto;
+  object-fit: cover;
+}
+
+.left-sidebar ul {
+  padding: 10px;
+  text-align: left;
+}
+
+.left-sidebar li {
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-sidebar h2 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.organizer {
+  padding-bottom: 0px;
+  padding-top: 20px;
+  font-size: 18px;
+  border-top: 1px solid lightgrey;
+}
+
+.active {
+  background-color: #ED1C40;
+  border: 1px solid #ED1C40;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+}
+
+.left-sidebar a {
+  color: #ED1C40;
+  text-decoration: underline;
+}
+
+.roll-call {
+  margin-top: 100px;
+  border-top: 1px solid lightgrey;
+  padding: 10px;
+}
+
+.roll-call ul {
+  display: flex;
+  justify-content: horizontal;
+}
+
+.roll-call li {
+  padding: 5px;
+}
+
+.new-group-form {
+  z-index: 100;
+  background-color: white;
+  min-height: 850px;
+}
+
+.form-banner {
+  height: 250px;
+  z-index: -50;
+  color: white;
+  text-align: center;
+}
+
+.form-banner h1 {
+  padding-top: 40px;
+  font-size: 48px;
+}
+
+.form-banner h2{
+  font-size: 28px;
+  padding: 10px;
+}
+
+.form-banner img {
+  position: absolute;
+  left: 0;
+  top: -250px;
+  z-index: -50;
+}
+
+.checkboxes {
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+input[type=checkbox] {
+  visibility: hidden;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  background: #ddd;
+  margin: 20px 90px;
+  border-radius: 100%;
+  position: relative;
+  box-shadow: 0px 1px 2px rbga(0,0,0,0.5);
+}
+
+.checkbox label {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 100px;
+  transition: .5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 5;
+  background: #333;
+  box-shadow: inset 0px 1px 3px rgba(0,0,0,0.5);
+}
+.checkbox p {
+  width: 280px;
+  padding-left: 30px;
+}
+
+.checkbox input[type=checkbox]:checked + label {
+  background: #ED1C40;
+}
+
+.form-section {
+  width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.form-section input{
+  padding: 8px;
+  width: 500px;
+  border-radius: 3px;
+}
+
+.form-section textarea {
+  resize: none;
+  margin-left: 20px;
+  width: 500px;
+  height: 50px;
+  padding: 5px;
+  margin-bottom: 30px;
+  margin-right: 30px;
+}
+
+.form-section h1 {
+  font-size: 20px;
+}
+
+.form-section h2 {
+  margin-top: 30px;
+  font-size: 16px;
+}
+
+.form-icon {
+  height: 50px;
+  width: auto;
+  padding-right: 10px;
+}
+
+.form-button {
+  background-color:  #ED1C40;
+  color: white;
+  padding: 10px;
+  border: 1px solid #ED1C40;
+  border-radius: 2px;
+  margin: 17px;
+}
+
+.form-button:hover {
+  cursor: pointer;
+  background-color: #a50d27;
+}
+
+.submit-button {
+  text-align: center;
+}
+
+.group-edit {
+  width: 720px;
+  font-family: Helvetica;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  text-align: left;
+  padding: 10px;
+  padding-top: 10px;
+
+}
+
+.group-edit li {
+  padding: 10px;
+  padding-left: 50px;
+}
+
+.group-edit h1{
+  text-align: center;
+  padding: 10px;
+  color: white;
+  background-color:  #ED1C40;
+}
+
+.group-edit li:last-child {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 50px;
+}
+
+.group-edit input {
+  width: 600px;
+  padding: 5px;
+
+  border: 1px solid #ED1C40;
+}
+
+.group-edit textarea {
+  width: 606px;
+  height: 100px;
+  border: 1px solid #ED1C40;
+  resize: none;
+  font-family: 'Merriweather Sans', Helvetica, sans-serif;
+}
+
+.member-pic-thumb {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.memberItem {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-left: 30px;
+}
+
+.memberItem ul {
+  width: 180px;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+.memberItem ul:hover {
+  color: #ED1C40;
+}
+
+.small-thumb {
+  height: 50px;
+  width: 75px;
+  object-fit: cover;
+}
+
+.member-main {
+  height: auto;
+}
+
+
+.group-welcome {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.group-detail-description {
+  padding: 20px;
+}

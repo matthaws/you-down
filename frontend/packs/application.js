@@ -1,10 +1,19 @@
-/* eslint no-console:0 */
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
-//
-// To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
-// layout file, like app/views/layouts/application.html.erb
+import React from "react";
+import ReactDOM from "react-dom";
+import Modal from "react-modal";
+import configureStore from "../store/store";
+import Root from "../components/root.jsx";
 
-console.log('Hello World from Webpacker')
+document.addEventListener("DOMContentLoaded", () => {
+  const root = document.getElementById("root");
+  let store;
+  if (window.currentUser) {
+    const preloadedState = { session: { currentUser: window.currentUser } };
+    store = configureStore(preloadedState);
+  } else {
+    store = configureStore();
+  }
+  window.store = store;
+  Modal.setAppElement(document.body);
+  ReactDOM.render(<Root store={store} />, root);
+});
