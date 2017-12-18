@@ -1,7 +1,7 @@
-export const editUser = (user) => {
+export const editUser = user => {
   return $.ajax({
-    method: 'PATCH',
-    url: `/api/users/${user.get('user[id]')}`,
+    method: "PATCH",
+    url: `/api/users/${user.get("user[id]")}`,
     dataType: "json",
     contentType: false,
     processData: false,
@@ -9,9 +9,9 @@ export const editUser = (user) => {
   });
 };
 
-export const fetchUser = (userId) => {
+export const fetchUser = userId => {
   return $.ajax({
-    method: 'GET',
+    method: "GET",
     url: `/api/users/${userId}`
   });
 };

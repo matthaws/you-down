@@ -1,4 +1,4 @@
-import { RECEIVE_USER } from '../actions/user_actions';
+import { RECEIVE_USER } from "../actions/user_actions";
 
 const usersReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -7,7 +7,7 @@ const usersReducer = (state = {}, action) => {
       return action.user;
     default:
       return state;
-    }
-  };
+  }
+};
 
 export default usersReducer;

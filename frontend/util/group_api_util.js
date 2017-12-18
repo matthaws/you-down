@@ -1,39 +1,37 @@
-
-export const fetchGroup = (groupId) => {
+export const fetchGroup = groupId => {
   return $.ajax({
-    method: 'GET',
+    method: "GET",
     url: `/api/groups/${groupId}`
   });
 };
 
-export const fetchGroupsByCategory = (category) => {
+export const fetchGroupsByCategory = category => {
   return $.ajax({
-    method: 'GET',
-    url: '/api/category',
+    method: "GET",
+    url: "/api/category",
     data: { category }
   });
 };
 
 export const fetchAllGroups = () => {
   return $.ajax({
-    method: 'GET',
-    url: '/api/groups'
+    method: "GET",
+    url: "/api/groups"
   });
 };
 
-export const createGroup = (group) => {
-
+export const createGroup = group => {
   return $.ajax({
-    method: 'POST',
+    method: "POST",
     url: `/api/groups`,
     data: { group }
   });
 };
 
-export const updateGroup = (group) => {
+export const updateGroup = group => {
   return $.ajax({
-    method: 'PATCH',
-    url: `/api/groups/${group.get('group[id]')}`,
+    method: "PATCH",
+    url: `/api/groups/${group.get("group[id]")}`,
     dataType: "json",
     contentType: false,
     processData: false,
@@ -41,31 +39,31 @@ export const updateGroup = (group) => {
   });
 };
 
-export const deleteGroup = (groupId) => {
+export const deleteGroup = groupId => {
   return $.ajax({
-    method: 'DELETE',
+    method: "DELETE",
     url: `/api/groups/${groupId}`
   });
 };
 
 export const joinGroup = (groupId, userId) => {
   return $.ajax({
-    method: 'POST',
+    method: "POST",
     url: `/api/groups/${groupId}/memberships`,
-    data: { membership: {group_id: groupId, member_id: userId } }
+    data: { membership: { group_id: groupId, member_id: userId } }
   });
 };
 
-export const leaveGroup = (groupId) => {
+export const leaveGroup = groupId => {
   return $.ajax({
-    method: 'DELETE',
+    method: "DELETE",
     url: `/api/groups/${groupId}/memberships`
   });
 };
 
-export const searchGroups = (search) => {
+export const searchGroups = search => {
   return $.ajax({
-    method: 'GET',
+    method: "GET",
     url: `/api/groups/search?search=${search}`
   });
 };

@@ -1,4 +1,8 @@
-import { RECEIVE_GROUP, RECEIVE_ALL_GROUPS, RECEIVE_JOINED_GROUP } from '../actions/group_actions';
+import {
+  RECEIVE_GROUP,
+  RECEIVE_ALL_GROUPS,
+  RECEIVE_JOINED_GROUP
+} from "../actions/group_actions";
 
 const groupsReducer = (state = {}, action) => {
   Object.freeze(state);

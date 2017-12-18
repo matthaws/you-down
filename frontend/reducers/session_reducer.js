@@ -1,12 +1,21 @@
-import { login, logout, signup, receiveCurrentUser, receiveErrors } from '../actions/session_actions';
-import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS } from '../actions/session_actions';
-import { RECEIVE_GROUP, RECEIVE_JOINED_GROUP } from '../actions/group_actions';
-import { RECEIVE_USER } from '../actions/user_actions';
+import {
+  login,
+  logout,
+  signup,
+  receiveCurrentUser,
+  receiveErrors
+} from "../actions/session_actions";
+import {
+  RECEIVE_CURRENT_USER,
+  RECEIVE_ERRORS
+} from "../actions/session_actions";
+import { RECEIVE_GROUP, RECEIVE_JOINED_GROUP } from "../actions/group_actions";
+import { RECEIVE_USER } from "../actions/user_actions";
 
-const initialState = {currentUser: null, errors: {} };
+const initialState = { currentUser: null, errors: {} };
 
 const sessionReducer = (state = initialState, action) => {
-  Object.freeze(state)
+  Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, state, { currentUser: action.currentUser });
@@ -23,7 +32,7 @@ const sessionReducer = (state = initialState, action) => {
     case RECEIVE_USER:
       if (action.user.id === state.currentUser.id) {
         return Object.assign({}, state, { currentUser: action.user });
-      } else ;
+      } else;
       return state;
     default:
       return state;
