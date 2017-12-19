@@ -1,0 +1,18 @@
+@import "normalize.css/normalize.css";
+
+body {
+    font-family: 'Merriweather Sans', Helvetica, sans-serif;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+    margin: 0;
+    min-height: 100%;
+}
+
+html {
+  min-height: 100%;
+}
+
+*:focus {
+  outline: none;
+}
