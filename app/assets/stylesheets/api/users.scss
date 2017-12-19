@@ -2,18 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.profile {
-  width: 960px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid lightgrey;
-  background-color: white;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-}
-
 .groupList {
   margin-top: 20px;
   width: 950px;
@@ -30,6 +18,17 @@
   justify-content: center;
   font-size: 36px;
   padding: 10px;
+}
+
+.profile {
+  width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid lightgrey;
+  background-color: white;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .left-box input {

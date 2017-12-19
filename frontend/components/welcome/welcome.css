@@ -1,0 +1,42 @@
+.placeholder {
+  background-color: white;
+  height: 815px;
+
+  /* position: absolute;
+  left: 0; top: 500px; */
+  bottom: 300px;
+  padding-bottom: 100px;
+  z-index: 10;
+  width: 100%;
+  padding-top: 0;
+  border-top: 1px solid lightgrey;
+}
+
+.placeholder h1 {
+  font-size: 32px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.main-button {
+  background-color: #ed1c40;
+  color: white;
+  border: 1px solid #ed1c40;
+  font-weight: bold;
+  padding: 12px 108px 12px 108px;
+  border-radius: 3px;
+  z-index: 99;
+  font-size: 18px;
+}
+
+.main-button:hover {
+  cursor: pointer;
+  background-color: #a50d27;
+}
+
+.welcome {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  height: 100%;
+}

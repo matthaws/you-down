@@ -1,19 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import IntroVideo from "../../packs/videos/YouDownIntro.mp4";
+import "./video_bar.css";
 
-
-class VideoBar extends React.Component {
-
-  render () {
-
-    return (
+const VideoBar = () => (
   <div id="video-bar">
-      <video id="videoBlock" preload="preload" autoPlay="autoplay" loop="loop">
-        <source src={window.images.intro_video} type="video/mp4" />
-      </video>
+    <video id="videoBlock" preload="preload" autoPlay="autoplay" loop="loop">
+      <source src={IntroVideo} type="video/mp4" />
+    </video>
   </div>
-  );
- }
-}
+);
 
 export default VideoBar;

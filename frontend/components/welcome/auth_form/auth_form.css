@@ -1,5 +1,5 @@
 .signup-button {
-  background-color: #ED1C40;
+  background-color: #ed1c40;
   color: white;
   padding: 0;
   padding-left: 15px;
@@ -10,7 +10,7 @@
 
 .signup-button:hover {
   cursor: pointer;
-  background-color: #a50d27
+  background-color: #a50d27;
 }
 
 .master {
@@ -25,21 +25,19 @@ main {
   min-height: 100%;
 }
 
-
-
 .auth-form div {
   text-align: center;
   padding: 30px;
+}
+
+.auth-form h1 {
+  padding-top: 20px;
 }
 
 .auth-form h1:first-child {
   font-size: 36px;
   margin-bottom: 100px;
   text-align: center;
-}
-
-.auth-form h1 {
-  padding-top: 20px;
 }
 
 .auth-form p {
@@ -49,22 +47,22 @@ main {
 
 .auth-form p:hover {
   cursor: pointer;
-  color: #ED1C40;
+  color: #ed1c40;
 }
 
 .auth-form {
   font-size: 20px;
+  padding: 20px;
   padding-bottom: 8px;
   width: 440px;
   border: 1px solid black;
   background-color: white;
   margin: 0 auto;
-  padding: 20px;
   box-shadow: 1px 1px 3px black;
   position: absolute;
   top: 100px;
-  left: 0; right: 0;
-  margin: 0 auto;
+  left: 0;
+  right: 0;
   color: black;
   z-index: 101;
 }
@@ -89,11 +87,10 @@ main {
 
 .auth-form button:hover {
   cursor: pointer;
-  background-color: #a50d27
+  background-color: #a50d27;
 }
 
 .guestlogin {
-  padding: 5px;
   background-color: white;
   margin: 0 auto;
   display: block;
@@ -103,14 +100,14 @@ main {
 }
 
 .guestlogin:hover {
-  color: #ED1C40;
+  color: #ed1c40;
   cursor: pointer;
 }
 
 .errors {
   font-size: 18px;
   padding: 20px;
-  color: #ED1C40;
+  color: #ed1c40;
   position: absolute;
   top: 40px;
   padding-top: 20px;
