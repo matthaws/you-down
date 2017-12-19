@@ -10,12 +10,13 @@
   padding: 20px;
   font-weight: bold;
   font-size: 16px;
-  border-bottom: 2px solid #E1E1E1;
+  border-bottom: 2px solid #e1e1e1;
   padding-top: 13px;
   z-index: 10;
   background-color: white;
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   z-index: 1;
 }
 
@@ -42,14 +43,15 @@
 }
 
 #logo {
-  font-family: 'Leckerli One', cursive;
+  font-family: "Leckerli One", cursive;
   font-weight: normal;
   font-size: 40px;
-  color: #ED1C40;
+  color: #ed1c40;
   padding: 0;
   position: absolute;
   text-align: center;
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   margin: 0 auto;
   background-color: transparent;
   z-index: 2;

@@ -1,6 +1,6 @@
 #footer {
   position: absolute;
-  background-color: #0F1721;
+  background-color: #0f1721;
   height: 75px;
   color: white;
   font-family: sans-serif;
@@ -24,6 +24,6 @@
 }
 
 #footer ul:first-child {
-  padding-top: 0px;
+  padding-top: 0;
   border-bottom: 1px solid white;
 }

@@ -16,7 +16,6 @@ a {
   margin: inherit;
 }
 
-
 .profile_pic_thumb img:first-child {
   height: 50px;
   width: auto;
@@ -36,7 +35,8 @@ a {
   height: 30px;
   width: auto;
   position: absolute;
-  top: 15px; right: 40px;
+  top: 15px;
+  right: 40px;
 }
 
 .nav-drop-down {
@@ -47,7 +47,6 @@ a {
   display: flex;
   justify-content: space-between;
   padding-right: 10px;
-
   width: 500px;
   z-index: 99;
   border: 1px solid lightgrey;
@@ -62,12 +61,12 @@ a {
 .nav-drop-down ul {
   z-index: 100;
   padding-bottom: 20px;
-};
+}
 
 .nav-drop-down li {
   direction: ltr;
   padding: 20px 100px 20px 10px;
-  border-bottom: 1px solid #0F1721;
+  border-bottom: 1px solid #0f1721;
   text-decoration: none;
   color: black;
   z-index: 101;
@@ -76,6 +75,6 @@ a {
 
 .nav-drop-down li:hover {
   cursor: pointer;
-  background-color: #ED1C40;
+  background-color: #ed1c40;
   color: white;
 }
