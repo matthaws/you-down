@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
-import { editUser, fetchUser } from "../../actions/user_actions";
-import GroupList from "./group_list.jsx";
-import DefaultProfilePic from "../../packs/images/profile-pic.jpg";
+import { editUser, fetchUser } from "../../../actions/user_actions";
+import GroupList from "../group_list/group_list.jsx";
+import DefaultProfilePic from "../../../packs/images/profile-pic.jpg";
 
 class ProfileMain extends React.Component {
   componentDidMount() {
@@ -18,39 +18,35 @@ class ProfileMain extends React.Component {
   }
 
   render() {
-    let profilePicUrl = this.props.user.profile_pic;
+    const { user, currentUser } = this.props;
+    const { bio, full_name, location_name, joined_groups } = user;
 
+    let profilePicUrl = user.profile_pic;
     if (profilePicUrl === "/DEFAULT") {
       profilePicUrl = DefaultProfilePic;
     }
 
     let editlink = <li />;
-
-    if (
-      this.props.currentUser &&
-      this.props.user.id === this.props.currentUser.id
-    ) {
+    if (currentUser && user.id === currentUser.id) {
       editlink = (
         <li>
-          <Link to={`/users/${this.state.user.id}/edit`}>
-            Edit Your Profile
-          </Link>
+          <Link to={`/users/${user.id}/edit`}>Edit Your Profile</Link>
         </li>
       );
     }
-    const groupNum = this.props.user.groups.length;
+
     return (
       <div className="profile-background">
         <section className="profile">
           <div className="left-box">
-            <h1>{this.state.user.full_name}</h1>
+            <h1>{full_name}</h1>
             <ul>
               <li>
                 LOCATION: <br />
-                {this.state.user.location_name}
+                {location_name}
               </li>
               <li>
-                BIO: <br /> {this.state.user.bio}
+                BIO: <br /> {bio}
               </li>
             </ul>
           </div>
@@ -64,9 +60,9 @@ class ProfileMain extends React.Component {
           </div>
         </section>
         <section className="groupList">
-          <h1>Member of {groupNum} groups:</h1>
+          <h1>Member of {joined_groups.length} groups:</h1>
           <ul className="listItems">
-            <GroupList groups={this.props.user.joined_groups} />
+            <GroupList groups={joined_groups} />
           </ul>
         </section>
       </div>
@@ -84,7 +80,10 @@ ProfileMain.propTypes = {
 
 ProfileMain.defaultProps = {
   user: {
-    joined_groups: []
+    joined_groups: [],
+    bio: "",
+    location_name: "",
+    full_name: ""
   }
 };
 
