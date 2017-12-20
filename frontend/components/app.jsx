@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { ProtectedRoute } from "../util/route_util";
 import NavBar from "./nav/nav_bar/nav_bar.jsx";
 import Welcome from "./welcome/welcome.jsx";
-import ProfileMain from "./profile/profile-main.jsx";
+import ProfileMain from "./profile/profile_main.jsx";
 import ProfileEdit from "./profile/profile-edit.jsx";
 import GroupShow from "./groups/group_show.jsx";
 import NewGroupForm from "./groups/new_group_form.jsx";

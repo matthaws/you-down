@@ -1,0 +1,33 @@
+.groupItem {
+  width: 300px;
+  height: 180px;
+  margin: 5px auto;
+  display: flex;
+  justify-content: space-between;
+  align-self: left;
+  position: relative;
+}
+
+.groupItem li {
+  text-align: left;
+  position: absolute;
+  bottom: 0;
+  color: white;
+  padding: 10px;
+  font-size: 12px;
+  text-shadow: -1px 0 #0f1721, 0 1px #0f1721, 1px 0 #0f1721, 0 -1px #0f1721;
+}
+
+.groupItem h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding-bottom: 20px;
+  text-shadow: -1px 0 #0f1721, 0 1px #0f1721, 1px 0 #0f1721, 0 -1px #0f1721;
+}
+
+.group-pic-thumb {
+  width: 310px;
+  height: 180px;
+  object-fit: cover;
+}
