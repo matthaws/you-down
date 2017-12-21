@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import AuthForm from "../../welcome/auth_form.jsx";
+import AuthForm from "../../welcome/auth_form/auth_form.jsx";
 import { modalStyle } from "../../../util/modal_util";
 import TopRight from "../topright/topright.jsx";
 
@@ -20,8 +20,6 @@ class NavBar extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.openSignUp = this.openSignUp.bind(this);
     this.openLogIn = this.openLogIn.bind(this);
-    this.goHome = this.goHome.bind(this);
-    this.goToCreate = this.goToCreate.bind(this);
   }
 
   closeModal() {

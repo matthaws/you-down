@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import DefaultGroupPic from "../../packs/images/group.jpg";
+import DefaultGroupPic from "../../../packs/images/group.jpg";
+
 import "./group_list.css";
 
 const GroupList = ({ groups }) => {

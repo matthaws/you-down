@@ -35,8 +35,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.includes(:members, :organizer).find(params[:id])
-    @events = Event.includes(:attendees).where("group_id = ?", @group.id)
+    @group = Group.includes(:members, :organizer, :group_events).find(params[:id])
     render :show
   end
 

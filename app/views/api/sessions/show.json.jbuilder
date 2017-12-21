@@ -1,7 +1,9 @@
-json.extract! @user, :full_name, :id
-json.joined_groups do
-  json.array! @user.joined_groups do |joined_group|
-    json.extract! joined_group, :group_name, :id
+json.partial! 'api/shared/profile', user: @user
+
+json.groups do
+  @user.joined_groups.each do |group|
+    json.set! group.id do
+      json.partial! 'api/shared/group', group: group
+    end
   end
 end
-json.profile_pic @user.profile_pic.url
