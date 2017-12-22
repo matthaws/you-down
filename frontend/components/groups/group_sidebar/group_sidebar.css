@@ -1,0 +1,30 @@
+
+
+.left-sidebar ul {
+  padding: 10px;
+  text-align: left;
+}
+
+.left-sidebar li {
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-sidebar h2 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.organizer {
+  padding-bottom: 0px;
+  padding-top: 20px;
+  font-size: 18px;
+  border-top: 1px solid lightgrey;
+}
+
+.left-sidebar a {
+  color: #ED1C40;
+  text-decoration: underline;
+}

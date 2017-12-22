@@ -1,18 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { NavLink, Route } from "react-router-dom";
-import { fetchGroup, joinGroup, leaveGroup } from "../../actions/group_actions";
-import { selectGroupEvents, selectGroupMembers } from "../../util/selectors";
-import GroupDetails from "./group_details.jsx";
-import GroupMembers from "./group_members.jsx";
-import GroupEdit from "./group_edit.jsx";
-import GroupEvents from "./group_events.jsx";
-import GroupWelcome from "./group_welcome.jsx";
-import GroupSidebar from "./group_sidebar.jsx";
-import NewEventForm from "../events/new_event_form.jsx";
-import LeaveGroup from "./leave_group.jsx";
-import hashHistory from "../../util/history";
+import { NavLink } from "react-router-dom";
+import {
+  fetchGroup,
+  joinGroup,
+  leaveGroup
+} from "../../../actions/group_actions";
+import { selectGroupEvents, selectGroupMembers } from "../../../util/selectors";
+import GroupBody from "../group_body/group_body.jsx";
+import GroupSidebar from "../group_sidebar/group_sidebar.jsx";
+
+import hashHistory from "../../../util/history";
+import "./group_show.css";
 
 class GroupShow extends React.Component {
   constructor(props) {
@@ -95,62 +95,7 @@ class GroupShow extends React.Component {
           </nav>
           <ul className="show-body">
             <GroupSidebar groupId={group.id} eventCount={eventCount} />
-            <Route
-              exact
-              path="/groups/:id"
-              render={routeProps => (
-                <GroupDetails
-                  {...routeProps}
-                  events={this.props.group.events}
-                  group={this.props.group}
-                  members={this.props.members}
-                />
-              )}
-            />
-            <Route
-              path="/group/:id/members"
-              render={routeProps => (
-                <GroupMembers {...routeProps} members={this.props.members} />
-              )}
-            />;
-            <Route
-              path="/group/:id/edit"
-              render={routeProps => <GroupEdit {...routeProps} group={group} />}
-            />
-            <Route
-              path="/group/:id/events"
-              render={routeProps => (
-                <GroupEvents
-                  {...routeProps}
-                  memberNum={this.props.members.length}
-                  events={group.events}
-                />
-              )}
-            />
-            <Route
-              path="group/:id/welcome"
-              render={routeProps => (
-                <GroupWelcome
-                  {...routeProps}
-                  group={group}
-                  user={currentUser}
-                />
-              )}
-            />
-            <Route
-              path="/group/:id/new"
-              render={routeProps => (
-                <NewEventForm
-                  {...routeProps}
-                  formType="new"
-                  groupId={group.id}
-                />
-              )}
-            />
-            <Route
-              path="/group/:id/leave"
-              render={() => <LeaveGroup handleLeave={this.handleLeave} />}
-            />
+            <GroupBody {...this.props} handleLeave={this.handleLeave} />
           </ul>
         </div>
       </div>
