@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 class PicList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {members: []}
+    this.state = { members: [] };
   }
 
   componentWillReceiveProps(nextProps) {

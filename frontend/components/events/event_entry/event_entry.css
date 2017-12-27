@@ -1,0 +1,38 @@
+.event-list-item {
+  border: 1px solid lightgrey;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.event-list-item h2 {
+  font-size: 20px
+}
+
+.event-list-item li {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+
+
+.event-list-item li:hover {
+  color: #ED1C40;
+  cursor: pointer;
+}
+
+.event-list-item img {
+  width: 20px;
+  height: 20px;
+  padding-right: 10px;
+  object-fit: cover;
+
+}
+
+.event-description {
+  padding: 20px;
+  text-align: left;
+  border: 1px solid lightgrey;
+  border-top: none;
+}

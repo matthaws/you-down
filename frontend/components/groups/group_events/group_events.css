@@ -1,0 +1,35 @@
+
+.event-list {
+  margin-top: 20px;
+  background-color: white;
+  width: 720px;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid lightgrey;
+}
+
+.event-list h1 {
+  font-size: 30px;
+  padding-bottom: 10px;
+}
+
+.group-event-list {
+  width: 700px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  height: auto;
+  padding: 20px;
+}
+
+.mini-menu {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.mini-menu li:hover {
+  color: #ED1C40;
+  cursor: pointer;
+}
