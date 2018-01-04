@@ -6,7 +6,7 @@ import Welcome from "./welcome/welcome.jsx";
 import ProfileMain from "./profile/profile_main/profile_main.jsx";
 import ProfileEdit from "./profile/profile_edit/profile_edit.jsx";
 import GroupShow from "./groups/group_show/group_show.jsx";
-import NewGroupForm from "./groups/new_group_form.jsx";
+import NewGroupForm from "./groups/new_group/new_group_form.jsx";
 import EventShow from "./events/event_show.jsx";
 import SearchContainer from "./search/search_container.jsx";
 import CategoryContainer from "./search/category_container.jsx";
